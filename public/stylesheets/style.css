@@ -1,0 +1,233 @@
+@import url(http://fonts.googleapis.com/css?family=Cuprum);
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+
+html {
+	background: #91d9f8 url(../../images/skyline.png) repeat-x fixed center bottom;
+	background:
+		url(../../images/cityscape1.png) repeat-x fixed -130% bottom,
+		url(../../images/cityscape2.png) repeat-x fixed 40% bottom,
+		url(../../images/cityscape3.png) repeat-x fixed -75% bottom;
+	background-color: #91d9f8; /* rgb(145, 216, 247); */
+}
+
+a img {
+	border: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+	line-height: 150%;
+}
+
+.container {
+	width: 960px;
+	margin: auto;
+}
+
+img#logo {
+	position: absolute;
+	left: 50%;
+	margin-left: -480px;
+}
+
+a#city {
+	position: absolute;
+	right: 50%;
+	margin-right: -480px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#444));
+	display: inline-block;
+	padding: 9px 11px;
+	width: 160px;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	-webkit-border-bottom-left-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	font-family: 'Indie Flower';
+}
+
+div#menu {
+	background-color: black;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#000));
+	text-align: center;
+	line-height: 100%;
+}
+
+div#menu a {
+	text-decoration: none;
+	color: #999;
+	font-family: 'Cuprum';
+	font-size: 18px;
+	padding: 21px 7px 14px 7px;
+	display: inline-block;
+}
+
+div#menu a:hover, div#menu a.sticky {
+	color: white;
+}
+
+div#featured-deal {
+	width: 760px;
+	margin: auto;
+	margin-top: 60px;
+	position: relative;
+}
+
+img#today-featured-deal {
+	margin-left: 30px;
+	margin-bottom: 11px;
+}
+
+img#get-this-deal-free {
+	position: absolute;
+	right: 0;
+	top: 11px;
+}
+
+a#left-arrow, a#right-arrow {
+	margin-top: 120px;
+}
+
+a#left-arrow {
+	float: left;
+}
+
+a#right-arrow {
+	float: right;
+}
+
+div#deal-info {
+	background-color: white;
+	margin: auto;
+	width: 618px;
+	padding: 22px;
+	-webkit-box-shadow: 1px 1px 7px #777;
+	overflow: auto;
+}
+
+img#deal-pic {
+	float: left;
+}
+
+div#specs {
+	float: right;
+}
+
+div#other-deals {
+	text-align: center;
+	margin-top: 11px;
+}
+
+div#other-deals a {
+	font-family: 'Cuprum';
+	text-decoration: none;
+	color: #47909D;
+	background-image: url(../../images/circle.png);
+	background-position: top center;
+	display: inline-block;
+	width: 21px;
+	height: 35px;
+	line-height: 48px;
+	margin: 0 11px;
+}
+
+div#other-deals a:hover {
+	color: orange;
+}
+
+div#other-deals a.active {
+	background-position: bottom center;
+	color: orange;
+}
+
+div#explainations {
+	text-align: center;
+	display: block;
+	width: 900px;
+	margin: 30px auto;
+}
+
+div.box {
+	text-align: left;
+	font-family: 'Cuprum';
+	height: 222px;
+	border: 3px solid white;
+	width: 250px;
+	top: 0;
+	padding: 7px 11px;
+	margin: 21px 11px;
+	display: block;
+	background-color: #CCE8F7;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDF7FF), to(#CCE8F7));
+	-webkit-box-shadow: 1px 1px 5px #777;
+	float: left;
+}
+
+div.box h1 {
+	color: #408B99;
+	font-size: 150%;
+	margin-bottom: 0;
+}
+
+div.box p {
+	margin-top: 7px;
+	line-height: 120%;
+}
+
+div.box img {
+	float: right;
+}
+
+div.doc {
+	width: 800px;
+	margin: auto;
+	-webkit-box-shadow: 1px 1px 3px #777;
+	background-color: white;
+	padding: 11px 33px;
+	font-size: 90%;
+}
+
+div#footer {
+	clear: both;
+	width: 860px;
+	margin: auto;
+	color: white;
+	font-size: 13px;
+	font-family: 'Cuprum';
+}
+
+p#meta-info {
+	float: left;
+}
+
+p#meta-info a {
+	margin-right: 11px;
+}
+
+p#meta-info a:hover {
+	text-decoration: underline;
+}
+
+div#footer p a {
+	text-decoration: none;
+	color: white;
+}
+
+p#copyright {
+	float: right;
+}
+
+p#sharing {
+	text-align: center;
+}
+
+p#sharing img {
+	margin-left: 11px;
+}
+
+img#share {
+	display: inline-block;
+	padding-left: 37px;
+}

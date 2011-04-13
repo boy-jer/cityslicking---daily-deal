@@ -1,0 +1,36 @@
+#
+# Main application, modeled on Sinatra and Rack
+#
+
+
+# Manage gems with Bundler (Gemfile and Gemfile.lock)
+
+  require 'bundler'
+  Bundler.require
+
+
+# Enable sessions
+
+  set :sessions, true
+
+
+# Render .html with embedded Ruby
+  
+  Tilt.register :html, Tilt[:erb]
+
+
+# Include Ruby libraries
+
+  Dir.glob File.dirname(__FILE__) + '/libraries/*.rb', &method(:require)
+  
+
+# Set root path
+    
+  get '/?' do
+    redirect '/deals'
+  end
+
+
+# Run as a Sinatra application on a Rack server
+
+  run Sinatra::Application

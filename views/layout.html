@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>City Slicking</title>
+	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />	
+</head>
+
+<body>
+	
+	<img id="logo" src="images/csLogo_blue.png" />
+	
+	<a id="city" href="#">SF Bay Area, CA</a>
+	
+	<div id="menu">
+		<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS</a>
+		<a id="news" href="/news" <%= sticky('news') %>>NEWS</a>
+		<a id="about-us" href="/about-us" <%= sticky('about') %>>ABOUT US</a>
+		<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
+		<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
+		<a id="session" href="/sign-out">SIGN OUT</a>
+	</div>
+	
+	<%= yield %>
+	
+	<div id="footer">
+		<p id="meta-info">
+			<a href="/policies">Policies</a>
+			<a href="mailto:email@cityslicking.com">Contact</a>
+		</p>
+		<p id="copyright">
+			&copy; Copyright 2011 City Slicking, LLC. All rights reserved.
+		</p>
+		
+		<p id="sharing">
+			<img id="share" src="images/share_arrow.png" />
+			<a href="#"><img src="images/facebook.png" /></a>
+			<a href="#"><img src="images/twitter.png" /></a>
+			<a href="#"><img src="images/maile.png" /></a>
+			<a href="#"><img src="images/rss.png" /></a>
+		</p>
+	</div>
+	
+</body>
+
+</html>
