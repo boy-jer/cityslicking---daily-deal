@@ -4,7 +4,7 @@
 
 
   get '/deals/?' do
-    erb :deals
+    erb :'deals/featured'
   end
 
   get '/news/?' do
