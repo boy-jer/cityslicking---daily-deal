@@ -11,14 +11,6 @@
     erb :news
   end
 
-  get '/about-us/?' do
-    erb :about
-  end
-
-  get '/merchants/?' do
-    erb :merchants
-  end
-
 
 # Helpers can be used anywhere in the site
 
