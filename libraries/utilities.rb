@@ -19,10 +19,6 @@
     erb :merchants
   end
 
-  get '/policies/?' do
-    erb :policies
-  end
-
 
 # Helpers can be used anywhere in the site
 
