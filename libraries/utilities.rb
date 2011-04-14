@@ -19,10 +19,6 @@
     erb :merchants
   end
 
-  get '/profile/?' do
-    erb :profile
-  end
-
   get '/policies/?' do
     erb :policies
   end
