@@ -27,13 +27,14 @@
 # Finalize data models and connect to database
 
   DataMapper.finalize
-  DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data.sqlite3")
+  DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data/development.sqlite3")
   
   
-# Auto migrate the database
+# Auto migrate the database and enter seed data
 
   DataMapper.auto_migrate!
-  
+  require "#{Dir.pwd}/data/seeds.rb"
+    
 
 # Set root path
     
