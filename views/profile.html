@@ -4,26 +4,31 @@
 	
 	<h2>Account Details</h2>
 	
-	<form>
+	<form action="/profile" method="post" id="account-details">
 		<p>
-			<input type="text" /> Email address
+			<input type="text" name="email" id="email" value="<%= @user.email %>" />
+			Email address
 		</p>
 		
 		<p>
-			<input type="password" /> Password
+			<input type="password" name="password" id="password" value="<%= @user.password %>" />
+			Password
 		</p>
 		
 		<p>
-			<input type="text" /> Zip code
+			<input type="text" name="zip" id="zip" value="<%= @user.zip %>" />
+			Zip code
 		</p>
 		
 		<p>
-			<input type="text" /> Age
+			<input type="text" name="age" id="age" value="<%= @user.age %>" />
+			Age
 		</p>
 		
 		<p>
-			<input type="radio" /> Male
-			<input type="radio" /> Female
+			<input type="radio" name="gender" value="male" <%= 'checked' if @user.gender == 'male' %>> Male
+			&nbsp;
+			<input type="radio" name="gender" value="female" <%= 'checked' if @user.gender == 'female' %>> Female
 		</p>
 		
 		<p>
