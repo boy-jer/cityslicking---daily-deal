@@ -3,11 +3,6 @@
 #
 
 
-  get '/deals/?' do
-    erb :'deals/featured'
-  end
-
-
 # Helpers can be used anywhere in the site
 
   helpers do
