@@ -112,7 +112,7 @@ p#flash {
 }
 
 div#featured-deal {
-	width: 760px;
+	width: 780px;
 	margin: auto;
 	margin-top: 60px;
 	position: relative;
@@ -126,7 +126,7 @@ img#today-featured-deal {
 img#get-this-deal-free {
 	position: absolute;
 	right: 0;
-	top: 11px;
+	top: 0;
 }
 
 a#left-arrow, a#right-arrow {
