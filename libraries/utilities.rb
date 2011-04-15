@@ -7,10 +7,6 @@
     erb :'deals/featured'
   end
 
-  get '/news/?' do
-    erb :news
-  end
-
 
 # Helpers can be used anywhere in the site
 
