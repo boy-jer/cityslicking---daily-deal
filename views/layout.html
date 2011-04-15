@@ -4,14 +4,24 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>City Slicking</title>
-	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />	
+	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
+	<script type="text/javascript" charset="utf-8" src="javascripts/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="javascripts/jquery-ui.js"></script>
+	<script type="text/javascript" charset="utf-8" src="javascripts/application.js"></script>
 </head>
 
 <body>
 	
 	<img id="logo" src="images/csLogo_blue.png" />
 	
-	<a id="city" href="#">SF Bay Area, CA</a>
+	<div id="cities">
+		<div id="other-cities" style="display: none;">
+			<% City.all(:order => :name).each do |city| %>
+				<a class="other-city" href="/cities/<%= city.short_name %>"><%= city.name %></a>
+			<% end %>
+		</div>
+		<a id="current-city" href="#"><%= session[:city_name] %></a>
+	</div>
 	
 	<div id="menu">
 		<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS</a>

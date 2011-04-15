@@ -39,6 +39,47 @@ img#logo {
 	margin-left: -480px;
 }
 
+div#cities {
+	position: absolute;
+	right: 50%;
+	margin-right: -480px;
+	z-index: 1;
+}
+
+div#other-cities {
+	-webkit-box-shadow: 1px 1px 3px #000;
+}
+
+div#other-cities a {
+	background-color: #333;
+	text-decoration: none;
+	color: white;
+	display: block;
+	width: 200px;
+	text-align: center;
+	padding: 3px;
+	font-size: 90%;
+}
+
+div#other-cities a:hover {
+	background-color: black;
+}
+
+a#current-city {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#444));
+	display: inline-block;
+	width: 200px;
+	padding: 9px 3px;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	-webkit-border-bottom-left-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	font-family: 'Indie Flower';
+	font-size: 22px;
+}
+
 a#city {
 	position: absolute;
 	right: 50%;
@@ -53,6 +94,7 @@ a#city {
 	-webkit-border-bottom-left-radius: 7px;
 	-webkit-border-bottom-right-radius: 7px;
 	font-family: 'Indie Flower';
+	font-size: 22px;
 }
 
 div#menu {
