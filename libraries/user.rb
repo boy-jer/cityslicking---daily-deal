@@ -62,6 +62,47 @@ post '/profile/?' do
   redirect '/profile'
 end
 
+post '/verify/?' do
+  mobile = Phoner::Phone.parse params[:mobile], :country_code => '1'
+  user = User.get(session[:user])
+  user.update(:mobile => mobile.format(:default))
+  redirect '/profile'
+end
+
+get '/optedin/?' do
+  user = User.get(session[:user])
+  unless user.optin?
+    mobile = User.get(session[:user]).mobile
+    "<p><span style='background-color: lightyellow;'>Now text <strong>DEALS</strong> to <strong>(415) 599-2671</strong> from <em>#{Phoner::Phone.parse(mobile, :country_code => '1').format(:us)}</em> to finish the process.</span></p>"
+  else
+    headers 'Content-Type' => "text/javascript"
+    "window.location = '/profile';"
+  end
+end
+
+post '/sms/?' do
+  params['Body'].strip!
+  params['Body'].downcase!
+  
+  if params['Body'] == 'deals'
+    if user = User.first(:mobile => params['From'])
+      user.update(:optin => true, :optin_msg => params['Body'])
+    end
+  end
+  
+  if params['Body'] == 'stop'
+    if user = User.first(:mobile => params['From'])
+      user.update(:optin => false, :optin_msg => params['Body'])
+    end
+  end
+end
+
+get '/stop-sending-me-sms/?' do
+  user = User.get(session[:user])
+  user.update(:optin => false)
+  redirect '/profile'
+end
+
 
 class User
   include DataMapper::Resource
