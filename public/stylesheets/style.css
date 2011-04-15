@@ -80,23 +80,6 @@ a#current-city {
 	font-size: 22px;
 }
 
-a#city {
-	position: absolute;
-	right: 50%;
-	margin-right: -480px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#444));
-	display: inline-block;
-	padding: 9px 11px;
-	width: 160px;
-	text-align: center;
-	color: white;
-	text-decoration: none;
-	-webkit-border-bottom-left-radius: 7px;
-	-webkit-border-bottom-right-radius: 7px;
-	font-family: 'Indie Flower';
-	font-size: 22px;
-}
-
 div#menu {
 	background-color: black;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#000));
@@ -108,8 +91,8 @@ div#menu a {
 	text-decoration: none;
 	color: #999;
 	font-family: 'Cuprum';
-	font-size: 18px;
-	padding: 21px 7px 14px 7px;
+	font-size: 19px;
+	padding: 22px 7px 15px 7px;
 	display: inline-block;
 }
 
