@@ -98,7 +98,7 @@ end
 
 get '/stop-sending-me-sms/?' do
   user = User.get(session[:user])
-  user.update(:mobile => '', :optin => false)
+  user.update(:mobile => nil, :optin => false)
   redirect '/profile'
 end
 
