@@ -11,7 +11,7 @@ get '/cities/:short_name/?' do
   city = City.first(:short_name => params[:short_name])
   session[:city_id] = city.id
   session[:city_name] = city.name
-  redirect '/deals'
+  redirect request.referrer
 end
 
 
