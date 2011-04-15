@@ -11,6 +11,11 @@
 # Markdown parsing
 
   gem 'rdiscount'
+  
+  
+# Date formatting
+
+  gem 'chronic'
 
 
 # Use DataMapper

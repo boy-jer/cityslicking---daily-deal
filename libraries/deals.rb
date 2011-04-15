@@ -24,7 +24,7 @@ class Deal
   
   belongs_to :dealer
   has n,     :locations
-  has n,     :cities
+  has n,     :cities, :through => Resource
   
 end
 
