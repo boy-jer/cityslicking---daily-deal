@@ -11,3 +11,14 @@
 # Markdown parsing
 
   gem 'rdiscount'
+
+
+# Use DataMapper
+
+  gem 'dm-core'
+  gem 'dm-sqlite-adapter'
+  gem 'dm-migrations'
+  gem 'dm-validations'
+  gem 'dm-timestamps'
+  gem 'dm-aggregates'
+  gem 'dm-types'

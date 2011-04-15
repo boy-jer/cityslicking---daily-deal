@@ -23,6 +23,17 @@
 
   Dir.glob File.dirname(__FILE__) + '/libraries/*.rb', &method(:require)
   
+  
+# Finalize data models and connect to database
+
+  DataMapper.finalize
+  DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data.sqlite3")
+  
+  
+# Auto migrate the database
+
+  DataMapper.auto_migrate!
+  
 
 # Set root path
     
