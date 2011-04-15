@@ -28,10 +28,15 @@
 		<a id="news" href="/news" <%= sticky('news') %>>NEWS</a>
 		<a id="about-us" href="/about-us" <%= sticky('about') %>>ABOUT US</a>
 		<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
-		<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
-		<a id="session" href="/sign-out">SIGN OUT</a>
+		<% if session[:user] %>
+			<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
+			<a id="session" href="/sign-out">SIGN OUT</a>
+		<% else %>
+			<a id="session" href="/sign-in">SIGN IN</a>
+		<% end %>
 	</div>
 	
+	<%= flash %>
 	<%= yield %>
 	
 	<div id="footer">

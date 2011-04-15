@@ -100,6 +100,17 @@ div#menu a:hover, div#menu a.sticky {
 	color: white;
 }
 
+p#flash {
+	width: 780px;
+	margin: auto;
+	-webkit-box-shadow: 1px 1px 3px #777;
+	background-color: lightyellow;
+	padding: 11px 33px;
+	font-size: 13px;
+	text-align: center;
+	color: #800;
+}
+
 div#featured-deal {
 	width: 760px;
 	margin: auto;
