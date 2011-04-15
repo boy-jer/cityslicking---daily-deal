@@ -27,4 +27,4 @@
 # Use Twilio SMS
 
   gem 'twiliolib'
-  gem 'phone'
+  gem 'phone', '>= 1.0'
