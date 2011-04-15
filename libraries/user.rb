@@ -75,8 +75,7 @@ get '/optedin/?' do
     mobile = User.get(session[:user]).mobile
     "<p><span style='background-color: lightyellow;'>Now text <strong>DEALS</strong> to <strong>(415) 599-2671</strong> from <em>#{Phoner::Phone.parse(mobile, :country_code => '1').format(:us)}</em> to finish the process.</span></p>"
   else
-    headers 'Content-Type' => "text/javascript"
-    "window.location = '/profile';"
+    "<script type='text/javascript' charset='utf-8'>window.location = '/profile';</script>"
   end
 end
 
