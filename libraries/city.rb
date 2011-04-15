@@ -25,4 +25,6 @@ class City
   property :name,       String, :required => true
   property :short_name, String, :required => true
   
+  has n, :deals
+  
 end
