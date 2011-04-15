@@ -22,3 +22,9 @@
   gem 'dm-timestamps'
   gem 'dm-aggregates'
   gem 'dm-types'
+
+
+# Use Twilio SMS
+
+  gem 'twiliolib'
+  gem 'phone'

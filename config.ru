@@ -17,6 +17,16 @@
 # Render .html with embedded Ruby
   
   Tilt.register :html, Tilt[:erb]
+  
+  
+# Twilio account details
+
+  set :sms_server, {
+    :api_version    => '2010-04-01',
+    :account_sid    => 'AC6cf085ad788087be75edde742ceebeb1',
+    :account_token  => 'dec6134f83eaa4bc58b407c84cf6245e',
+    :account_number => '4155992671'
+  }
 
 
 # Include Ruby libraries
