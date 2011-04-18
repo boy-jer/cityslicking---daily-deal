@@ -77,6 +77,40 @@
       end
       rounded
     end
+    
+    
+    def format_date(date)
+      date.strftime("%A %b %d, %Y")
+    end
+
+    def format_day(date)
+      date.strftime("%b %d, %Y")
+    end
+
+    def date_to_field(field, date)
+      date_field = ""
+
+      date_field << "<select name='#{field}_month' id='#{field}_month'>"
+      (1..12).each do |m|
+        date_field << "<option value='#{m}' #{'selected' if m == date.strftime('%m').to_i}>#{m}</option>"
+      end
+      date_field << "</select>"
+
+      date_field << "<select name='#{field}_day' id='#{field}_day'>"
+      (1..31).each do |d|
+        date_field << "<option value='#{d}' #{'selected' if d == date.strftime('%d').to_i}>#{d}</option>"
+      end
+      date_field << "</select>"
+
+      date_field << "<select name='#{field}_year' id='#{field}_year'>"
+      (2007..Chronic.parse('3 years from now').strftime('%Y').to_i).each do |y|
+        date_field << "<option value='#{y}' #{'selected' if y == date.strftime('%Y').to_i}>#{y}</option>"
+      end
+      date_field << "</select>"
+
+      date_field
+    end
+    
   
     
   end

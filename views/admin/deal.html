@@ -1,0 +1,84 @@
+<% @deal = Deal.new(:publish_date => Chronic.parse('now'), :expiration_date => Chronic.parse('3 months from now')) unless @deal %>
+
+<div class="doc">
+	
+	<p><a href="/admin">&larr; Back to list</a></p>
+	
+	<form method="post" enctype="multipart/form-date">
+		
+		<p>
+			<input type="text" name="title" id="title" value="<%= @deal.title %>" />
+			Title
+		</p>
+		
+		<p>
+			<select name="dealer" id="dealer">
+				<option value="0"></option>
+				<% Dealer.each do |dealer| %>
+					<option value="<%= dealer.id %>" <%= "selected" if @deal.dealer_id == dealer.id %>><%= dealer.name %></option>
+				<% end %>
+			</select>
+			Dealer
+		</p>
+				
+		<p>
+			<%= date_to_field('publish_date', @deal.publish_date) %>
+			Publish Date
+		</p>
+
+		<p>
+			<%= date_to_field('expiration_date', @deal.expiration_date) %>
+			Expiration Date
+		</p>
+		
+		<p>
+			<input type="text" name="legalese" id="legalese" value="<%= @deal.legalese %>" />
+			Legalese
+		</p>
+
+		<p>
+			<input type="text" name="max_saves" id="max_saves" value="<%= @deal.max_saves %>" />
+			Max saves
+		</p>
+
+		<p>
+			<input type="text" name="first_percent" id="first_percent" value="<%= @deal.first_percent %>" />
+			First use percent
+		</p>
+
+		<p>
+			<input type="text" name="return_percent" id="return_percent" value="<%= @deal.return_percent %>" />
+			Return percent
+		</p>
+
+		<p>
+			<input type="text" name="max_returns" id="max_returns" value="<%= @deal.max_returns %>" />
+			Number of return visits
+		</p>
+		
+		<p>
+			Description (Markdown formatting / GUI editor coming soon.)
+			<br />
+			<textarea cols="100" rows="15" name="description" id="description"><%= @deal.description %></textarea>
+		</p>
+		
+		<p>
+			<input type="text" name="code" id="code" value="<%= @deal.code %>" />
+			Code
+		</p>
+		
+		<p>
+			<input type="checkbox" name="active" id="active" <%= 'checked="checked"' if @deal.active? %> />
+			<span style="font-size: 90%;">Active</span>
+		</p>
+		
+		<p>
+			<input type="submit" value="Save" />
+			<% if @deal.id %>
+				or <a href="/admin/<%= @deal.id %>/delete">remove</a>
+			<% end %>
+		</p>
+		
+	</form>
+	
+</div>
