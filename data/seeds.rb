@@ -19,15 +19,15 @@ jarrod = User.create(:email => 'jarrodtaylor@cityslicking.com', :password => 'de
 john   = User.create(:email => 'john@cityslicking.com',         :password => 'demo')
 
 
-seadog_sushi_bar = Dealer.create(:name => 'Seadog Sushi Bar',
+tahoe_joe = Dealer.create(:name => "Tahoe Joe's Famous Steakhouse",
   :deals => [
     {
-      :title => '50% Off Entrees at Seadog Sushi Bar',
+      :title => "50% Off Joe's-Style Roasted Chicken in Modesto",
       :active => true,
       :publish_date => Chronic.parse('today'),
       :expiration_date => Chronic.parse('90 days from now'),
       :legalese => 'Limit 1 per customer.',
-      :description => Fixture.load('seadog_sushi_bar_1'),
+      :description => Fixture.load('tahoe_joe'),
       :code => 'Seadog 1',
       :max_saves => 1000,
       :first_percent => 50,
@@ -35,7 +35,7 @@ seadog_sushi_bar = Dealer.create(:name => 'Seadog Sushi Bar',
       :max_returns => 5,
       :city_deals => [{:city => san_jose}, {:city => modesto}, {:city => stockton}],
       :locations => [
-        {:street => '123 Fake Street', :city => 'Elk Grove', :state => 'CA', :zip => '98765'}
+        {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356'}
       ]
     },
     {
@@ -44,7 +44,7 @@ seadog_sushi_bar = Dealer.create(:name => 'Seadog Sushi Bar',
       :publish_date => Chronic.parse('yesterday'),
       :expiration_date => Chronic.parse('89 days from now'),
       :legalese => 'Limit 1 per customer.',
-      :description => Fixture.load('seadog_sushi_bar_2'),
+      :description => Fixture.load('tahoe_joe'),
       :code => 'Seadog 2',
       :max_saves => 1000,
       :first_percent => 50,
@@ -52,7 +52,7 @@ seadog_sushi_bar = Dealer.create(:name => 'Seadog Sushi Bar',
       :max_returns => 5,
       :city_deals => [{:city => lodi}, {:city => elk_grove}, {:city => turlock}],
       :locations => [
-        {:street => '123 Fake Street', :city => 'Elk Grove', :state => 'CA', :zip => '98765'}
+        {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356'}
       ]
     }
   ]
@@ -84,7 +84,7 @@ salatinos = Dealer.create(:name => 'Salatino\'s',
       :publish_date => Chronic.parse('3 days ago'),
       :expiration_date => Chronic.parse('87 days from now'),
       :legalese => 'Exclusive to City Slicking users.',
-      :description => Fixture.load('seadog_sushi_bar_2'),
+      :description => Fixture.load('salatinos_2'),
       :code => 'Salatinos 2',
       :max_saves => 1000,
       :first_percent => 50,

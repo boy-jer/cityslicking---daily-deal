@@ -1,0 +1,22 @@
+@import url(http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic);
+@import url(http://fonts.googleapis.com/css?family=Cabin:bold);
+
+body {
+	font-family: 'Nobile', Helvetica, Verdana, Arial, sans-serif;
+	line-height: 150%;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid silver;
+}
+
+
+h1, h2, h3 {
+	font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif;
+	line-height: 105%;
+}
+
+a {
+	color: #800;
+}

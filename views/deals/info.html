@@ -1,0 +1,25 @@
+<div class="doc">
+	
+	<div class="vertical-deal">
+		<span id="days"><%= (@deal.expiration_date - Time.now.to_date).round %></span>
+		<span id="hours"><%= 24 - Time.now.hour %></span>
+		<span id="mins"><%= 60 - Time.now.min %></span>
+		<span id="secs"><%= 60 - Time.now.sec %></span>
+		<span id="aquired">0 AQUIRED</span>
+		<span id="left"><%= @deal.max_saves %> LEFT</span>
+		<h1><%= @deal.title %></h1>
+		<p class="legalese"><%= @deal.legalese %></p>
+		<p><a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a></p>
+		<p class="deal-pic"><img src="/images/tmp/pizza.jpg" /></p>
+		<% @deal.locations.each do |location| %>
+			<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
+			<p class="map">
+				<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+				<img src="http://maps.google.com/maps/api/staticmap?center=<%= addr %>&zoom=15&size=298x240&markers=color:blue|<%= addr %>&sensor=false" />
+			</p>
+		<% end %>
+	</div>
+
+	<div class="more-info"><%= markdown @deal.description %></div>
+			
+</div>

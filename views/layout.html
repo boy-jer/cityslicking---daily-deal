@@ -4,16 +4,18 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>City Slicking</title>
-	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
-	<script type="text/javascript" charset="utf-8" src="javascripts/jquery.js"></script>
-	<script type="text/javascript" charset="utf-8" src="javascripts/jquery-ui.js"></script>
-	<script type="text/javascript" charset="utf-8" src="javascripts/jquery-periodicalupdater.js"></script>
-	<script type="text/javascript" charset="utf-8" src="javascripts/application.js"></script>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/thickbox.css" />
+	<script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/jquery-ui.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/jquery-periodicalupdater.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/application.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/thickbox.js"></script>	
 </head>
 
 <body>
 	
-	<img id="logo" src="images/csLogo_blue.png" />
+	<a href="/"><img id="logo" src="/images/csLogo_blue.png" /></a>
 	
 	<div id="cities">
 		<div id="other-cities" style="display: none;">
@@ -25,7 +27,7 @@
 	</div>
 	
 	<div id="menu">
-		<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS</a>
+		<a id="deals" href="/deals/all" <%= sticky('deals') %>>DEALS</a>
 		<a id="news" href="/news" <%= sticky('news') %>>NEWS</a>
 		<a id="about-us" href="/about-us" <%= sticky('about') %>>ABOUT US</a>
 		<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
@@ -50,11 +52,11 @@
 		</p>
 		
 		<p id="sharing">
-			<img id="share" src="images/share_arrow.png" />
-			<a href="#"><img src="images/facebook.png" /></a>
-			<a href="#"><img src="images/twitter.png" /></a>
-			<a href="#"><img src="images/maile.png" /></a>
-			<a href="#"><img src="images/rss.png" /></a>
+			<img id="share" src="/images/share_arrow.png" />
+			<a href="#"><img src="/images/facebook.png" /></a>
+			<a href="#"><img src="/images/twitter.png" /></a>
+			<a href="#"><img src="/images/maile.png" /></a>
+			<a href="#"><img src="/images/rss.png" /></a>
 		</p>
 	</div>
 	

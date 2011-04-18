@@ -2,6 +2,21 @@ get '/deals/?' do
   erb :'deals/featured'
 end
 
+get '/deals/all/?' do
+  @deals = City.get(session[:city_id]).deals
+  erb :'deals/index'
+end
+
+get '/deals/:id/use' do
+  @deal = Deal.get(params[:id])
+  erb :'deals/use', :layout => false
+end
+
+get '/deals/:id/?' do
+  @deal = Deal.get(params[:id])
+  erb :'deals/info'
+end
+
 
 class Deal
   include DataMapper::Resource

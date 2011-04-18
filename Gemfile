@@ -5,7 +5,7 @@
 
 # Use the Sinatra framework
   
-  gem 'sinatra'
+  gem 'sinatra', '>= 1.2.3'
 
 
 # Markdown parsing
