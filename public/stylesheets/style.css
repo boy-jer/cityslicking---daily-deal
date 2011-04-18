@@ -168,6 +168,7 @@ div#specs h1, div#specs h2 {
 div#specs p.buttons {
 	text-align: center;
 	vertical-align: top;
+	margin-bottom: 7px;
 }
 
 div#specs a.pill {
@@ -199,6 +200,7 @@ div#specs a#see-details {
 div#specs p.meta {
 	color: #777;
 	font-size: 11px;
+	margin-top: 0;
 }
 
 div#specs p.meta span.legalese {
