@@ -1,4 +1,5 @@
 get '/deals/?' do
+  @deals = City.get(session[:city_id]).deals(:order => :publish_date.desc, :limit => 3)
   erb :'deals/featured'
 end
 

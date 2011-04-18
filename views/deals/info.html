@@ -1,16 +1,15 @@
 <div class="doc">
 	
-	<div class="vertical-deal">
-		<span id="days"><%= (@deal.expiration_date - Time.now.to_date).round %></span>
-		<span id="hours"><%= 24 - Time.now.hour %></span>
-		<span id="mins"><%= 60 - Time.now.min %></span>
-		<span id="secs"><%= 60 - Time.now.sec %></span>
-		<span id="aquired">0 AQUIRED</span>
-		<span id="left"><%= @deal.max_saves %> LEFT</span>
-		<h1><%= @deal.title %></h1>
-		<p class="legalese"><%= @deal.legalese %></p>
-		<p><a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a></p>
-		<p class="deal-pic"><img src="/images/tmp/pizza.jpg" /></p>
+	<p style="float: right; margin-left: 33px;">
+		<a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a>
+	</p>
+	
+	<h1 style="color: #800; font-size: 36px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
+	
+	<hr />
+	
+	<div class="left">		
+		<p><img src="/images/tmp/pizza.jpg" /></p>
 		<% @deal.locations.each do |location| %>
 			<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
 			<p class="map">
@@ -20,6 +19,6 @@
 		<% end %>
 	</div>
 
-	<div class="more-info"><%= markdown @deal.description %></div>
+	<div class="right"><p><%= @deal.legalese %></p><%= markdown @deal.description %></div>
 			
 </div>

@@ -10,6 +10,14 @@
 <body>
 	<h1><%= @deal.title %></h1>
 	<p class="legalese"><%= @deal.legalese %></p>
+	<% @deal.locations.each do |location| %>
+		<p class="map">
+			<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+		</p>
+	<% end %>
+	<p><a href="#">Save to my smartphone (In-store use)</a></p>
+	<p><a href="#">Send it to my inbox (Email)</a></p>
+	<p><a href="#">Send it to my phone (SMS)</a></p>
 </body>
 
 </html>

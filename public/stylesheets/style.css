@@ -156,6 +156,57 @@ img#deal-pic {
 
 div#specs {
 	float: right;
+	width: 298px;
+}
+
+div#specs h1, div#specs h2 {
+	font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif;
+	line-height: 105%;
+	margin-top: 0;
+}
+
+div#specs p.buttons {
+	text-align: center;
+	vertical-align: top;
+}
+
+div#specs a.pill {
+	font-size: 10px;
+	color: white;
+	text-decoration: none;
+	background-color: silver;
+	display: inline-block;
+	line-height: 19px;
+	padding: 0px 5px;
+	margin: 0;
+	font-family: Verdana;
+	margin-top: 6px;
+	-webkit-border-radius: 3px;
+}
+
+div#specs a.pill:hover {
+	background-color: #777;
+}
+
+div#specs a#tell-a-friend {
+	float: left;
+}
+
+div#specs a#see-details {
+	float: right;
+}
+
+div#specs p.meta {
+	color: #777;
+	font-size: 11px;
+}
+
+div#specs p.meta span.legalese {
+	float: left;
+}
+
+div#specs p.meta span.expiration {
+	float: right;
 }
 
 div#other-deals {
@@ -241,88 +292,16 @@ div.doc a {
 	color: #800;
 }
 
-div.vertical-deal {
+div.left {
 	float: left;
-	margin: 0 33px 11px 0;
-	width: 266px;
-	background-image: url(../../images/widget.png);
-	background-repeat: no-repeat;
-	background-position: top center;
-	padding-top: 50px;
-	padding-left: 15px;
-	padding-right: 15px;
-	position: relative;
-}
-
-div.vertical-deal h1 {
-	line-height: 105%;
-	margin-bottom: 0;
-}
-
-div.vertical-deal span {
-	font-weight: bold;
-	position: absolute;
-	color: white;
-}
-
-span#days {
-	top: 0;
-	left: 50%;
-	margin-left: -75px;
-}
-
-span#hours {
-	top: 0;
-	left: 50%;
-	margin-left: -35px;
-}
-
-span#mins {
-	top: 0;
-	left: 50%;
-	margin-left: 5px;
-}
-
-span#secs {
-	top: 0;
-	left: 50%;
-	margin-left: 43px;
-}
-
-span#aquired {
-	top: 31px;
-	left: 50%;
-	margin-left: -80px;
-	font-size: 10px;
-}
-
-span#left {
-	top: 31px;
-	left: 50%;
-	margin-left: 7px;
-	font-size: 10px;
-}
-
-div.vertical-deal p.legalese {
-	font-style: italic;
-	color: #777;
-	margin-top: 0;
-}
-
-div.vertical-deal p.deal-pic {
-	margin-left: -15px;
-}
-
-div.more-info {
-	float: right;
-	width: 395px;
-}
-
-p.map {
+	width: 298px;
 	text-align: center;
 	font-style: italic;
-	margin-left: -15px;
-	color: #777;
+}
+
+div.right {
+	float: right;
+	width: 398px;
 }
 
 div#footer {

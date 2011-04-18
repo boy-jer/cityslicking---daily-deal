@@ -8,7 +8,16 @@
 	<div id="deal-info">
 		<img id="deal-pic" src="/images/tmp/pizza.jpg" />
 		<div id="specs">
-			<img id="widget" src="/images/widget.png" />
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals.first.title %></h1>
+			<p class="buttons">
+				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+				<a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals.first.id %>" class="pill" id="see-details">See Details</a>
+			</p>
+			<p class="meta">
+				<span class="legalese"><%= @deals.first.legalese %></span>
+				<span class="expiration">Expires <%= @deals.first.expiration_date %></span>
+			</p>
 		</div>
 	</div>
 	
@@ -16,8 +25,6 @@
 		<a href="#" id="1" class="inactive">1</a>
 		<a href="#" id="2" class="active">2</a>
 		<a href="#" id="3" class="inactive">3</a>
-		<a href="#" id="4" class="inactive">4</a>
-		<a href="#" id="5" class="inactive">5</a>
 	</div>
 </div>
 

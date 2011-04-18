@@ -4,6 +4,9 @@
 body {
 	font-family: 'Nobile', Helvetica, Verdana, Arial, sans-serif;
 	line-height: 150%;
+	background-color: #ghostwhite;
+	font-size: 13px;
+	text-align: center;
 }
 
 hr {
@@ -14,7 +17,7 @@ hr {
 
 h1, h2, h3 {
 	font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif;
-	line-height: 105%;
+	color: #800; line-height: 120%; margin: 0;
 }
 
 a {
