@@ -7,6 +7,10 @@
 
   require 'bundler'
   Bundler.require
+  
+  
+# Set the default encoding (also works around a bug in Rack)
+  Encoding.default_external = 'utf-8'
 
 
 # Enable sessions
