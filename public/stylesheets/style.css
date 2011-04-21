@@ -28,6 +28,10 @@ hr {
 	border-top: 1px solid silver;
 }
 
+a {
+	color: #800;
+}
+
 .container {
 	width: 960px;
 	margin: auto;
