@@ -53,7 +53,7 @@
 # Set root path
     
   get '/?' do
-    redirect '/deals'
+    redirect '/home'
   end
 
 

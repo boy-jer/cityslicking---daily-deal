@@ -26,9 +26,8 @@
 	</div>
 	
 	<div id="menu">
-		<a id="deals" href="/deals/all" <%= sticky('deals') %>>DEALS</a>
-		<a id="news" href="/news" <%= sticky('news') %>>NEWS</a>
-		<a id="about-us" href="/about-us" <%= sticky('about') %>>ABOUT US</a>
+		<a id="deals" href="/" <%= sticky('home') %>>HOME</a>
+		<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS!</a>
 		<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
 		<% if session[:user] %>
 			<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
@@ -43,6 +42,8 @@
 	
 	<div id="footer">
 		<p id="meta-info">
+			<a id="news" href="/news">News</a>
+			<a id="about-us" href="/about-us">About Us</a>
 			<a href="/policies">Policies</a>
 			<a href="mailto:admin@cityslicking.com">Contact</a>
 		</p>

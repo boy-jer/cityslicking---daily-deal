@@ -1,9 +1,9 @@
-get '/deals/?' do
+get '/home/?' do
   @deals = City.get(session[:city_id]).deals(:order => :publish_date.desc, :limit => 3)
   erb :'deals/featured'
 end
 
-get '/deals/all/?' do
+get '/deals/?' do
   @deals = City.get(session[:city_id]).deals
   erb :'deals/index'
 end
