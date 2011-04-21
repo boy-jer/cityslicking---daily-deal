@@ -1,6 +1,6 @@
 get '/home/?' do
   @deals = City.get(session[:city_id]).deals(:order => :publish_date.desc, :limit => 3)
-  erb :'deals/featured'
+  erb :home
 end
 
 get '/deals/?' do
