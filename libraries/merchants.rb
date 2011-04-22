@@ -3,6 +3,72 @@ get '/admin/merchants/?' do
   erb :'admin/merchants/index'
 end
 
+get '/admin/merchants/new/?' do
+  erb :'admin/merchants/merchant'
+end
+
+post '/admin/merchants/new/?' do
+  Merchant.create(
+    :name             => params[:name],
+    :owner            => params[:owner],
+    :manager          => params[:manager],
+    :email            => params[:email],
+    :site             => params[:site],
+    :type_of_business => params[:type_of_business],
+    :phone1           => params[:phone1],
+    :phone2           => params[:phone2],
+    :phone3           => params[:phone3],
+    :physical_street  => params[:physical_street],
+    :physical_city    => params[:physical_city],
+    :physical_state   => params[:physical_state],
+    :physical_zip     => params[:physical_zip],
+    :mailing_street   => params[:mailing_street],
+    :mailing_city     => params[:mailing_city],
+    :mailing_state    => params[:mailing_state],
+    :mailing_zip      => params[:mailing_zip]
+  )
+  session[:flash] = 'Merchant created.'
+  redirect '/admin/merchants'
+end
+
+get '/admin/merchants/edit/:id/?' do
+  @merchant = Merchant.get(params[:id])
+  erb :'admin/merchants/merchant'
+end
+
+post '/admin/merchants/edit/:id/?' do
+  merchant = Merchant.get(params[:id])
+  merchant.update(
+    :name             => params[:name],
+    :owner            => params[:owner],
+    :manager          => params[:manager],
+    :email            => params[:email],
+    :site             => params[:site],
+    :type_of_business => params[:type_of_business],
+    :phone1           => params[:phone1],
+    :phone2           => params[:phone2],
+    :phone3           => params[:phone3],
+    :physical_street  => params[:physical_street],
+    :physical_city    => params[:physical_city],
+    :physical_state   => params[:physical_state],
+    :physical_zip     => params[:physical_zip],
+    :mailing_street   => params[:mailing_street],
+    :mailing_city     => params[:mailing_city],
+    :mailing_state    => params[:mailing_state],
+    :mailing_zip      => params[:mailing_zip]
+  )
+  session[:flash] = 'Merchant info saved.'
+  redirect 'admin/merchants'
+end
+
+get '/admin/merchants/delete/:id/?' do
+  merchant = Merchant.get(params[:id])
+  merchant.destroy
+  session[:flash] = 'Merchant removed.'
+  redirect '/admin/merchants'
+end
+
+
 class Merchant
   include DataMapper::Resource
   

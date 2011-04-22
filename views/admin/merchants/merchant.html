@@ -1,0 +1,74 @@
+<% @merchant = Merchant.new unless @merchant %>
+
+<div class="doc">
+	<%= erb :'admin/navigation' %>
+
+	<h1>Merchant</h1>
+	
+	<p><a href="/admin/merchants">&larr; Back to list</a></p>
+	
+	<form method="post">
+		
+		<p>
+			<label for="name">Name</label>
+			<input type="text" class="textfield" name="name" id="name" value="<%= @merchant.name %>" />
+		</p>
+
+		<p>
+			<label for="owner">Owner</label>
+			<input type="text" class="textfield" name="owner" id="owner" value="<%= @merchant.owner %>" />
+		</p>
+
+		<p>
+			<label for="manager">Manager</label>
+			<input type="text" class="textfield" name="manager" id="manager" value="<%= @merchant.manager %>" />
+		</p>
+
+		<p>
+			<label for="email">Email</label>
+			<input type="text" class="textfield" name="email" id="email" value="<%= @merchant.email %>" />
+		</p>
+
+		<p>
+			<label for="site">Website</label>
+			<input type="text" class="textfield" name="site" id="site" value="<%= @merchant.site %>" />
+		</p>
+
+		<p>
+			<label for="type_of_business">Type of business</label>
+			<input type="text" class="textfield" name="type_of_business" id="type_of_business" value="<%= @merchant.type_of_business %>" />
+		</p>
+
+		<p>
+			<label>Phone numbers</label>
+			<input type="text" class="textfield" name="phone1" id="phone1" value="<%= @merchant.phone1 %>" /><br />
+			<input type="text" class="textfield" name="phone2" id="phone2" value="<%= @merchant.phone2 %>" /><br />
+			<input type="text" class="textfield" name="phone3" id="phone3" value="<%= @merchant.phone3 %>" />
+		</p>
+		
+		<p>
+			<label>Physical address</label>
+			<input type="text" class="textfield" name="physical_street" id="physical_street" value="<%= @merchant.physical_street %>" /><br />
+			<input type="text" class="textfield" name="physical_city" id="physical_city" value="<%= @merchant.physical_city %>" style="width: 200px;" />
+			<input type="text" class="textfield" name="physical_state" id="physical_state" value="<%= @merchant.physical_state %>" style="width: 50px;" />,
+			<input type="text" class="textfield" name="physical_zip" id="physical_zip" value="<%= @merchant.physical_zip %>" style="width: 100px;" />
+		</p>
+
+		<p>
+			<label>Mailing address</label>
+			<input type="text" class="textfield" name="mailing_street" id="mailing_street" value="<%= @merchant.mailing_street %>" /><br />
+			<input type="text" class="textfield" name="mailing_city" id="mailing_city" value="<%= @merchant.mailing_city %>" style="width: 200px;" />
+			<input type="text" class="textfield" name="mailing_state" id="mailing_state" value="<%= @merchant.mailing_state %>" style="width: 50px;" />,
+			<input type="text" class="textfield" name="mailing_zip" id="mailing_zip" value="<%= @merchant.mailing_zip %>" style="width: 100px;" />
+		</p>
+		
+		<p>
+			<input type="submit" value="Save" />
+			<% if @merchant.id %>
+				or <a href="/admin/merchants/delete/<%= @merchant.id %>">remove</a>
+			<% end %>
+		</p>
+		
+	</form>
+
+</div>

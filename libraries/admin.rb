@@ -1,3 +1,7 @@
+get '/admin/?' do
+  redirect '/admin/deals'
+end
+
 get '/admin/deal/new/?' do
   erb :'admin/deals/deal'
 end

@@ -105,7 +105,7 @@ div#menu a:hover, div#menu a.sticky {
 }
 
 p#flash {
-	width: 780px;
+	width: 762px;
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	background-color: lightyellow;
@@ -344,4 +344,24 @@ div#footer p#sharing {
 
 div#footer p#sharing a img {
 	margin-left: 7px;
+}
+
+
+label {
+	display: block;
+	font-size: 90%;
+}
+
+input.textfield {
+	-webkit-appearance: none;
+	width: 400px;
+	border: 1px solid #ddd;
+	padding: 6px;
+	-webkit-border-radius: 2px;	
+}
+
+input.textfield:focus {
+	outline: none;
+	background-color: lightyellow;
+	border: 1px solid #999;
 }
