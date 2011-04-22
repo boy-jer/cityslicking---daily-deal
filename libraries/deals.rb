@@ -26,17 +26,21 @@ class Deal
   property    :deleted_at,  ParanoidDateTime
   timestamps  :at
   
-  property :title,            Text
-  property :active,           Boolean, :default => false
-  property :publish_date,     Date
-  property :expiration_date,  Date
-  property :legalese,         Text
-  property :description,      Text
-  property :code,             String
-  property :max_saves,        Integer
-  property :first_percent,    Integer
-  property :return_percent,   Integer
-  property :max_returns,      Integer
+  property  :title,                   Text
+  property  :active,                  Boolean, :default => false
+  property  :date_activated,          Date
+  property  :preview_authorized_by,   String
+  property  :preview_authorized_date, Date
+  property  :final_corrections_date,  Date
+  property  :publish_date,            Date
+  property  :expiration_date,         Date
+  property  :legalese,                Text
+  property  :description,             Text
+  property  :code,                    String
+  property  :max_saves,               Integer
+  property  :first_percent,           Integer
+  property  :return_percent,          Integer
+  property  :max_returns,             Integer
   
   belongs_to :merchant
   has n,     :locations
