@@ -45,20 +45,6 @@ class Deal
 end
 
 
-class Merchant
-  include DataMapper::Resource
-  
-  property    :id,          Serial
-  property    :deleted_at,  ParanoidDateTime
-  timestamps  :at
-  
-  property :name, String
-  
-  has n, :deals
-  
-end
-
-
 class Location
   include DataMapper::Resource
   
