@@ -5,56 +5,68 @@
 	
 	<p><a href="/admin">&larr; Back to list</a></p>
 	
+	<h1>Deal</h1>
+	
 	<form method="post" enctype="multipart/form-date">
 		
 		<p>
-			<input type="text" name="title" id="title" value="<%= @deal.title %>" />
-			Title
+			<label for="title">Title</label>
+			<input type="text" class="textfield" name="title" id="title" value="<%= @deal.title %>" />
 		</p>
 		
 		<p>
+			<label for="dealer">Dealer</label>
 			<select name="dealer" id="dealer">
 				<option value="0"></option>
 				<% Merchant.each do |merchant| %>
 					<option value="<%= merchant.id %>" <%= "selected" if @deal.merchant_id == merchant.id %>><%= merchant.name %></option>
 				<% end %>
 			</select>
-			Dealer
 		</p>
 				
 		<p>
+			<label for="publish_date">Publish Date</label>
 			<%= date_to_field('publish_date', @deal.publish_date) %>
-			Publish Date
 		</p>
 
 		<p>
+			<label for="expiration_date">Expiration Date</label>
 			<%= date_to_field('expiration_date', @deal.expiration_date) %>
-			Expiration Date
 		</p>
 		
 		<p>
-			<input type="text" name="legalese" id="legalese" value="<%= @deal.legalese %>" />
-			Restrictions/Conditions
+			<label for="max_saves">Maximum number of uses</label>
+			<input type="text" class="textfield" name="max_saves" id="max_saves" value="<%= @deal.max_saves %>" style="width: 50px;" />
+		</p>
+		
+		<p>
+			<label for="max_saves">Maximum number of return visits</label>
+			<input type="text" class="textfield" name="max_returns" id="max_returns" value="<%= @deal.max_returns %>" style="width: 50px;" />
 		</p>
 
 		<p>
-			<input type="text" name="max_saves" id="max_saves" value="<%= @deal.max_saves %>" />
-			Max saves
+			<label for="first_percent">First use percentage</label>
+			<select name="first_percent" id="first_percent">
+				<option value="50" <%= "selected" if @deal.first_percent == '50' %>>50</option>
+				<option value="55" <%= "selected" if @deal.first_percent == '55' %>>55</option>
+				<option value="60" <%= "selected" if @deal.first_percent == '60' %>>60</option>
+				<option value="65" <%= "selected" if @deal.first_percent == '65' %>>65</option>
+				<option value="70" <%= "selected" if @deal.first_percent == '70' %>>70</option>
+				<option value="75" <%= "selected" if @deal.first_percent == '75' %>>75</option>
+				<option value="80" <%= "selected" if @deal.first_percent == '80' %>>80</option>
+				<option value="85" <%= "selected" if @deal.first_percent == '85' %>>85</option>
+				<option value="90" <%= "selected" if @deal.first_percent == '50' %>>90</option>
+			</select>
 		</p>
 
 		<p>
-			<input type="text" name="first_percent" id="first_percent" value="<%= @deal.first_percent %>" />
-			First use percent
-		</p>
-
-		<p>
-			<input type="text" name="return_percent" id="return_percent" value="<%= @deal.return_percent %>" />
-			Return percent
-		</p>
-
-		<p>
-			<input type="text" name="max_returns" id="max_returns" value="<%= @deal.max_returns %>" />
-			Number of return visits
+			<label for="return_percent">Return percentage</label>
+			<select name="return_percent" id="return_percent">
+				<option value="25" <%= "selected" if @deal.return_percent == '25' %>>25</option>
+				<option value="30" <%= "selected" if @deal.return_percent == '30' %>>30</option>
+				<option value="35" <%= "selected" if @deal.return_percent == '35' %>>35</option>
+				<option value="40" <%= "selected" if @deal.return_percent == '40' %>>40</option>
+			</select>
 		</p>
 		
 		<p>
@@ -63,18 +75,35 @@
 			<textarea cols="100" rows="15" name="description" id="description"><%= @deal.description %></textarea>
 		</p>
 		
+		
+		
 		<p>
-			<input type="text" name="code" id="code" value="<%= @deal.code %>" />
-			Code
+			<label for="code">Code</label>
+			<input type="text" class="textfield" name="code" id="code" value="<%= @deal.code %>" />
+		</p>
+		
+		<p>
+			<label for="legalese">Restrictions/Conditions</label>
+			<input type="text" class="textfield" name="legalese" id="legalese" value="<%= @deal.legalese %>" />
+		</p>
+		
+		<p>
+			<label for="preview_authorized_by">Preview authorized by</label>
+			<input type="text" class="textfield" name="preview_authorized_by" id="preview_authorized_by" value="<%= @deal.preview_authorized_by %>" />
+		</p>
+		
+		<p>
+			<label for="final_corrections_date">Final corrections must be completed by</label>
+			<%= date_to_field('final_corrections_date', @deal.final_corrections_date) %>
 		</p>
 		
 		<p>
 			<input type="checkbox" name="active" id="active" <%= 'checked="checked"' if @deal.active? %> />
-			<span style="font-size: 90%;">Active</span>
+			<span style="font-size: 90%;">Active <%= @deal.date_activated %></span>
 		</p>
 		
 		<p>
-			<input type="submit" value="Save" />
+			<input type="submit" value="Save and Preview" />
 			<% if @deal.id %>
 				or <a href="/admin/deals/delete/<%= @deal.id %>">remove</a>
 			<% end %>

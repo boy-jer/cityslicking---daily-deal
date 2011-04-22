@@ -33,10 +33,9 @@ get '/admin/deals/new/?' do
 end
 
 post '/admin/deals/new/?' do
-  Deal.create(
-  )
-  session[:flash] = 'Deal created.'
-  redirect '/admin/deals'
+  #Deal.create(
+  #)
+  redirect "admin/deals/preview/#{params[:id]}"
 end
 
 get '/admin/deals/edit/:id/?' do
@@ -46,10 +45,9 @@ end
 
 post '/admin/deals/edit/:id/?' do
   deal = Deal.get(params[:id])
-  deal.update(
-  )
-  session[:flash] = 'Deal info saved.'
-  redirect 'admin/deals'
+  #deal.update(
+  #)
+  redirect "admin/deals/preview/#{params[:id]}"
 end
 
 get '/admin/deals/delete/:id/?' do
@@ -57,6 +55,11 @@ get '/admin/deals/delete/:id/?' do
   deal.destroy
   session[:flash] = 'Deal removed.'
   redirect '/admin/deals'
+end
+
+get '/admin/deals/preview/:id/?' do
+  @deal = Deal.get(params[:id])
+  erb :'admin/deals/preview'
 end
 
 

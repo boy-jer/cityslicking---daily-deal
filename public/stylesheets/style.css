@@ -365,3 +365,18 @@ input.textfield:focus {
 	background-color: lightyellow;
 	border: 1px solid #999;
 }
+
+
+textarea {
+	-webkit-appearance: none;
+	width: 700px;
+	border: 1px solid #ddd;
+	padding: 6px;
+	-webkit-border-radius: 2px;	
+}
+
+textarea:focus {
+	outline: none;
+	background-color: lightyellow;
+	border: 1px solid #999;
+}
