@@ -81,6 +81,24 @@
 		</p>
 		
 		<p>
+			<label>Locations</label>
+			<input type="text" class="textfield" name="street1" id="street1" value="<%= @deal.locations[0].street if defined? @deal.locations[0].street %>" /><br />
+			<input type="text" class="textfield" name="city1" id="city1" value="<%= @deal.locations[0].city if defined? @deal.locations[0].city %>" style="width: 200px;" />
+			<input type="text" class="textfield" name="state1" id="state1" value="<%= @deal.locations[0].state if defined? @deal.locations[0].state %>" style="width: 50px;" />,
+			<input type="text" class="textfield" name="zip1" id="zip1" value="<%= @deal.locations[0].zip if defined? @deal.locations[0].zip %>" style="width: 100px;" />
+			<br /><br />
+			<input type="text" class="textfield" name="street2" id="street2" value="<%= @deal.locations[1].street if defined? @deal.locations[1].street %>" /><br />
+			<input type="text" class="textfield" name="city2" id="city2" value="<%= @deal.locations[1].city if defined? @deal.locations[1].city %>" style="width: 200px;" />
+			<input type="text" class="textfield" name="state2" id="state2" value="<%= @deal.locations[1].state if defined? @deal.locations[1].state %>" style="width: 50px;" />,
+			<input type="text" class="textfield" name="zip2" id="zip2" value="<%= @deal.locations[1].zip if defined? @deal.locations[1].zip %>" style="width: 100px;" />
+			<br /><br />
+			<input type="text" class="textfield" name="street3" id="street3" value="<%= @deal.locations[2].street if defined? @deal.locations[2].street %>" /><br />
+			<input type="text" class="textfield" name="city3" id="city3" value="<%= @deal.locations[2].city if defined? @deal.locations[2].city %>" style="width: 200px;" />
+			<input type="text" class="textfield" name="state3" id="state3" value="<%= @deal.locations[2].state if defined? @deal.locations[2].state %>" style="width: 50px;" />,
+			<input type="text" class="textfield" name="zip3" id="zip3" value="<%= @deal.locations[2].zip if defined? @deal.locations[2].zip %>" style="width: 100px;" />
+		</p>
+		
+		<p>
 			<label for="code">Code</label>
 			<input type="text" class="textfield" name="code" id="code" value="<%= @deal.code %>" />
 		</p>

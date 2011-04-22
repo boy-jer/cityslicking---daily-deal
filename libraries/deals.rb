@@ -48,6 +48,8 @@ post '/admin/deals/new/?' do
     :final_corrections_date => Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
   )
   
+  deal.save
+  
   if params[:active]
     deal.active = true
     deal.date_activated = Chronic.parse('today')
@@ -61,6 +63,31 @@ post '/admin/deals/new/?' do
   end
   
   File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
+  
+  if params[:street1].strip.length > 0
+    deal.locations.create(
+      :street => params[:street1],
+      :city   => params[:city1],
+      :state  => params[:state1],
+      :zip    => params[:zip1]
+    )
+  end
+  if params[:street2].strip.length > 0
+    deal.locations.create(
+      :street => params[:street2],
+      :city   => params[:city2],
+      :state  => params[:state2],
+      :zip    => params[:zip2]
+    )
+  end
+  if params[:street3].strip.length > 0
+    deal.locations.create(
+      :street => params[:street3],
+      :city   => params[:city3],
+      :state  => params[:state3],
+      :zip    => params[:zip3]
+    )
+  end
   
   redirect "admin/deals/preview/#{deal.id}"
 end
@@ -110,6 +137,33 @@ post '/admin/deals/edit/:id/?' do
   end
   
   File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
+  
+  deal.locations.all.destroy
+  
+  if params[:street1].strip.length > 0
+    deal.locations.create(
+      :street => params[:street1],
+      :city   => params[:city1],
+      :state  => params[:state1],
+      :zip    => params[:zip1]
+    )
+  end
+  if params[:street2].strip.length > 0
+    deal.locations.create(
+      :street => params[:street2],
+      :city   => params[:city2],
+      :state  => params[:state2],
+      :zip    => params[:zip2]
+    )
+  end
+  if params[:street3].strip.length > 0
+    deal.locations.create(
+      :street => params[:street3],
+      :city   => params[:city3],
+      :state  => params[:state3],
+      :zip    => params[:zip3]
+    )
+  end
     
   deal.save
   redirect "admin/deals/preview/#{deal.id}"
