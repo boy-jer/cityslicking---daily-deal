@@ -38,14 +38,14 @@ class Deal
   property :return_percent,   Integer
   property :max_returns,      Integer
   
-  belongs_to :dealer
+  belongs_to :merchant
   has n,     :locations
   has n,     :cities, :through => Resource
   
 end
 
 
-class Dealer
+class Merchant
   include DataMapper::Resource
   
   property    :id,          Serial

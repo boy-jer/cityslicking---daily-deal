@@ -19,7 +19,7 @@ jarrod = User.create(:email => 'jarrodtaylor@cityslicking.com', :password => 'de
 john   = User.create(:email => 'john@cityslicking.com',         :password => 'demo')
 
 
-tahoe_joe = Dealer.create(:name => "Tahoe Joe's Famous Steakhouse",
+tahoe_joe = Merchant.create(:name => "Tahoe Joe's Famous Steakhouse",
   :deals => [
     {
       :title => "50% Off Joe's-Style Roasted Chicken in Modesto",
@@ -59,7 +59,7 @@ tahoe_joe = Dealer.create(:name => "Tahoe Joe's Famous Steakhouse",
 )
 
 
-salatinos = Dealer.create(:name => 'Salatino\'s',
+salatinos = Merchant.create(:name => 'Salatino\'s',
   :deals => [
     {
       :title => 'Free Cannolis with Purchase of 2 Entrees at Salatino\'s',
@@ -99,7 +99,7 @@ salatinos = Dealer.create(:name => 'Salatino\'s',
 )
 
 
-caminito_grill = Dealer.create(:name => 'Caminito Argentinian Grill',
+caminito_grill = Merchant.create(:name => 'Caminito Argentinian Grill',
   :deals => [
     {
       :title => '65% Off Lunch at Caminito Argentinian Grill',
@@ -139,7 +139,7 @@ caminito_grill = Dealer.create(:name => 'Caminito Argentinian Grill',
 )
 
 
-threadless = Dealer.create(:name => 'Threadless',
+threadless = Merchant.create(:name => 'Threadless',
   :deals => [
     {
       :title => 'Buy 1 Get 1 Half Off at Threadless Retail Stores',
