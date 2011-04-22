@@ -33,20 +33,20 @@ a {
 }
 
 .container {
-	width: 960px;
+	width: 900px;
 	margin: auto;
 }
 
 img#logo {
 	position: absolute;
 	left: 50%;
-	margin-left: -480px;
+	margin-left: -450px;
 }
 
 div#cities {
 	position: absolute;
 	right: 50%;
-	margin-right: -480px;
+	margin-right: -450px;
 	z-index: 1;
 }
 
