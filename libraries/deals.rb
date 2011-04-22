@@ -19,6 +19,47 @@ get '/deals/:id/?' do
 end
 
 
+get '/admin/?' do
+  redirect '/admin/deals'
+end
+
+get '/admin/deals/?' do
+  @deals = Deal.all(:order => :title)
+  erb :'admin/deals/index'
+end
+
+get '/admin/deals/new/?' do
+  erb :'admin/deals/deal'
+end
+
+post '/admin/deals/new/?' do
+  Deal.create(
+  )
+  session[:flash] = 'Deal created.'
+  redirect '/admin/deals'
+end
+
+get '/admin/deals/edit/:id/?' do
+  @deal = Deal.get(params[:id])
+  erb :'admin/deals/deal'
+end
+
+post '/admin/deals/edit/:id/?' do
+  deal = Deal.get(params[:id])
+  deal.update(
+  )
+  session[:flash] = 'Deal info saved.'
+  redirect 'admin/deals'
+end
+
+get '/admin/deals/delete/:id/?' do
+  deal = Deal.get(params[:id])
+  deal.destroy
+  session[:flash] = 'Deal removed.'
+  redirect '/admin/deals'
+end
+
+
 class Deal
   include DataMapper::Resource
   
@@ -27,20 +68,20 @@ class Deal
   timestamps  :at
   
   property  :title,                   Text
-  property  :active,                  Boolean, :default => false
+  property  :active,                  Boolean,  :default => false
   property  :date_activated,          Date
   property  :preview_authorized_by,   String
   property  :preview_authorized_date, Date
   property  :final_corrections_date,  Date
-  property  :publish_date,            Date
-  property  :expiration_date,         Date
+  property  :publish_date,            Date,     :default => Chronic.parse('now')
+  property  :expiration_date,         Date,     :default => Chronic.parse('3 months from now')
   property  :legalese,                Text
   property  :description,             Text
   property  :code,                    String
-  property  :max_saves,               Integer
-  property  :first_percent,           Integer
-  property  :return_percent,          Integer
-  property  :max_returns,             Integer
+  property  :max_saves,               Integer,  :default => 10000
+  property  :first_percent,           Integer,  :default => 50
+  property  :return_percent,          Integer,  :default => 25
+  property  :max_returns,             Integer,  :default => 5
   
   belongs_to :merchant
   has n,     :locations

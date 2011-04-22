@@ -1,4 +1,4 @@
-<% @deal = Deal.new(:publish_date => Chronic.parse('now'), :expiration_date => Chronic.parse('3 months from now')) unless @deal %>
+<% @deal = Deal.new unless @deal %>
 
 <div class="doc">
 	<%= erb :'admin/navigation' %>
@@ -76,7 +76,7 @@
 		<p>
 			<input type="submit" value="Save" />
 			<% if @deal.id %>
-				or <a href="/admin/<%= @deal.id %>/delete">remove</a>
+				or <a href="/admin/deals/delete/<%= @deal.id %>">remove</a>
 			<% end %>
 		</p>
 		
