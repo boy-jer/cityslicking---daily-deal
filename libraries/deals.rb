@@ -33,9 +33,36 @@ get '/admin/deals/new/?' do
 end
 
 post '/admin/deals/new/?' do
-  #Deal.create(
-  #)
-  redirect "admin/deals/preview/#{params[:id]}"
+  deal = Deal.create(
+    :title                  => params[:title],
+    :merchant_id            => params[:merchant],
+    :publish_date           => Chronic.parse("#{params[:publish_date_year]}-#{params[:publish_date_month]}-#{params[:publish_date_day]}"),
+    :expiration_date        => Chronic.parse("#{params[:expiration_date_year]}-#{params[:expiration_date_month]}-#{params[:expiration_date_day]}"),
+    :max_saves              => params[:max_saves],
+    :max_returns            => params[:max_returns],
+    :first_percent          => params[:first_percent],
+    :return_percent         => params[:return_percent],
+    :description            => params[:description],
+    :code                   => params[:code],
+    :legalese               => params[:legalese],
+    :final_corrections_date => Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
+  )
+  
+  if params[:active]
+    deal.active = true
+    deal.date_activated = Chronic.parse('today')
+    deal.save
+  end
+  
+  if params[:preview_authorized_by].strip.length > 0
+    deal.preview_authorized_by = params[:preview_authorized_by].strip
+    deal.preview_authorized_date = Chronic.parse('today')
+    deal.save
+  end
+  
+  File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
+  
+  redirect "admin/deals/preview/#{deal.id}"
 end
 
 get '/admin/deals/edit/:id/?' do
@@ -85,7 +112,7 @@ post '/admin/deals/edit/:id/?' do
   File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
     
   deal.save
-  redirect "admin/deals/preview/#{params[:id]}"
+  redirect "admin/deals/preview/#{deal.id}"
 end
 
 get '/admin/deals/delete/:id/?' do
@@ -113,7 +140,7 @@ class Deal
   property  :date_activated,          Date
   property  :preview_authorized_by,   String
   property  :preview_authorized_date, Date
-  property  :final_corrections_date,  Date
+  property  :final_corrections_date,  Date,     :default => Chronic.parse('1 month from now')
   property  :publish_date,            Date,     :default => Chronic.parse('now')
   property  :expiration_date,         Date,     :default => Chronic.parse('3 months from now')
   property  :legalese,                Text
