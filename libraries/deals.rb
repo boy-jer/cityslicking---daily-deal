@@ -44,9 +44,47 @@ get '/admin/deals/edit/:id/?' do
 end
 
 post '/admin/deals/edit/:id/?' do
-  deal = Deal.get(params[:id])
-  #deal.update(
-  #)
+  deal                        = Deal.get(params[:id])
+  
+  deal.title                  = params[:title]
+  deal.merchant_id            = params[:merchant]
+  deal.publish_date           = Chronic.parse("#{params[:publish_date_year]}-#{params[:publish_date_month]}-#{params[:publish_date_day]}")
+  deal.expiration_date        = Chronic.parse("#{params[:expiration_date_year]}-#{params[:expiration_date_month]}-#{params[:expiration_date_day]}")
+  deal.max_saves              = params[:max_saves]
+  deal.max_returns            = params[:max_returns]
+  deal.first_percent          = params[:first_percent]
+  deal.return_percent         = params[:return_percent]
+  deal.description            = params[:description]
+  deal.code                   = params[:code]
+  deal.legalese               = params[:legalese]
+  deal.final_corrections_date = Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
+  
+  params[:active] ? active = true : active = false
+  if deal.active
+    unless active
+      deal.active = false
+      deal.date_activated = nil
+    end
+  else
+    if active
+      deal.active = true
+      deal.date_activated = Chronic.parse('today')
+    end
+  end
+    
+  if params[:preview_authorized_by].strip.length == 0
+    deal.preview_authorized_by = nil
+    deal.preview_authorized_date = nil
+  else
+    unless deal.preview_authorized_by == params[:preview_authorized_by]
+      deal.preview_authorized_by = params[:preview_authorized_by].strip
+      deal.preview_authorized_date = Chronic.parse('today')
+    end
+  end
+  
+  File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
+    
+  deal.save
   redirect "admin/deals/preview/#{params[:id]}"
 end
 
