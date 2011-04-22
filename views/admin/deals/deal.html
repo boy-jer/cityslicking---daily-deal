@@ -1,6 +1,7 @@
 <% @deal = Deal.new(:publish_date => Chronic.parse('now'), :expiration_date => Chronic.parse('3 months from now')) unless @deal %>
 
 <div class="doc">
+	<%= erb :'admin/navigation' %>
 	
 	<p><a href="/admin">&larr; Back to list</a></p>
 	
@@ -14,8 +15,8 @@
 		<p>
 			<select name="dealer" id="dealer">
 				<option value="0"></option>
-				<% Dealer.each do |dealer| %>
-					<option value="<%= dealer.id %>" <%= "selected" if @deal.dealer_id == dealer.id %>><%= dealer.name %></option>
+				<% Merchant.each do |merchant| %>
+					<option value="<%= merchant.id %>" <%= "selected" if @deal.merchant_id == merchant.id %>><%= merchant.name %></option>
 				<% end %>
 			</select>
 			Dealer

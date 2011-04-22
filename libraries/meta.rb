@@ -13,3 +13,7 @@ end
 get '/policies/?' do
   erb :policies
 end
+
+get '/admin/resources/?' do
+  erb :'admin/resources'
+end

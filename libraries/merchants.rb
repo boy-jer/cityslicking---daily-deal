@@ -1,3 +1,8 @@
+get '/admin/merchants/?' do
+  @merchants = Merchant.all(:order => :name)
+  erb :'admin/merchants/index'
+end
+
 class Merchant
   include DataMapper::Resource
   
