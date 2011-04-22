@@ -19,7 +19,24 @@ jarrod = User.create(:email => 'jarrodtaylor@cityslicking.com', :password => 'de
 john   = User.create(:email => 'john@cityslicking.com',         :password => 'demo')
 
 
-tahoe_joe = Merchant.create(:name => "Tahoe Joe's Famous Steakhouse",
+tahoe_joe = Merchant.create(
+  :name             => "Tahoe Joe's Famous Steakhouse",
+  :owner            => 'Tahoe Joe',
+  :manager          => 'Tahoe Tom',
+  :email            => 'email@tahojoe.com',
+  :site             => 'http://www.tahoejoe.com/',
+  :type_of_business => 'Restaurant',
+  :phone1           => '123-456-7890',
+  :phone2           => '123-456-7890',
+  :phone3           => '123-456-7890',
+  :physical_street  => '123 Beach Blvd.',
+  :physical_city    => 'Carmel',
+  :physical_state   => 'CA',
+  :physical_zip     => '93921',
+  :mailing_street   => '123 Beach Blvd.',
+  :mailing_city     => 'Carmel',
+  :mailing_state    => 'CA',
+  :mailing_zip      => '93921',
   :deals => [
     {
       :title => "50% Off Joe's-Style Roasted Chicken in Modesto",
@@ -59,7 +76,24 @@ tahoe_joe = Merchant.create(:name => "Tahoe Joe's Famous Steakhouse",
 )
 
 
-salatinos = Merchant.create(:name => 'Salatino\'s',
+trader_vic = Merchant.create(
+  :name             => 'Trader Vic\'s',
+  :owner            => 'Trader Vic',
+  :manager          => 'Tahoe Jack',
+  :email            => 'email@tradervics.com',
+  :site             => 'http://www.tradervics.com/',
+  :type_of_business => 'Tiki Bar',
+  :phone1           => '123-456-7890',
+  :phone2           => '123-456-7890',
+  :phone3           => '123-456-7890',
+  :physical_street  => '123 Beach Blvd.',
+  :physical_city    => 'Carmel',
+  :physical_state   => 'CA',
+  :physical_zip     => '93921',
+  :mailing_street   => '123 Beach Blvd.',
+  :mailing_city     => 'Carmel',
+  :mailing_state    => 'CA',
+  :mailing_zip      => '93921',
   :deals => [
     {
       :title => 'Free Cannolis with Purchase of 2 Entrees at Salatino\'s',
@@ -99,7 +133,24 @@ salatinos = Merchant.create(:name => 'Salatino\'s',
 )
 
 
-caminito_grill = Merchant.create(:name => 'Caminito Argentinian Grill',
+starlight = Merchant.create(
+  :name             => 'Starlight Six Drive-in',
+  :owner            => 'Rose Tyler',
+  :manager          => 'Mickey Smith',
+  :email            => 'email@starlight.com',
+  :site             => 'http://www.starlight.com/',
+  :type_of_business => 'Theater',
+  :phone1           => '123-456-7890',
+  :phone2           => '123-456-7890',
+  :phone3           => '123-456-7890',
+  :physical_street  => '123 Beach Blvd.',
+  :physical_city    => 'Carmel',
+  :physical_state   => 'CA',
+  :physical_zip     => '93921',
+  :mailing_street   => '123 Beach Blvd.',
+  :mailing_city     => 'Carmel',
+  :mailing_state    => 'CA',
+  :mailing_zip      => '93921',
   :deals => [
     {
       :title => '65% Off Lunch at Caminito Argentinian Grill',
@@ -139,7 +190,24 @@ caminito_grill = Merchant.create(:name => 'Caminito Argentinian Grill',
 )
 
 
-threadless = Merchant.create(:name => 'Threadless',
+threadless = Merchant.create(
+  :name             => 'Threadless',
+  :owner            => 'Gwen Cooper',
+  :manager          => 'Owen Harper',
+  :email            => 'email@threadless.com',
+  :site             => 'http://www.threadless.com/',
+  :type_of_business => 'Online Retailer',
+  :phone1           => '123-456-7890',
+  :phone2           => '123-456-7890',
+  :phone3           => '123-456-7890',
+  :physical_street  => '123 Beach Blvd.',
+  :physical_city    => 'Carmel',
+  :physical_state   => 'CA',
+  :physical_zip     => '93921',
+  :mailing_street   => '123 Beach Blvd.',
+  :mailing_city     => 'Carmel',
+  :mailing_state    => 'CA',
+  :mailing_zip      => '93921',
   :deals => [
     {
       :title => 'Buy 1 Get 1 Half Off at Threadless Retail Stores',
