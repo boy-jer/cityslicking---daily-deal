@@ -117,8 +117,7 @@ p#flash {
 
 div#featured-deal {
 	width: 780px;
-	margin: auto;
-	margin-top: 60px;
+	margin: 30px auto 30px auto;
 	position: relative;
 }
 
@@ -245,35 +244,36 @@ div#other-deals a.active {
 div#explainations {
 	text-align: center;
 	display: block;
-	width: 900px;
-	margin: 30px auto;
+	margin: auto;
+	width: 822px;
+	overflow: hidden;
+	-webkit-box-shadow: 1px 1px 5px #777;
+	border: 2px solid white;
 }
 
 div.box {
 	text-align: left;
-	font-family: 'Cuprum';
 	height: 222px;
-	border: 3px solid white;
+	border: 1px solid white;
 	width: 250px;
 	top: 0;
 	padding: 7px 11px;
-	margin: 21px 11px;
 	display: block;
 	background-color: #CCE8F7;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDF7FF), to(#CCE8F7));
-	-webkit-box-shadow: 1px 1px 5px #777;
 	float: left;
+	font-size: 13px;
 }
 
 div.box h1 {
 	color: #408B99;
-	font-size: 150%;
+	font-size: 120%;
 	margin-bottom: 0;
 }
 
 div.box p {
 	margin-top: 7px;
-	line-height: 120%;
+	line-height: 150%;
 }
 
 div.box img {
@@ -285,7 +285,7 @@ div.doc {
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	background-color: white;
-	padding: 33px 60px;
+	padding: 33px 51px;
 	font-size: 13px;
 	overflow: auto;
 }
@@ -311,44 +311,37 @@ div.right {
 }
 
 div#footer {
+	width: 800px;
 	clear: both;
-	width: 860px;
-	margin: auto;
-	color: white;
-	font-size: 13px;
-	font-family: 'Cuprum';
-}
-
-p#meta-info {
-	float: left;
-}
-
-p#meta-info a {
-	margin-right: 11px;
-}
-
-p#meta-info a:hover {
-	text-decoration: underline;
+	margin: 11px auto;
+	color: #777;
+	font-size: 11px;
+	overflow: hidden;
+	padding: 11px;
+	-webkit-box-shadow: 1px 1px 3px #777;
+	background-color: ghostwhite; /* #a0d8ff; rgb(160, 216, 244); */
+	border: 3px solid white;
 }
 
 div#footer p a {
-	text-decoration: none;
-	color: white;
+	color: #666;
 }
 
-p#copyright {
+div#footer p a:hover {
+	text-decoration: none;
+}
+
+div#footer p {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+div#footer p#sharing {
+	padding-top: 7px;
 	float: right;
 }
 
-p#sharing {
-	text-align: center;
-}
-
-p#sharing img {
-	margin-left: 11px;
-}
-
-img#share {
-	display: inline-block;
-	padding-left: 37px;
+div#footer p#sharing a img {
+	margin-left: 7px;
 }
