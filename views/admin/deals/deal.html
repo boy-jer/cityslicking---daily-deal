@@ -17,7 +17,6 @@
 		<p>
 			<label for="merchant">Merchant</label>
 			<select name="merchant" id="merchant">
-				<option value="0"></option>
 				<% Merchant.each do |merchant| %>
 					<option value="<%= merchant.id %>" <%= "selected" if @deal.merchant_id == merchant.id %>><%= merchant.name %></option>
 				<% end %>
@@ -96,6 +95,13 @@
 			<input type="text" class="textfield" name="city3" id="city3" value="<%= @deal.locations[2].city if defined? @deal.locations[2].city %>" style="width: 200px;" />
 			<input type="text" class="textfield" name="state3" id="state3" value="<%= @deal.locations[2].state if defined? @deal.locations[2].state %>" style="width: 50px;" />,
 			<input type="text" class="textfield" name="zip3" id="zip3" value="<%= @deal.locations[2].zip if defined? @deal.locations[2].zip %>" style="width: 100px;" />
+		</p>
+		
+		<p>
+			<label>Show this deal in:</label>
+			<% City.all.each do |city| %>
+			<input type="checkbox" name="cities[<%= city.id %>]" id="cities[<%= city.id %>]" <%= 'checked' if @deal.cities.include? city %> /> <%= city.name %><br />
+			<% end %>
 		</p>
 		
 		<p>

@@ -88,6 +88,10 @@ post '/admin/deals/new/?' do
       :zip    => params[:zip3]
     )
   end
+    
+  params[:cities].each do |c|
+    deal.city_deals.create(:city_id => c.first)
+  end
   
   redirect "admin/deals/preview/#{deal.id}"
 end
@@ -164,8 +168,15 @@ post '/admin/deals/edit/:id/?' do
       :zip    => params[:zip3]
     )
   end
-    
+  
   deal.save
+  
+  deal.city_deals.all.destroy
+  
+  params[:cities].each do |c|
+    deal.city_deals.create(:city_id => c.first)
+  end
+      
   redirect "admin/deals/preview/#{deal.id}"
 end
 
