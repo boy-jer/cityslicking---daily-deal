@@ -1,5 +1,5 @@
 get '/sign-in/?' do
-  erb :'sign-in'
+  erb :'sign-in', :layout => false
 end
 
 post '/sign-in/?' do

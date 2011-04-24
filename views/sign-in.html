@@ -1,19 +1,17 @@
-<div class="doc">
+<form method="post">
 	
-	<form method="post">
-		
-		<p>
-			<input type="email" class="text" id="email" name="email" value="<%= params[:email] %>" /> Email
-		</p>
-		
-		<p>
-			<input type="password" class="text" id="password" name="password" value="demo" /> Password
-		</p>
-		
-		<p>
-			<input type="submit" class="button" name="commit" value="Sign in" />
-		</p>
-		
-	</form>
+	<p>
+		<label for="email">Email</label>
+		<input type="email" class="textfield" id="email" name="email" value="<%= params[:email] %>" />
+	</p>
 	
-</div>
+	<p>
+		<label for="password">Password</label>
+		<input type="password" class="textfield" id="password" name="password" value="demo" />
+	</p>
+	
+	<p>
+		<input type="submit" class="button" name="commit" value="Sign in" />
+	</p>
+	
+</form>
