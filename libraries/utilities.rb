@@ -92,13 +92,24 @@
     end
     
     
+  # Formats a full date
+    
     def format_date(date)
       date.strftime("%A %b %d, %Y")
     end
+    
+    
+  # Formats a simple date
 
     def format_day(date)
       date.strftime("%b %d, %Y")
     end
+    
+    
+  # Converts a date into three select form elements
+  # One for month, day and year
+  # Each element is named after the field argument and appended with a date part
+  # Example: myField_month, myField_day, myField_year
 
     def date_to_field(field, date)
       date_field = ""
@@ -124,7 +135,6 @@
       date_field
     end
     
-  
     
   end
 
