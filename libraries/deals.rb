@@ -1,21 +1,21 @@
 get '/home/?' do
   @deals = City.get(session[:city_id]).deals(:order => :publish_date.desc, :limit => 3)
-  erb :home
+  deliver 'home'
 end
 
 get '/deals/?' do
   @deals = City.get(session[:city_id]).deals
-  erb :'deals/index'
+  deliver 'deals/index'
 end
 
 get '/deals/:id/use' do
   @deal = Deal.get(params[:id])
-  erb :'deals/use', :layout => false
+  deliver 'deals/use', :layout => false
 end
 
 get '/deals/:id/?' do
   @deal = Deal.get(params[:id])
-  erb :'deals/info'
+  deliver 'deals/info'
 end
 
 
@@ -27,12 +27,12 @@ end
 get '/admin/deals/?' do
   auth_admin
   @deals = Deal.all(:order => :title)
-  erb :'admin/deals/index'
+  deliver 'admin/deals/index'
 end
 
 get '/admin/deals/new/?' do
   auth_admin
-  erb :'admin/deals/deal'
+  deliver 'admin/deals/deal'
 end
 
 post '/admin/deals/new/?' do
@@ -99,7 +99,7 @@ end
 get '/admin/deals/edit/:id/?' do
   auth_admin
   @deal = Deal.get(params[:id])
-  erb :'admin/deals/deal'
+  deliver 'admin/deals/deal'
 end
 
 post '/admin/deals/edit/:id/?' do
@@ -189,7 +189,7 @@ end
 get '/admin/deals/preview/:id/?' do
   auth_admin
   @deal = Deal.get(params[:id])
-  erb :'admin/deals/preview'
+  deliver 'admin/deals/preview'
 end
 
 

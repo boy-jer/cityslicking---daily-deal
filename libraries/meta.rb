@@ -1,20 +1,20 @@
 get '/about-us/?' do
-  erb :about
+  deliver 'about'
 end
 
 get '/how-it-works/?' do
-  erb :'how-it-works'
+  deliver 'how-it-works'
 end
 
 get '/merchants/?' do
-  erb :merchants
+  deliver 'merchants'
 end
 
 get '/policies/?' do
-  erb :policies
+  deliver 'policies'
 end
 
 get '/admin/resources/?' do
   auth_admin
-  erb :'admin/resources'
+  deliver 'admin/resources'
 end

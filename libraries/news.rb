@@ -1,3 +1,3 @@
 get '/news/?' do
-  erb :news
+  deliver 'news'
 end

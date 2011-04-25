@@ -1,12 +1,12 @@
 get '/admin/merchants/?' do
   auth_admin
   @merchants = Merchant.all(:order => :name)
-  erb :'admin/merchants/index'
+  deliver 'admin/merchants/index'
 end
 
 get '/admin/merchants/new/?' do
   auth_admin
-  erb :'admin/merchants/merchant'
+  deliver 'admin/merchants/merchant'
 end
 
 post '/admin/merchants/new/?' do

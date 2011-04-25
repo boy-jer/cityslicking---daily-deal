@@ -1,5 +1,5 @@
 get '/sign-in/?' do
-  erb :'sign-in', :layout => false
+  deliver 'sign-in', :layout => false
 end
 
 post '/sign-in/?' do
@@ -31,7 +31,7 @@ end
 
 get '/profile/?' do
   @user = User.get(session[:user])
-  erb :profile
+  deliver 'profile'
 end
 
 post '/profile/?' do
