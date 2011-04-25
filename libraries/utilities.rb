@@ -7,19 +7,6 @@
 
   helpers do
     
-    
-    def auth_admin
-      unless session[:user]
-        session[:flash] = 'You must be signed in to see that page.'
-        redirect '/home'
-      end
-      user = User.get(session[:user])
-      unless user.admin?
-        session[:flash] = 'You must be an admin to see that page.'
-        redirect '/home'
-      end
-    end
-  
   
   # Inserts p#flash containing session[:flash], provided it isn't nil
   # Then nils session[:flash] so it doesn't show up on the next request
