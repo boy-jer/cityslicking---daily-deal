@@ -20,19 +20,23 @@ end
 
 
 get '/admin/?' do
+  auth_admin
   redirect '/admin/deals'
 end
 
 get '/admin/deals/?' do
+  auth_admin
   @deals = Deal.all(:order => :title)
   erb :'admin/deals/index'
 end
 
 get '/admin/deals/new/?' do
+  auth_admin
   erb :'admin/deals/deal'
 end
 
 post '/admin/deals/new/?' do
+  auth_admin
   deal = Deal.create(
     :title                  => params[:title],
     :merchant_id            => params[:merchant],
@@ -93,11 +97,13 @@ post '/admin/deals/new/?' do
 end
 
 get '/admin/deals/edit/:id/?' do
+  auth_admin
   @deal = Deal.get(params[:id])
   erb :'admin/deals/deal'
 end
 
 post '/admin/deals/edit/:id/?' do
+  auth_admin
   deal                        = Deal.get(params[:id])
   
   deal.title                  = params[:title]
@@ -173,6 +179,7 @@ post '/admin/deals/edit/:id/?' do
 end
 
 get '/admin/deals/delete/:id/?' do
+  auth_admin
   deal = Deal.get(params[:id])
   deal.destroy
   session[:flash] = 'Deal removed.'
@@ -180,6 +187,7 @@ get '/admin/deals/delete/:id/?' do
 end
 
 get '/admin/deals/preview/:id/?' do
+  auth_admin
   @deal = Deal.get(params[:id])
   erb :'admin/deals/preview'
 end

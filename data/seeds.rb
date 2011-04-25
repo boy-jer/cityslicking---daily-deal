@@ -17,6 +17,7 @@ turlock   = City.create(:name => 'Turlock, CA',   :short_name => 'turlock' )
 
 jarrod = User.create(:email => 'jarrodtaylor@cityslicking.com', :password => 'demo')
 john   = User.create(:email => 'john@cityslicking.com',         :password => 'demo')
+admin  = User.create(:email => 'admin@cityslicking.com',        :password => 'admin', :admin => true)
 
 
 tahoe_joe = Merchant.create(

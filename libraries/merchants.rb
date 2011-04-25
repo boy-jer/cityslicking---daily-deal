@@ -1,13 +1,16 @@
 get '/admin/merchants/?' do
+  auth_admin
   @merchants = Merchant.all(:order => :name)
   erb :'admin/merchants/index'
 end
 
 get '/admin/merchants/new/?' do
+  auth_admin
   erb :'admin/merchants/merchant'
 end
 
 post '/admin/merchants/new/?' do
+  auth_admin
   Merchant.create(
     :name             => params[:name],
     :owner            => params[:owner],
@@ -32,11 +35,13 @@ post '/admin/merchants/new/?' do
 end
 
 get '/admin/merchants/edit/:id/?' do
+  auth_admin
   @merchant = Merchant.get(params[:id])
   erb :'admin/merchants/merchant'
 end
 
 post '/admin/merchants/edit/:id/?' do
+  auth_admin
   merchant = Merchant.get(params[:id])
   merchant.update(
     :name             => params[:name],
@@ -62,6 +67,7 @@ post '/admin/merchants/edit/:id/?' do
 end
 
 get '/admin/merchants/delete/:id/?' do
+  auth_admin
   merchant = Merchant.get(params[:id])
   merchant.destroy
   session[:flash] = 'Merchant removed.'

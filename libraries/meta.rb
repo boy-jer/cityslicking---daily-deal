@@ -15,5 +15,6 @@ get '/policies/?' do
 end
 
 get '/admin/resources/?' do
+  auth_admin
   erb :'admin/resources'
 end

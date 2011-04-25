@@ -120,4 +120,6 @@ class User
   property :optin,      Boolean, :default => false
   property :optin_msg,  String
   
+  property :admin,      Boolean, :default => false
+  
 end
