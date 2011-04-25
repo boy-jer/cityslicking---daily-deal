@@ -3,6 +3,12 @@ get '/sign-in/?' do
 end
 
 post '/sign-in/?' do
+  
+  unless params[:tos]
+    session[:flash] = "You must agree to the Terms of Service to use this site."
+    redirect '/policies'
+  end
+  
   params[:email].strip!
   params[:email].downcase!
   params[:password].strip!
@@ -15,6 +21,7 @@ post '/sign-in/?' do
     session[:flash] = 'Email/password combo is incorrect. Try again.'
     redirect '/sign-in'
   end
+  
 end
 
 get '/sign-out/?' do
