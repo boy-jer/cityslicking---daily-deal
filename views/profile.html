@@ -4,23 +4,23 @@
 	
 	<form action="/profile" method="post" id="account-details">
 		<p>
-			<input type="text" name="email" id="email" value="<%= @user.email %>" />
-			Email address
+			<label for="email">Email address</label>
+			<input type="text" class="textfield" name="email" id="email" value="<%= @user.email %>" />
 		</p>
 		
 		<p>
-			<input type="password" name="password" id="password" value="<%= @user.password %>" />
-			Password
+			<label for="password">Password</label>
+			<input type="password" class="textfield" name="password" id="password" value="<%= @user.password %>" />
 		</p>
 		
 		<p>
-			<input type="text" name="zip" id="zip" value="<%= @user.zip %>" />
-			Zip code
+			<label for="zip">Zip code</label>
+			<input type="text" class="textfield" name="zip" id="zip" value="<%= @user.zip %>" />
 		</p>
 		
 		<p>
-			<input type="text" name="age" id="age" value="<%= @user.age %>" />
-			Age
+			<label for="age">Age</label>
+			<input type="text" class="textfield" name="age" id="age" value="<%= @user.age %>" />
 		</p>
 		
 		<p>
@@ -42,7 +42,7 @@
 
 			<form action="/verify" method="post" id="mobile-verification">
 				<p>
-					+1 <input type="text" name="mobile" value="<%= @user.mobile %>" />
+					+1 <input type="text" class="textfield" name="mobile" value="<%= @user.mobile %>" />
 					<input type="submit" name="verify" value="Verify" />
 				</p>
 			</form>

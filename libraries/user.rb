@@ -10,7 +10,7 @@ post '/sign-in/?' do
   
   if user = User.first(:email => params[:email], :password => params[:password])
     session[:user] = user.id
-    redirect '/deals'
+    redirect '/home'
   else
     session[:flash] = 'Email/password combo is incorrect. Try again.'
     redirect '/sign-in'
