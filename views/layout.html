@@ -24,14 +24,22 @@
 	</div>
 	
 	<div id="menu">
-		<a id="deals" href="/" <%= sticky('home') %>>HOME</a>
-		<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS!</a>
-		<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
-		<% if session[:user] %>
-			<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
-			<a id="session" href="/sign-out">SIGN OUT</a>
+		<% unless request.path_info.include? "/admin" %>
+			<a id="deals" href="/" <%= sticky('home') %>>HOME</a>
+			<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS!</a>
+			<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
+			<% if session[:user] %>
+				<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
+				<a id="sign-out" href="/sign-out">SIGN OUT</a>
+			<% else %>
+				<a id="sign-in" href="#">SIGN IN</a>
+			<% end %>
 		<% else %>
-			<a id="sign-in" href="#">SIGN IN</a>
+			<a id="sign-out" href="/home">HOME</a>
+			<a id="sign-out" href="/admin/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
+			<a id="sign-out" href="/admin/deals" <%= sticky('deals') %>>DEALS</a>
+			<a id="sign-out" href="/admin/resources" <%= sticky('resources') %>>RESOURCES</a>
+			<a id="sign-out" href="/sign-out">SIGN OUT</a>
 		<% end %>
 	</div>
 	
