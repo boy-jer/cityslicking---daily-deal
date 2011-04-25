@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>City Slicking</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+	<meta name="format-detection" content="telephone=no" />
+	
+	<link type="text/css" rel="stylesheet" href="/stylesheets/mobile.css" />
+	
+	<script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/jquery-ui.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/jquery-periodicalupdater.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/application.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/hide_addressbar.js"></script>
+</head>
+
+<body>
+	<div id="header">
+		<a href="/"><img id="logo" src="/images/csLogo_blue.png" /></a>
+
+		<div id="cities">
+			<div id="other-cities" style="display: none;">
+				<% City.all(:order => :name).each do |city| %>
+					<a class="other-city" href="/cities/<%= city.short_name %>"><%= city.name %></a>
+				<% end %>
+			</div>
+			<a id="current-city" href="#"><%= session[:city_name] %></a>
+		</div>
+
+		<div id="menu">
+			<a id="deals" href="/" <%= sticky('home') %>>HOME</a>
+			<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS!</a>
+			<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
+			<% if session[:user] %>
+				<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
+				<a id="sign-out" href="/sign-out">SIGN OUT</a>
+			<% else %>
+				<a id="sign-in" href="#">SIGN IN</a>
+			<% end %>
+		</div>
+	</div>	
+	
+	<%= flash %>
+	<%= yield %>
+	
+	<div id="footer">
+		<p>
+			<a id="news" href="/news">News</a>
+			/
+			<a id="about-us" href="/about-us">About Us</a>
+			/
+			<a href="/policies">Policies</a>
+			/
+			<a href="mailto:admin@cityslicking.com">Contact</a>
+			<br />
+			&copy; 2011 City Slicking, LLC. All rights reserved.
+		</p>
+	</div>
+	<img id="close" src="/images/close.png" style="display: none;" />
+	<div id="lightbox" style="display: none;">Content</div>
+	<div id="shadow" style="display: none;"></div>
+</body>
+
+</html>

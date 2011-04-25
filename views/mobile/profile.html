@@ -1,0 +1,76 @@
+<div class="doc">
+		
+	<h2>Account Details</h2>
+	
+	<form action="/profile" method="post" id="account-details">
+		<p>
+			<label for="email">Email address</label>
+			<input type="text" class="textfield" name="email" id="email" value="<%= @user.email %>" />
+		</p>
+		
+		<p>
+			<label for="password">Password</label>
+			<input type="password" class="textfield" name="password" id="password" value="<%= @user.password %>" />
+		</p>
+		
+		<p>
+			<label for="zip">Zip code</label>
+			<input type="text" class="textfield" name="zip" id="zip" value="<%= @user.zip %>" />
+		</p>
+		
+		<p>
+			<label for="age">Age</label>
+			<input type="text" class="textfield" name="age" id="age" value="<%= @user.age %>" />
+		</p>
+		
+		<p>
+			<input type="radio" name="gender" value="male" <%= 'checked' if @user.gender == 'male' %>> Male
+			&nbsp;
+			<input type="radio" name="gender" value="female" <%= 'checked' if @user.gender == 'female' %>> Female
+		</p>
+		
+		<p>
+			<input type="submit" value="Update Account Details" />
+		</p>
+	</form>
+	
+	<h2>Mobile Deals</h2>
+
+	<% if !@user.optin? && !@user.mobile %>
+		<div id="start-verification">
+			<p>You can start sending deal codes to your mobile phone. Enter your mobile number below, then click Verify to start the process.</p>
+
+			<form action="/verify" method="post" id="mobile-verification">
+				<p>
+					+1 <input type="text" class="textfield" name="mobile" value="<%= @user.mobile %>" />
+					<input type="submit" name="verify" value="Verify" />
+				</p>
+			</form>
+		</div>
+	<% end %>
+
+	<% if !@user.optin? && @user.mobile %>
+		<div id="finish-verification">Now text DEALS to (415) 599-2671 from <%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %> to finish the process.</div>
+	<% end %>
+
+	<% if @user.optin? && @user.mobile %>
+		<div id="active-number">
+			<p>You're all set up to send deal codes to your mobile phone at:</p>
+			<p>
+				<strong><%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %></strong>
+				&nbsp;
+				<span class="meta"><a href="/stop-sending-me-sms">stop sending deals to my phone</a></span>
+			</p>
+		</div>
+	<% end %>
+
+	<p><em>City Slicking does not charge for this service. Standard message and data rates may apply. US numbers only.</em></p>
+	
+	<h2>Deal History</h2>
+	
+	<p>
+		<strong>Buy 1 Get 1 Half Off at Threadless Retail Stores</strong>
+		<em>Thursday Apr 14, 2011</em>
+	</p>
+	
+</div>

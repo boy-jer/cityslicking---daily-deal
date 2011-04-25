@@ -1,0 +1,24 @@
+<div class="doc">
+	
+	<h1 style="color: #800; font-size: 28px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
+	
+	<p align="center">
+		<a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a>
+	</p>
+		
+	<p style="text-align: center;"><a href="/deals">&larr; Back to Deals</a></p>
+	
+	<p style="text-align: center;"><img src="/images/deals/<%= @deal.id %>.jpg" style="width: 276px;" /></p>
+	
+	<div class="right"><p><%= @deal.legalese %></p><%= markdown @deal.description %></div>
+	
+	<% @deal.locations.each do |location| %>
+		<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
+		<p class="map" align="center">
+			<img src="http://maps.google.com/maps/api/staticmap?center=<%= addr %>&zoom=15&size=276x240&markers=color:blue|<%= addr %>&sensor=false" />
+			<br />
+			<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&ie=UTF8&hq=&hnear=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&z=17"><%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %></a>
+		</p>
+	<% end %>
+	
+</div>
