@@ -405,7 +405,7 @@ div#lightbox {
 	z-index: 1001;
 	display: block;
 	border: 3px solid #121212;
-	padding: 11px;
+	padding: 0 11px;
 }
 
 div#shadow {

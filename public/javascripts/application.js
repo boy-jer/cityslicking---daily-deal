@@ -17,7 +17,7 @@ jQuery(function()
 	{
 		lightbox('/sign-in');
 	});
-	
+		
 	$('#current-city').click(function()
 	{
 		$('#other-cities').toggle("blind");
