@@ -15,7 +15,7 @@
 		<% @deal.locations.each do |location| %>
 			<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
 			<p class="map">
-				<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+				<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&ie=UTF8&hq=&hnear=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&z=17"><%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %></a>
 				<img src="http://maps.google.com/maps/api/staticmap?center=<%= addr %>&zoom=15&size=298x240&markers=color:blue|<%= addr %>&sensor=false" />
 			</p>
 		<% end %>
