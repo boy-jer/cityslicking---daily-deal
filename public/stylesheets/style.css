@@ -428,3 +428,8 @@ div#shadow {
 	z-index: 1000;
 	display: inline-block;
 }
+
+p.deal-btn {
+	float: right;
+	margin-left: 33px;
+}
