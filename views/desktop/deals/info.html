@@ -1,7 +1,7 @@
 <div class="doc">
 	
-	<p style="float: right; margin-left: 33px;">
-		<a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a>
+	<p class="deal-btn">
+		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 	</p>
 	
 	<h1 style="color: #800; font-size: 36px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>

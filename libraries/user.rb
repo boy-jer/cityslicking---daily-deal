@@ -167,4 +167,7 @@ class User
   
   property :admin,      Boolean, :default => false
   
+  has n, :confirmations
+  has n, :deals, :through => :confirmations
+  
 end

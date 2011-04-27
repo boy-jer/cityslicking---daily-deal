@@ -68,9 +68,11 @@
 	
 	<h2>Deal History</h2>
 	
+	<% @user.confirmations.each do |confirmation| %>
 	<p>
-		<strong>Buy 1 Get 1 Half Off at Threadless Retail Stores</strong>
-		<em>Thursday Apr 14, 2011</em>
+		<strong><%= confirmation.deal.title %></strong>
+		<em><%= format_date confirmation.created_at %></em>
 	</p>
+	<% end %>
 	
 </div>

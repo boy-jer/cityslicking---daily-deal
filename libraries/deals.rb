@@ -8,11 +8,6 @@ get '/deals/?' do
   deliver 'deals/index'
 end
 
-get '/deals/:id/use' do
-  @deal = Deal.get(params[:id])
-  deliver 'deals/use', :layout => false
-end
-
 get '/deals/:id/?' do
   @deal = Deal.get(params[:id])
   deliver 'deals/info'
@@ -219,6 +214,9 @@ class Deal
   belongs_to :merchant
   has n,     :locations
   has n,     :cities, :through => Resource
+  
+  has n, :confirmations
+  has n, :users, :through => :confirmations
   
 end
 

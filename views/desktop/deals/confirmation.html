@@ -1,0 +1,45 @@
+<script type="text/javascript" charset="utf-8">
+	jQuery(function()
+	{
+		
+		$('#smartphone').click(function()
+		{
+			var deal = $(this).attr('href');
+			$.post('/save/phone/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+			return false;
+		});
+
+		$('#email').click(function()
+		{
+			var deal = $(this).attr('href');
+			$.post('/save/email/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+			return false;
+		});
+
+		$('#sms').click(function()
+		{
+			var deal = $(this).attr('href');
+			$.post('/save/sms/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+			return false;
+		});
+				
+	});
+	
+</script>
+
+<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
+<p class="legalese"><%= @deal.legalese %></p>
+<% @deal.locations.each do |location| %>
+	<p class="map">
+		<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+	</p>
+<% end %>
+<p><a href="<%= params[:id] %>" id="smartphone">Save to my smartphone (In-store use)</a></p>
+<p><a href="<%= params[:id] %>" id="email">Send it to my inbox (Email)</a></p>
+<p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>><a href="<%= params[:id] %>" id="sms">Send it to my phone (SMS)</a></p>

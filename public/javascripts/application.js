@@ -13,9 +13,16 @@ jQuery(function()
 		$('div#lightbox').html('');
 	});
 	
-	$('a#sign-in').click(function()
+	$('a.sign-in').click(function()
 	{
 		lightbox('/sign-in');
+		return false;
+	});
+	
+	$('a.save').click(function()
+	{
+		lightbox('/save/deal/' + $(this).attr('href'));
+		return false;
 	});
 		
 	$('#current-city').click(function()

@@ -11,7 +11,7 @@
 			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals.first.title %></h1>
 			<p class="buttons">
 				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
-				<a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a>
+				<a href="1" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 				<a href="/deals/<%= @deals.first.id %>" class="pill" id="see-details">See Details</a>
 			</p>
 			<p class="meta">
