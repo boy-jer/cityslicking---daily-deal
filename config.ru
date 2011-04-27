@@ -22,7 +22,19 @@
   
   Tilt.register :html, Tilt[:erb]
   
-  
+
+# Gmail account details
+
+  set :mail_server, {
+    :user_name            => 'deals@cityslicking.com',
+    :password             => 'sonora2011',
+    :address              => 'smtp.gmail.com',
+    :port                 => '587',
+    :enable_starttls_auto => true,
+    :authentication       => :plain
+  }
+
+
 # Twilio account details
 
   set :sms_server, {

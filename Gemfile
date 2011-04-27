@@ -29,6 +29,11 @@
   gem 'dm-types'
 
 
+# Use Pony and Gmail for email
+
+  gem 'pony'
+
+
 # Use Twilio SMS
 
   gem 'twiliolib'

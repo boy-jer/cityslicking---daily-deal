@@ -26,6 +26,15 @@
 			$('p#register-btn').hide();
 		});
 		
+		$('.button').click(function()
+		{
+			$.post('/sign-in', $('form').serialize(), function(data)
+			{
+				$('#lightbox').html(data);
+			});
+			return false;
+		});
+				
 	});
 	
 </script>
@@ -33,6 +42,8 @@
 <form method="post" action="/sign-in">
 	
 	<h2>Sign In or Register</h2>
+
+	<%= flash %>
 	
 	<p>
 		<label for="email" id="email_label">Email address</label>
@@ -42,9 +53,9 @@
 	<p>
 		<input type="radio" name="account_type" id="existing" value="existing" checked  /> I have an account.
 		<br />
-		<input type="radio" name="account_type" id="new" value="new"  /> I'm new!
+		<input type="radio" name="account_type" id="new" value="new" <%= "checked" if params[:account_type] == "new" %>  /> I'm new!
 		<br />
-		<input type="radio" name="account_type" id="merchant" value="merchant"  /> I'm a merchant.
+		<input type="radio" name="account_type" id="merchant" value="merchant" <%= "checked" if params[:account_type] == "merchant" %> /> I'm a merchant.
 	</p>
 	
 	<p>
@@ -52,7 +63,7 @@
 		<input type="password" class="textfield" id="password" name="password" value="demo" />
 	</p>
 	
-	<p id="zip_paragraph" style="display: none;">
+	<p id="zip_paragraph" <%= 'style="display: none;"' unless params[:account_type] == "new" %>>
 		<label for="zip">Zip code</label>
 		<input type="zip" class="textfield" id="zip" name="zip" value="<%= params[:zip] %>" />
 	</p>
@@ -63,11 +74,11 @@
 	</p>	
 	
 	<p id="sign-in-btn">
-		<input type="submit" class="button" name="commit" value="Sign in" />
+		<input type="submit" class="button" id="commit" name="commit" value="Sign in" />
 	</p>
 
 	<p id="register-btn" style="display: none;">
-		<input type="submit" class="button" name="commit" value="Register" />
+		<input type="submit" class="button" id="commit" name="commit" value="Register" />
 	</p>
 	
 </form>

@@ -4,9 +4,12 @@ end
 
 post '/sign-in/?' do
   
+  errors = 0
+  msgs   = ''
+  
   unless params[:tos]
-    session[:flash] = "You must agree to the Terms of Service to use this site."
-    redirect '/policies'
+    errors = errors + 1
+    msgs << "You must agree to the Terms of Service to use this site.<br />"
   end
   
   params[:email].strip!
@@ -14,19 +17,54 @@ post '/sign-in/?' do
   params[:password].strip!
   params[:password].downcase!
   
-  if user = User.first(:email => params[:email], :password => params[:password])
-    session[:user] = user.id
-    redirect '/home'
+  if params[:account_type] == 'new'
+    unless params[:email].length == 0 || params[:password].length == 0 || params[:zip].length == 0
+      if user = User.first(:email => params[:email])
+        errors = errors + 1
+        msgs << "Email address is already in use. Try again.<br />"
+      else
+        user = User.new(:email => params[:email], :password => params[:password])
+        if user.save
+          Pony.mail(:via => :smtp, :via_options => settings.mail_server,
+            :to => params[:email],
+            :subject => 'Welcome to City Slicking',
+            :body => 'Welcome to City Slicking. <instructions go here>'
+          )
+          session[:user] = user.id
+        else
+          errors = errors + 1
+          msgs << "Registration error.<br />"
+        end
+      end
+    else
+      errors = errors + 1
+      msgs << "You must provide an email address, password and zip code to register.<br />"
+    end
+  end
+  
+  if params[:account_type] == 'existing'
+    if user = User.first(:email => params[:email], :password => params[:password])
+      session[:user] = user.id
+    else
+      errors = errors + 1
+      msgs << 'Email/password combo is incorrect. Try again.<br />'
+    end
+  end
+  
+  if errors > 0
+    session[:flash] = msgs
+    deliver 'sign-in', :layout => false
   else
-    session[:flash] = 'Email/password combo is incorrect. Try again.'
-    redirect '/sign-in'
+    session[:flash] = 'Welcome to City Slicking!'
+    '<script type="text/javascript" charset="utf-8">window.location = "/home"</script>'
   end
   
 end
 
 get '/sign-out/?' do
   session[:user] = nil
-  redirect '/deals'
+  session[:flash] = 'You are now signed out.'
+  redirect '/home'
 end
 
 get '/profile/?' do
