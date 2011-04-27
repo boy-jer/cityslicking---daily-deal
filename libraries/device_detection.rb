@@ -10,7 +10,7 @@
 
     def mobile_request?
       mobile_user_agent_patterns = [
-        /AppleWebKit.*Mobile/,
+        /iPhone/,
         /Android.*AppleWebKit/
       ]
       mobile_user_agent_patterns.any? {|r| request.env['HTTP_USER_AGENT'] =~ r}
