@@ -21,12 +21,29 @@ jQuery(function()
 	
 	function toggle_feature(feature)
 	{
-		if ( $('#feature-1').is(":visible") ) { $('#feature-1').hide('fade'); }
-		if ( $('#feature-2').is(":visible") ) { $('#feature-2').hide('fade'); }
-		if ( $('#feature-3').is(":visible") ) { $('#feature-3').hide('fade'); }
-		$('#feature-' + feature).show('fade');
+		if ( $('#feature-1').is(":visible") ) {var current = 1;}
+		if ( $('#feature-2').is(":visible") ) {var current = 2;}
+		if ( $('#feature-3').is(":visible") ) {var current = 3;}
+		if (!(current == feature))
+		{
+			if (current > feature)
+			{
+				var to   = 'left';
+				var away = 'right';
+			}
+			else
+			{
+				var to   = 'right';
+				var away = 'left';
+			}
+			if ( $('#feature-1').is(":visible") ) { $('#feature-1').hide('fade'); $('#feature-1 .deal-info').show().hide('slide', {direction: away}); }
+			if ( $('#feature-2').is(":visible") ) { $('#feature-2').hide('fade'); $('#feature-2 .deal-info').show().hide('slide', {direction: away}); }
+			if ( $('#feature-3').is(":visible") ) { $('#feature-3').hide('fade'); $('#feature-3 .deal-info').show().hide('slide', {direction: away}); }
+			$('#feature-' + feature).show('fade');
+			$('#feature-' + feature + ' .deal-info').show('slide', {direction: to});
+		}
 	}
-		
+	
 	$('.button-1, .arrow-1').click(function()
 	{
 		toggle_feature(1);

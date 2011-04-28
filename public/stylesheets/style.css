@@ -158,7 +158,7 @@ a.right-arrow {
 	float: right;
 }
 
-div#deal-info {
+div.deal-info {
 	background-color: white;
 	margin: auto;
 	width: 618px;
