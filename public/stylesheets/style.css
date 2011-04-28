@@ -52,6 +52,7 @@ div#cities {
 
 div#other-cities {
 	-webkit-box-shadow: 1px 1px 3px #000;
+	-moz-box-shadow: 1px 1px 3px #000;
 }
 
 div#other-cities a {
@@ -70,16 +71,19 @@ div#other-cities a:hover {
 }
 
 a#current-city {
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#444));
+	background-image: url(../../images/city_selected.png);
 	display: inline-block;
 	width: 200px;
 	padding: 9px 3px;
 	-webkit-box-shadow: 1px 1px 3px #000;
+	-moz-box-shadow: 1px 1px 3px #000;
 	text-align: center;
 	color: white;
 	text-decoration: none;
 	-webkit-border-bottom-left-radius: 7px;
 	-webkit-border-bottom-right-radius: 7px;
+	-moz-border-radius-bottomright: 7px;
+	-moz-border-radius-bottomleft: 7px;
 	font-family: 'Indie Flower';
 	font-size: 22px;
 }
@@ -108,6 +112,7 @@ p#flash {
 	width: 762px;
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
+	-moz-box-shadow: 1px 1px 3px #777;
 	background-color: lightyellow;
 	padding: 11px 33px;
 	font-size: 13px;
@@ -118,6 +123,7 @@ p#flash {
 div#lightbox p#flash {
 	width: 347px;
 	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
 	text-align: left;
 }
 
@@ -156,6 +162,7 @@ div#deal-info {
 	width: 618px;
 	padding: 22px;
 	-webkit-box-shadow: 1px 1px 7px #777;
+	-moz-box-shadow: 1px 1px 7px #777;
 	overflow: auto;
 }
 
@@ -192,6 +199,8 @@ div#specs a.pill {
 	font-family: Verdana;
 	margin-top: 6px;
 	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 div#specs a.pill:hover {
@@ -254,6 +263,7 @@ div#explainations {
 	width: 822px;
 	overflow: hidden;
 	-webkit-box-shadow: 1px 1px 5px #777;
+	-moz-box-shadow: 1px 1px 5px #777;
 	border: 2px solid white;
 }
 
@@ -290,6 +300,7 @@ div.doc {
 	width: 726px;
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
+	-moz-box-shadow: 1px 1px 3px #777;
 	background-color: white;
 	padding: 33px 51px;
 	font-size: 13px;
@@ -325,6 +336,7 @@ div#footer {
 	overflow: hidden;
 	padding: 11px;
 	-webkit-box-shadow: 1px 1px 3px #777;
+	-moz-box-shadow: 1px 1px 3px #777;
 	background-color: ghostwhite; /* #a0d8ff; rgb(160, 216, 244); */
 	border: 3px solid white;
 }
