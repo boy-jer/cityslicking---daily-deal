@@ -265,13 +265,15 @@ div#explainations {
 	-webkit-box-shadow: 1px 1px 5px #777;
 	-moz-box-shadow: 1px 1px 5px #777;
 	border: 2px solid white;
+	background-color: #CCE8F7;
+	height: 252px;
 }
 
 div.box {
 	text-align: left;
-	height: 222px;
 	border: 1px solid white;
 	width: 250px;
+	height: 100%;
 	top: 0;
 	padding: 7px 11px;
 	display: block;
