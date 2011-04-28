@@ -1,30 +1,90 @@
-<div id="featured-deal">
+<div class="featured-deal" id="feature-1">
 	<img id="today-featured-deal" src="/images/feature_deals.png" />
 	<img id="get-this-deal-free" src="/images/get_deal.png" />
 
-	<a id="left-arrow" href="#"><img src="/images/arrow_left.png" /></a>
-	<a id="right-arrow" href="#"><img src="/images/arrow_right.png" /></a>
+	<a class="left-arrow arrow-3" href="#"><img src="/images/arrow_left.png" /></a>
+	<a class="right-arrow arrow-2" href="#"><img src="/images/arrow_right.png" /></a>
 
 	<div id="deal-info">
-		<img id="deal-pic" src="/images/deals/<%= @deals.first.id %>.jpg" />
+		<img id="deal-pic" src="/images/deals/<%= @deals[0].id %>.jpg" />
 		<div id="specs">
-			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals.first.title %></h1>
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[0].title %></h1>
 			<p class="buttons">
 				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
-				<a href="1" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
-				<a href="/deals/<%= @deals.first.id %>" class="pill" id="see-details">See Details</a>
+				<a href="<%= @deals[0].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals[0].id %>" class="pill" id="see-details">See Details</a>
 			</p>
 			<p class="meta">
-				<span class="legalese"><%= @deals.first.legalese %></span>
-				<span class="expiration">Expires <%= @deals.first.expiration_date %></span>
+				<span class="legalese"><%= @deals[0].legalese %></span>
+				<span class="expiration">Expires <%= @deals[0].expiration_date %></span>
 			</p>
 		</div>
 	</div>
 	
 	<div id="other-deals">
-		<a href="#" id="1" class="inactive">1</a>
-		<a href="#" id="2" class="active">2</a>
-		<a href="#" id="3" class="inactive">3</a>
+		<a href="#" class="button-1 active">1</a>
+		<a href="#" class="button-2 inactive">2</a>
+		<a href="#" class="button-3 inactive">3</a>
+	</div>
+</div>
+
+<div class="featured-deal" id="feature-2" style="display: none;">
+	<img id="today-featured-deal" src="/images/feature_deals.png" />
+	<img id="get-this-deal-free" src="/images/get_deal.png" />
+
+	<a class="left-arrow arrow-1" href="#"><img src="/images/arrow_left.png" /></a>
+	<a class="right-arrow arrow-3" href="#"><img src="/images/arrow_right.png" /></a>
+
+	<div id="deal-info">
+		<img id="deal-pic" src="/images/deals/<%= @deals[1].id %>.jpg" />
+		<div id="specs">
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[1].title %></h1>
+			<p class="buttons">
+				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+				<a href="<%= @deals[1].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals[1].id %>" class="pill" id="see-details">See Details</a>
+			</p>
+			<p class="meta">
+				<span class="legalese"><%= @deals[1].legalese %></span>
+				<span class="expiration">Expires <%= @deals[1].expiration_date %></span>
+			</p>
+		</div>
+	</div>
+	
+	<div id="other-deals">
+		<a href="#" class="button-1 inactive">1</a>
+		<a href="#" class="button-2 active">2</a>
+		<a href="#" class="button-3 inactive">3</a>
+	</div>
+</div>
+
+<div class="featured-deal" id="feature-3" style="display: none;">
+	<img id="today-featured-deal" src="/images/feature_deals.png" />
+	<img id="get-this-deal-free" src="/images/get_deal.png" />
+
+	<a class="left-arrow arrow-2" href="#"><img src="/images/arrow_left.png" /></a>
+	<a class="right-arrow arrow-1" href="#"><img src="/images/arrow_right.png" /></a>
+
+	<div id="deal-info">
+		<img id="deal-pic" src="/images/deals/<%= @deals[2].id %>.jpg" />
+		<div id="specs">
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[2].title %></h1>
+			<p class="buttons">
+				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+				<a href="<%= @deals[2].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals[2].id %>" class="pill" id="see-details">See Details</a>
+			</p>
+			<p class="meta">
+				<span class="legalese"><%= @deals[2].legalese %></span>
+				<span class="expiration">Expires <%= @deals[1].expiration_date %></span>
+			</p>
+		</div>
+	</div>
+	
+	<div id="other-deals">
+		<a href="#" class="button-1 inactive">1</a>
+		<a href="#" class="button-2 inactive">2</a>
+		<a href="#" class="button-3 active">3</a>
 	</div>
 </div>
 

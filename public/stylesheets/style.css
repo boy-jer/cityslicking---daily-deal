@@ -127,10 +127,12 @@ div#lightbox p#flash {
 	text-align: left;
 }
 
-div#featured-deal {
+div.featured-deal {
 	width: 780px;
-	margin: 30px auto 30px auto;
-	position: relative;
+	position: absolute;
+	top: 90px;
+	left: 50%;
+	margin-left: -390px;
 }
 
 img#today-featured-deal {
@@ -144,15 +146,15 @@ img#get-this-deal-free {
 	top: 0;
 }
 
-a#left-arrow, a#right-arrow {
+a.left-arrow, a.right-arrow {
 	margin-top: 120px;
 }
 
-a#left-arrow {
+a.left-arrow {
 	float: left;
 }
 
-a#right-arrow {
+a.right-arrow {
 	float: right;
 }
 
@@ -217,7 +219,7 @@ div#specs a#see-details {
 
 div#specs p.meta {
 	color: #777;
-	font-size: 11px;
+	font-size: 10px;
 	margin-top: 0;
 }
 
@@ -267,6 +269,7 @@ div#explainations {
 	border: 2px solid white;
 	background-color: #CCE8F7;
 	height: 252px;
+	margin-top: 400px;
 }
 
 div.box {

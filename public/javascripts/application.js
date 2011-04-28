@@ -19,6 +19,32 @@ jQuery(function()
 		return false;
 	});
 	
+	function toggle_feature(feature)
+	{
+		if ( $('#feature-1').is(":visible") ) { $('#feature-1').hide('fade'); }
+		if ( $('#feature-2').is(":visible") ) { $('#feature-2').hide('fade'); }
+		if ( $('#feature-3').is(":visible") ) { $('#feature-3').hide('fade'); }
+		$('#feature-' + feature).show('fade');
+	}
+		
+	$('.button-1, .arrow-1').click(function()
+	{
+		toggle_feature(1);
+		return false;
+	});
+
+	$('.button-2, .arrow-2').click(function()
+	{
+		toggle_feature(2);
+		return false;
+	});
+
+	$('.button-3, .arrow-3').click(function()
+	{
+		toggle_feature(3);
+		return false;
+	});
+	
 	$('a.save').click(function()
 	{
 		lightbox('/save/deal/' + $(this).attr('href'));
