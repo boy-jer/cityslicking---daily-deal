@@ -1,11 +1,11 @@
 <div class="doc">
 	<h1>All Deals in <%= session[:city_name] %></h1>
 	<% @deals.each do |deal| %>
-	<hr />
-	<p>
-		<%= deal.expiration_date %>
-		&nbsp; &nbsp; &nbsp;
-		<strong><a href="/deals/<%= deal.id %>"><%= deal.title %></a></strong>
-	</p>
+		<div class="deal-listing">
+			<p class="expiration"><%= format_day deal.expiration_date %></p>
+			<img src="/images/deals/<%= deal.id %>.jpg" />
+			<h2><a href="/deals/<%= deal.id %>"><%= deal.title %></a></h2>
+			<p class="legalese"><%= deal.legalese %></p>
+		</div>
 	<% end %>
 </div>

@@ -4,7 +4,7 @@ get '/home/?' do
 end
 
 get '/deals/?' do
-  @deals = City.get(session[:city_id]).deals(:active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
+  @deals = City.get(session[:city_id]).deals(:order => :expiration_date.asc, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
   deliver 'deals/index'
 end
 
