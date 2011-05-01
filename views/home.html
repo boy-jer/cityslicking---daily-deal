@@ -1,0 +1,109 @@
+<div class="featured-deal" id="feature-1">
+	<img id="today-featured-deal" src="/images/feature_deals.png" />
+	<img id="get-this-deal-free" src="/images/get_deal.png" />
+
+	<a class="left-arrow arrow-3" href="#"><img src="/images/arrow_left.png" /></a>
+	<a class="right-arrow arrow-2" href="#"><img src="/images/arrow_right.png" /></a>
+
+	<div class="deal-info">
+		<img id="deal-pic" src="/images/deals/<%= @deals[0].id %>.jpg" />
+		<div id="specs">
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[0].title %></h1>
+			<p class="buttons">
+				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+				<a href="<%= @deals[0].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals[0].id %>" class="pill" id="see-details">See Details</a>
+			</p>
+			<p class="meta">
+				<span class="legalese"><%= @deals[0].legalese %></span>
+				<span class="expiration">Expires <%= @deals[0].expiration_date %></span>
+			</p>
+		</div>
+	</div>
+	
+	<div id="other-deals">
+		<a href="#" class="button-1 active">1</a>
+		<a href="#" class="button-2 inactive">2</a>
+		<a href="#" class="button-3 inactive">3</a>
+	</div>
+</div>
+
+<div class="featured-deal" id="feature-2" style="display: none;">
+	<img id="today-featured-deal" src="/images/feature_deals.png" />
+	<img id="get-this-deal-free" src="/images/get_deal.png" />
+
+	<a class="left-arrow arrow-1" href="#"><img src="/images/arrow_left.png" /></a>
+	<a class="right-arrow arrow-3" href="#"><img src="/images/arrow_right.png" /></a>
+
+	<div class="deal-info">
+		<img id="deal-pic" src="/images/deals/<%= @deals[1].id %>.jpg" />
+		<div id="specs">
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[1].title %></h1>
+			<p class="buttons">
+				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+				<a href="<%= @deals[1].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals[1].id %>" class="pill" id="see-details">See Details</a>
+			</p>
+			<p class="meta">
+				<span class="legalese"><%= @deals[1].legalese %></span>
+				<span class="expiration">Expires <%= @deals[1].expiration_date %></span>
+			</p>
+		</div>
+	</div>
+	
+	<div id="other-deals">
+		<a href="#" class="button-1 inactive">1</a>
+		<a href="#" class="button-2 active">2</a>
+		<a href="#" class="button-3 inactive">3</a>
+	</div>
+</div>
+
+<div class="featured-deal" id="feature-3" style="display: none;">
+	<img id="today-featured-deal" src="/images/feature_deals.png" />
+	<img id="get-this-deal-free" src="/images/get_deal.png" />
+
+	<a class="left-arrow arrow-2" href="#"><img src="/images/arrow_left.png" /></a>
+	<a class="right-arrow arrow-1" href="#"><img src="/images/arrow_right.png" /></a>
+
+	<div class="deal-info">
+		<img id="deal-pic" src="/images/deals/<%= @deals[2].id %>.jpg" />
+		<div id="specs">
+			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[2].title %></h1>
+			<p class="buttons">
+				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+				<a href="<%= @deals[2].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+				<a href="/deals/<%= @deals[2].id %>" class="pill" id="see-details">See Details</a>
+			</p>
+			<p class="meta">
+				<span class="legalese"><%= @deals[2].legalese %></span>
+				<span class="expiration">Expires <%= @deals[1].expiration_date %></span>
+			</p>
+		</div>
+	</div>
+	
+	<div id="other-deals">
+		<a href="#" class="button-1 inactive">1</a>
+		<a href="#" class="button-2 inactive">2</a>
+		<a href="#" class="button-3 active">3</a>
+	</div>
+</div>
+
+<div id="explainations">
+	<div class="box">
+		<img src="/images/save_tag.png" />
+		<h1>HOW IT WORKS</h1>
+		<p>You pay nothing up front. Just select the deals you want to use, show the discount code on your phone to the cashier and collect your savings. You save 50% to 90% and you can save another 25% to 40% on a return visit. Use the iPhone app for even more features! It's fine tuned for mobile Slicking. <a href="/how-it-works">Find out more &rarr;</a></p>
+	</div>
+		
+	<div class="box">
+		<h1>SUBSCRIBE</h1>
+		<p>Serious City Slicking deserves the latest on every deal. You can get daily deals in your inbox everytime a new deal is available and even learn what deals are in the queue.</p>
+		<p style="text-align: center;"><img src="/images/subscribe.png" style="float: none; margin-top: 20px;"></p>
+	</div>
+	
+	<div class="box">
+		<h1>MOBILE APPS</h1>
+		<img src="/images/iPhone.png" style="height: 180px; margin-left: 11px;" />
+		<p>City Slicking on your iPhone, iPad and iPod touch makes great deals even more accessable while you are on the move. Download it from the App Store and tell us what you think.</p>
+	</div>
+</div>
