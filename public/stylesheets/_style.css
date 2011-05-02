@@ -138,26 +138,3 @@ div.deal-listing p.legalese {
 	margin: 0;
 }
 
-div.person {
-	text-align: center;
-	width: 240px;
-	float: left;
-}
-
-div.person img {
-	height: 100px;
-	margin-top: 30px;
-	padding: 3px;
-	border: 1px solid #dedede;
-}
-
-div.person p {
-	font-style: italic;
-	font-size: 90%;
-	margin: 0;
-}
-
-div.person strong {
-	font-style: normal;
-	font-size: 100%;
-}

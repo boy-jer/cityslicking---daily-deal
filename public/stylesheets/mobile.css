@@ -115,5 +115,26 @@ div.doc h1, div#explainations h2 {
 	text-align: center;
 }
 
+div.person {
+	text-align: center;
+	margin: 22px 0;
+}
+
+div.person img {
+	height: 100px;
+	padding: 3px;
+	border: 1px solid #dedede;
+}
+
+div.person p {
+	font-style: italic;
+	font-size: 90%;
+	margin: 0;
+}
+
+div.person strong {
+	font-style: normal;
+	font-size: 100%;
+}
 div#footer { text-align: center; }
 div#footer p a { color: white; font-size: 12px; }
