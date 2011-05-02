@@ -36,10 +36,10 @@
 				<a id="sign-in" class="sign-in" href="#">SIGN IN</a>
 			<% end %>
 		<% else %>
-			<a id="sign-out" href="/home">HOME</a>
-			<a id="sign-out" href="/admin/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
-			<a id="sign-out" href="/admin/deals" <%= sticky('deals') %>>DEALS</a>
-			<a id="sign-out" href="/admin/resources" <%= sticky('resources') %>>RESOURCES</a>
+			<a href="/home">HOME</a>
+			<a href="/admin/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
+			<a href="/admin/deals" <%= sticky('deals') %>>DEALS</a>
+			<a href="/admin/resources" <%= sticky('resources') %>>RESOURCES</a>
 			<a id="sign-out" href="/sign-out">SIGN OUT</a>
 		<% end %>
 	</div>
