@@ -3,50 +3,30 @@
 @import url(http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic);
 @import url(http://fonts.googleapis.com/css?family=Cabin:bold);
 
-html {
-	background: #91d9f8 url(../../images/skyline.png) repeat-x fixed center bottom;
-	background:
-		url(../../images/cityscape1.png) repeat-x fixed -130% bottom,
-		url(../../images/cityscape2.png) repeat-x fixed 40% bottom,
-		url(../../images/cityscape3.png) repeat-x fixed -75% bottom;
-	background-color: #91d9f8; /* rgb(145, 216, 247); */
-}
-
-a img {
-	border: none;
-}
-
 body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Nobile', Helvetica, Verdana, Arial, sans-serif;
 	line-height: 150%;
+	font-size: 13px;
+	color: #121212;
+	-webkit-text-size-adjust: none;
 }
+
+a img { border: none; }
 
 hr {
 	border: none;
 	border-top: 1px solid silver;
 }
 
-a {
-	color: #800;
-}
+a { color: #800; }
 
-.container {
-	width: 900px;
-	margin: auto;
-}
+h1, h2 { font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif; }
 
-img#logo {
-	position: absolute;
-	left: 50%;
-	margin-left: -450px;
-}
 
 div#cities {
 	position: absolute;
-	right: 50%;
-	margin-right: -450px;
 	z-index: 1;
 }
 
@@ -60,20 +40,15 @@ div#other-cities a {
 	text-decoration: none;
 	color: white;
 	display: block;
-	width: 200px;
 	text-align: center;
-	padding: 3px;
 	font-size: 90%;
+	padding: 3px;
 }
 
-div#other-cities a:hover {
-	background-color: black;
-}
+div#other-cities a:hover { background-color: black; }
 
 a#current-city {
-	background-image: url(../../images/city_selected.png);
 	display: inline-block;
-	width: 200px;
 	padding: 9px 3px;
 	-webkit-box-shadow: 1px 1px 3px #000;
 	-moz-box-shadow: 1px 1px 3px #000;
@@ -85,14 +60,6 @@ a#current-city {
 	-moz-border-radius-bottomright: 7px;
 	-moz-border-radius-bottomleft: 7px;
 	font-family: 'Indie Flower';
-	font-size: 22px;
-}
-
-div#menu {
-	background-color: black;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#000));
-	text-align: center;
-	line-height: 100%;
 }
 
 div#menu a {
@@ -100,209 +67,12 @@ div#menu a {
 	color: #999;
 	font-family: 'Cuprum', Helvetica, Verdana, sans-serif;
 	font-size: 19px;
-	padding: 22px 7px 15px 7px;
 	display: inline-block;
 }
 
-div#menu a:hover, div#menu a.sticky {
-	color: white;
-}
-
-p#flash {
-	width: 762px;
-	margin: auto;
-	-webkit-box-shadow: 1px 1px 3px #777;
-	-moz-box-shadow: 1px 1px 3px #777;
-	background-color: lightyellow;
-	padding: 11px 33px;
-	font-size: 13px;
-	text-align: center;
-	color: #800;
-}
-
-div#lightbox p#flash {
-	width: 347px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	text-align: left;
-}
-
-div.featured-deal {
-	width: 780px;
-	position: absolute;
-	top: 90px;
-	left: 50%;
-	margin-left: -390px;
-}
-
-img#today-featured-deal {
-	margin-left: 30px;
-	margin-bottom: 11px;
-}
-
-img#get-this-deal-free {
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
-a.left-arrow, a.right-arrow {
-	margin-top: 120px;
-}
-
-a.left-arrow {
-	float: left;
-}
-
-a.right-arrow {
-	float: right;
-}
-
-div.deal-info {
-	background-color: white;
-	margin: auto;
-	width: 618px;
-	padding: 22px;
-	-webkit-box-shadow: 1px 1px 7px #777;
-	-moz-box-shadow: 1px 1px 7px #777;
-	overflow: auto;
-}
-
-img#deal-pic {
-	float: left;
-}
-
-div#specs {
-	float: right;
-	width: 298px;
-}
-
-div#specs h1, div#specs h2 {
-	font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif;
-	line-height: 105%;
-	margin-top: 0;
-}
-
-div#specs p.buttons {
-	text-align: center;
-	vertical-align: top;
-	margin-bottom: 7px;
-}
-
-div#specs a.pill {
-	font-size: 10px;
-	color: white;
-	text-decoration: none;
-	background-color: silver;
-	display: inline-block;
-	line-height: 19px;
-	padding: 0px 5px;
-	margin: 0;
-	font-family: Verdana;
-	margin-top: 6px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-div#specs a.pill:hover {
-	background-color: #777;
-}
-
-div#specs a#tell-a-friend {
-	float: left;
-}
-
-div#specs a#see-details {
-	float: right;
-}
-
-div#specs p.meta {
-	color: #777;
-	font-size: 10px;
-	margin-top: 0;
-}
-
-div#specs p.meta span.legalese {
-	float: left;
-}
-
-div#specs p.meta span.expiration {
-	float: right;
-}
-
-div#other-deals {
-	text-align: center;
-	margin-top: 11px;
-}
-
-div#other-deals a {
-	font-family: 'Cuprum';
-	text-decoration: none;
-	color: #47909D;
-	background-image: url(../../images/circle.png);
-	background-position: top center;
-	display: inline-block;
-	width: 21px;
-	height: 35px;
-	line-height: 48px;
-	margin: 0 11px;
-}
-
-div#other-deals a:hover {
-	color: orange;
-}
-
-div#other-deals a.active {
-	background-position: bottom center;
-	color: orange;
-}
-
-div#explainations {
-	text-align: center;
-	display: block;
-	margin: auto;
-	width: 822px;
-	overflow: hidden;
-	-webkit-box-shadow: 1px 1px 5px #777;
-	-moz-box-shadow: 1px 1px 5px #777;
-	border: 2px solid white;
-	background-color: #CCE8F7;
-	height: 252px;
-	margin-top: 400px;
-}
-
-div.box {
-	text-align: left;
-	border: 1px solid white;
-	width: 250px;
-	height: 100%;
-	top: 0;
-	padding: 7px 11px;
-	display: block;
-	background-color: #CCE8F7;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDF7FF), to(#CCE8F7));
-	float: left;
-	font-size: 13px;
-}
-
-div.box h1 {
-	color: #408B99;
-	font-size: 120%;
-	margin-bottom: 0;
-}
-
-div.box p {
-	margin-top: 7px;
-	line-height: 150%;
-}
-
-div.box img {
-	float: right;
-}
+div#menu a:hover, div#menu a.sticky { color: white; }
 
 div.doc {
-	width: 726px;
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
@@ -312,192 +82,8 @@ div.doc {
 	overflow: auto;
 }
 
-div.doc h1, div.doc h2, div.doc h3 {
-	font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif;
-}
-
-div.doc a {
-	color: #800;
-}
-
-div.left {
-	float: left;
-	width: 298px;
-	text-align: center;
-	font-style: italic;
-}
-
-div.right {
-	float: right;
-	width: 398px;
-}
-
 div#footer {
-	width: 800px;
-	clear: both;
-	margin: 11px auto;
-	color: #777;
 	font-size: 11px;
-	overflow: hidden;
-	padding: 11px;
-	-webkit-box-shadow: 1px 1px 3px #777;
-	-moz-box-shadow: 1px 1px 3px #777;
-	background-color: ghostwhite; /* #a0d8ff; rgb(160, 216, 244); */
-	border: 3px solid white;
+	color: white;
 }
 
-div#footer p a {
-	color: #666;
-}
-
-div#footer p a:hover {
-	text-decoration: none;
-}
-
-div#footer p {
-	float: left;
-	padding: 0;
-	margin: 0;
-}
-
-div#footer p#sharing {
-	padding-top: 7px;
-	float: right;
-}
-
-div#footer p#sharing a img {
-	margin-left: 7px;
-}
-
-
-label {
-	display: block;
-	font-size: 90%;
-}
-
-input.textfield {
-	-webkit-appearance: none;
-	width: 400px;
-	border: 1px solid #ddd;
-	padding: 6px;
-	-webkit-border-radius: 2px;
-	font-size: 16px;
-}
-
-input.textfield:focus {
-	outline: none;
-	background-color: lightyellow;
-	border: 1px solid #999;
-}
-
-
-textarea {
-	-webkit-appearance: none;
-	width: 700px;
-	border: 1px solid #ddd;
-	padding: 6px;
-	-webkit-border-radius: 2px;
-	font-size: 16px;
-}
-
-textarea:focus {
-	outline: none;
-	background-color: lightyellow;
-	border: 1px solid #999;
-}
-
-img#close {
-	position: absolute;
-	top: 23px;
-	left: 50%;
-	width: 23px;
-	height: 23px;
-	margin-left: -214px;
-	z-index: 1002;
-	display: block;
-	opacity: 1;
-}
-
-div#lightbox {
-	position: absolute;
-	top: 30px;
-	left: 50%;
-	width: 413px;
-	margin-left: -207px;
-	background: #fff;
-	z-index: 1001;
-	display: block;
-	border: 3px solid #121212;
-	padding: 0 11px;
-}
-
-div#shadow {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	filter: alpha(opacity=75);
-	-moz-opacity: 0.75;
-	-khtml-opacity: 0.75;
-	opacity: 0.75;
-	z-index: 1000;
-	display: inline-block;
-}
-
-p.deal-btn {
-	float: right;
-	margin-left: 33px;
-}
-
-div.deal-listing {
-	border-top: 1px solid #dedede;
-	clear: both;
-	padding: 11px 0;
-}
-
-div.deal-listing p.expiration {
-	float: right;
-}
-
-div.deal-listing img {
-	float: left;
-	height: 60px;
-	margin-right: 11px;
-	margin-bottom: 11px;
-}
-
-div.deal-listing h2 {
-	margin-top: 0;
-	padding-top: 0;
-	margin-bottom: 0;
-}
-
-div.deal-listing p.legalese {
-	margin: 0;
-}
-
-div.person {
-	text-align: center;
-	width: 240px;
-	float: left;
-}
-
-div.person img {
-	height: 100px;
-	margin-top: 30px;
-	padding: 3px;
-	border: 1px solid #dedede;
-}
-
-div.person p {
-	font-style: italic;
-	font-size: 90%;
-	margin: 0;
-}
-
-div.person strong {
-	font-style: normal;
-	font-size: 100%;
-}

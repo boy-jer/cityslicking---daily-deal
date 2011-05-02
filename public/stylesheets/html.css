@@ -1,0 +1,227 @@
+html {
+	background: #91d9f8 url(../../images/skyline.png) repeat-x fixed center bottom;
+	background:
+		url(../../images/cityscape1.png) repeat-x fixed -130% bottom,
+		url(../../images/cityscape2.png) repeat-x fixed 40% bottom,
+		url(../../images/cityscape3.png) repeat-x fixed -75% bottom;
+	background-color: #91d9f8;
+}
+
+img#logo {
+	position: absolute;
+	left: 50%;
+	margin-left: -450px;
+}
+
+div#cities {
+	right: 50%;
+	margin-right: -450px;
+}
+
+div#other-cities a { width: 200px; }
+
+a#current-city {
+	background-image: url(../../images/city_selected.png);
+	width: 200px;
+	font-size: 22px;
+}
+
+div#menu {
+	background-color: black;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#000));
+	text-align: center;
+	line-height: 100%;
+}
+
+div#menu a { padding: 22px 7px 15px 7px; }
+
+div#features {
+	width: 780px;
+	margin: auto;
+	margin-top: 30px;
+}
+
+img#today-featured-deal {
+	float: left;
+	margin-left: 60px;
+}
+
+img#get-this-deal-free {
+	float: right;
+	margin-bottom: -45px;
+}
+
+div#features div#featured-deals div.deal {
+	background-color: white;
+	margin: auto;
+	width: 618px;
+	padding: 22px;
+	-webkit-box-shadow: 1px 1px 7px #777;
+	-moz-box-shadow: 1px 1px 7px #777;
+	overflow: auto;
+}
+
+img.deal-pic { float: left; }
+
+div.specs {
+	float: right;
+	width: 298px;
+}
+
+div.specs h1 {
+	color: #800;
+	line-height: 120%;
+	margin: 0;
+	font-size: 32px;
+}
+
+div.specs p.buttons {
+	text-align: center;
+	vertical-align: top;
+	margin-bottom: 7px;
+}
+
+div.specs a.pill {
+	font-size: 10px;
+	color: white;
+	text-decoration: none;
+	background-color: silver;
+	display: inline-block;
+	line-height: 19px;
+	padding: 0px 5px;
+	margin: 0;
+	font-family: Verdana;
+	margin-top: 6px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+div.specs a.pill:hover {
+	background-color: #777;
+}
+
+div.specs a.tell-a-friend { float: left; }
+div.specs a.see-details { float: right; }
+
+div.specs p.meta {
+	color: #777;
+	font-size: 10px;
+	margin-top: 0;
+}
+
+div.specs p.meta span.legalese { float: left; }
+div.specs p.meta span.expiration { float: right; }
+
+
+a#left-arrow, a#right-arrow { margin-top: 120px; position: absolute; }
+a#left-arrow { left: 50%; margin-left: -362px; }
+a#right-arrow { right: 50%; margin-right: -356px; }
+
+div#other-deals {
+	position: absolute;
+	text-align: center;
+	top: 375px;
+	width: 780px;
+}
+
+div#other-deals a {
+	font-family: 'Cuprum';
+	text-decoration: none;
+	color: #47909D;
+	background-image: url(../../images/circle.png);
+	background-position: top center;
+	display: inline-block;
+	width: 21px;
+	height: 35px;
+	line-height: 48px;
+	margin: 0 11px;
+}
+
+div#other-deals a:hover, div#other-deals a.active { color: orange; }
+
+div#other-deals a.active { background-position: bottom center; }
+
+div#featured-deals {
+	position: absolute;
+	width: 677px;
+	height: 255px;
+	overflow: hidden;
+	margin-top: 30px;
+	margin-left: 49px;
+}
+
+div#featured-deals div.deal {
+	position: absolute;
+	top: 7px;
+}
+
+div.featured-position-1 div#deal-1 { left: 7px; }
+div.featured-position-1 div#deal-2 { left: 787px; }
+div.featured-position-1 div#deal-3 { left: 1567px; }
+
+
+div#explainations {
+	text-align: center;
+	display: block;
+	margin: auto;
+	width: 822px;
+	overflow: hidden;
+	-webkit-box-shadow: 1px 1px 5px #777;
+	-moz-box-shadow: 1px 1px 5px #777;
+	border: 2px solid white;
+	background-color: #CCE8F7;
+	height: 252px;
+	margin-top: 400px;
+}
+
+div.box {
+	text-align: left;
+	border: 1px solid white;
+	width: 250px;
+	height: 100%;
+	top: 0;
+	padding: 7px 11px;
+	display: block;
+	background-color: #CCE8F7;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDF7FF), to(#CCE8F7));
+	float: left;
+	font-size: 13px;
+}
+
+div.box h1 {
+	color: #408B99;
+	font-size: 120%;
+	margin-bottom: 0;
+}
+
+div.box p {
+	margin-top: 7px;
+	line-height: 150%;
+}
+
+div.box img {
+	float: right;
+}
+
+div.doc {
+	width: 726px;
+	margin: auto;
+	-webkit-box-shadow: 1px 1px 3px #777;
+	-moz-box-shadow: 1px 1px 3px #777;
+	background-color: white;
+	padding: 33px 51px;
+	font-size: 13px;
+	overflow: auto;
+}
+
+div#footer {
+	width: 800px;
+	margin: auto;
+}
+
+div#footer p { padding-bottom: 15px; }
+div#footer p#sharing { float: right; padding-top: 4px;}
+div#footer p#sharing a { margin-left: 11px; }
+div#footer p#links { float: left; }
+div#footer p#links a { color: white; }

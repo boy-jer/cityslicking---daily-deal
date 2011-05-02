@@ -1,0 +1,16 @@
+<h1><%= deal.title %></h1>
+
+<img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" />
+
+<p class="buttons">
+	<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+	<br />
+	<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
+	<a href="/deals/<%= deal.id %>" class="pill" id="see-details">See Details</a>
+</p>
+
+<p class="meta">
+	<span class="legalese"><%= deal.legalese %></span>
+	<br />
+	<span class="expiration">Expires <%= deal.expiration_date %></span>
+</p>

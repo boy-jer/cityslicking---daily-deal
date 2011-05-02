@@ -1,0 +1,116 @@
+div#featured-deal {
+	background-color: white;
+	margin: 11px;
+	padding: 11px;
+	margin-top: 0;
+	-webkit-box-shadow: 1px 1px 3px #777;
+	text-align: center;
+}
+
+div#specs p.buttons {
+	text-align: center;
+	vertical-align: top;
+	margin-bottom: 7px;
+}
+
+div#specs a.pill {
+	font-size: 10px;
+	color: white;
+	text-decoration: none;
+	background-color: silver;
+	display: inline-block;
+	line-height: 19px;
+	padding: 0px 5px;
+	margin: 0;
+	font-family: Verdana;
+	margin-top: 6px;
+	-webkit-border-radius: 3px;
+}
+
+div#specs p.meta {
+	color: #777;
+	font-size: 11px;
+	margin-top: 0;
+	padding-bottom: 11px;
+}
+
+div#specs p.meta span.legalese {
+	float: left;
+}
+
+div#specs p.meta span.expiration {
+	float: right;
+}
+
+div#other-deals {
+	text-align: center;
+	margin-top: 11px;
+	margin-bottom: 22px;
+}
+
+div#other-deals a {
+	font-family: 'Cuprum';
+	text-decoration: none;
+	color: #47909D;
+	background-image: url(../../images/circle.png);
+	background-position: top center;
+	display: inline-block;
+	width: 21px;
+	height: 35px;
+	line-height: 48px;
+	margin: 0 11px;
+}
+
+div#other-deals a.active {
+	background-position: bottom center;
+	color: orange;
+}
+
+div.doc {
+	background-color: white;
+	margin: 11px;
+	padding: 11px;
+	margin-top: 0;
+	-webkit-box-shadow: 1px 1px 3px #777;
+}
+
+div.doc h1, div.doc h2, div.doc h3 {
+	font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif;
+}
+
+div.doc h1 {
+	text-align: center;
+}
+
+div#footer {
+	text-align: center;
+	color: white;
+	font-size: 12px;
+}
+
+div#footer a {
+	color: white;
+	font-weight: bold;
+}
+
+div.person {
+	text-align: center;
+}
+
+div.person img {
+	height: 100px;
+	margin-top: 30px;
+	padding: 3px;
+	border: 1px solid #dedede;
+}
+
+div.person p {
+	font-style: italic;
+	font-size: 90%;
+	margin: 0;
+}
+
+div.person strong {
+	font-style: normal;
+	font-size: 100%;
+}

@@ -1,61 +1,28 @@
-<div class="featured-deal" id="feature-1">
+<div id="features">
 	<img id="today-featured-deal" src="/images/feature_deals.png" />
 	<img id="get-this-deal-free" src="/images/get_deal.png" />
-
-	<a class="left-arrow arrow-3" href="#"><img src="/images/arrow_left.png" /></a>
-	<a class="right-arrow arrow-2" href="#"><img src="/images/arrow_right.png" /></a>
-
-	<div class="deal-info">
-		<img id="deal-pic" src="/images/deals/<%= @deals[0].id %>.jpg" />
-		<div id="specs">
-			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[0].title %></h1>
-			<p class="buttons">
-				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
-				<a href="<%= @deals[0].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
-				<a href="/deals/<%= @deals[0].id %>" class="pill" id="see-details">See Details</a>
-			</p>
-			<p class="meta">
-				<span class="legalese"><%= @deals[0].legalese %></span>
-				<span class="expiration">Expires <%= @deals[0].expiration_date %></span>
-			</p>
+	
+	<div id="featured-deals" class="featured-position-1">
+		<div class="deal" id="deal-1">
+			<%= deliver 'feature', :layout => false, :locals => {:deal => @deals[0]} %>
+		</div>
+		<div class="deal" id="deal-2">
+			<%= deliver 'feature', :layout => false, :locals => {:deal => @deals[1]} %>
+		</div>
+		<div class="deal" id="deal-3">
+			<%= deliver 'feature', :layout => false, :locals => {:deal => @deals[2]} %>
 		</div>
 	</div>
 	
-	<div id="other-deals">
-		<a href="#" class="button-1 active">1</a>
-		<a href="#" class="button-2 inactive">2</a>
-		<a href="#" class="button-3 inactive">3</a>
-	</div>
-</div>
-
-<div class="featured-deal" id="feature-2" style="display: none;">
-	<img id="today-featured-deal" src="/images/feature_deals.png" />
-	<img id="get-this-deal-free" src="/images/get_deal.png" />
-
-	<a class="left-arrow arrow-1" href="#"><img src="/images/arrow_left.png" /></a>
-	<a class="right-arrow arrow-3" href="#"><img src="/images/arrow_right.png" /></a>
-
-	<div class="deal-info">
-		<img id="deal-pic" src="/images/deals/<%= @deals[1].id %>.jpg" />
-		<div id="specs">
-			<h1 style="color: #800; line-height: 120%; margin: 0;"><%= @deals[1].title %></h1>
-			<p class="buttons">
-				<a href="#" class="pill" id="tell-a-friend">Tell a Friend</a>
-				<a href="<%= @deals[1].id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
-				<a href="/deals/<%= @deals[1].id %>" class="pill" id="see-details">See Details</a>
-			</p>
-			<p class="meta">
-				<span class="legalese"><%= @deals[1].legalese %></span>
-				<span class="expiration">Expires <%= @deals[1].expiration_date %></span>
-			</p>
-		</div>
-	</div>
+	<a id="left-arrow" href="3"><img src="/images/arrow_left.png" /></a>
+	<a id="right-arrow" href="2"><img src="/images/arrow_right.png" /></a>
 	
 	<div id="other-deals">
-		<a href="#" class="button-1 inactive">1</a>
-		<a href="#" class="button-2 active">2</a>
-		<a href="#" class="button-3 inactive">3</a>
+		<a href="#" id="button-1" class="active">1</a>
+		<a href="#" id="button-2" class="inactive">2</a>
+		<a href="#" id="button-3" class="inactive">3</a>
 	</div>
+	
 </div>
 
 <div class="featured-deal" id="feature-3" style="display: none;">
