@@ -111,7 +111,7 @@ div#explainations {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDF7FF), to(#CCE8F7));
 }
 
-div.doc h1, div.doc h2 {
+div.doc h1, div#explainations h2 {
 	text-align: center;
 }
 

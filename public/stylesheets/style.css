@@ -22,7 +22,7 @@ hr {
 
 a { color: #800; }
 
-h1, h2 { font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif; }
+h1, h2 { font-family: 'Cabin', Helvetica, Verdana, Arial, sans-serif; line-height: 120%; }
 
 
 div#cities {
