@@ -16,6 +16,7 @@ jQuery(function()
 	$('a.sign-in').click(function()
 	{
 		lightbox('/sign-in');
+    window.scrollTo(0,0);
 		return false;
 	});
 	
