@@ -27,7 +27,7 @@ end
 post '/admin/resources/advertising-and-promotions-agreement/?' do
   auth_admin
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
-    :to        => 'jarrodtaylor@me.com',
+    :to        => 'jarrod@city-slicking.com',
     :subject   => 'CitySlicking Merchant Agreement',
     :html_body => erb(:'admin/resources/advertising-and-promotions-agreement_email', :layout => false)
   )
