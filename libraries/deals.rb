@@ -5,12 +5,12 @@ end
 
 get '/deals/?' do
   @deals = City.get(session[:city_id]).deals(:order => :expiration_date.asc, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
-  deliver 'deals/index'
+  deliver 'deals'
 end
 
 get '/deals/:id/?' do
   @deal = Deal.get(params[:id])
-  deliver 'deals/info'
+  deliver 'deal'
 end
 
 

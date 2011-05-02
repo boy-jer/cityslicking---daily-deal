@@ -14,31 +14,3 @@ p.deal-btn {
 	float: right;
 	margin-left: 33px;
 }
-
-div.deal-listing {
-	border-top: 1px solid #dedede;
-	clear: both;
-	padding: 11px 0;
-}
-
-div.deal-listing p.expiration {
-	float: right;
-}
-
-div.deal-listing img {
-	float: left;
-	height: 60px;
-	margin-right: 11px;
-	margin-bottom: 11px;
-}
-
-div.deal-listing h2 {
-	margin-top: 0;
-	padding-top: 0;
-	margin-bottom: 0;
-}
-
-div.deal-listing p.legalese {
-	margin: 0;
-}
-

@@ -1,0 +1,26 @@
+<div class="doc">
+	
+	<p class="deal-btn">
+		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+	</p>
+	
+	<h1 style="color: #800; font-size: 36px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
+	
+	<p><a href="/deals">&larr; Back to Deals</a></p>
+	
+	<hr />
+	
+	<div class="left">
+		<p><img src="/images/deals/<%= @deal.id %>.jpg" /></p>
+		<% @deal.locations.each do |location| %>
+			<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
+			<p class="map">
+				<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&ie=UTF8&hq=&hnear=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&z=17"><%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %></a>
+				<img src="http://maps.google.com/maps/api/staticmap?center=<%= addr %>&zoom=15&size=298x240&markers=color:blue|<%= addr %>&sensor=false" />
+			</p>
+		<% end %>
+	</div>
+
+	<div class="right"><p><%= @deal.legalese %></p><%= markdown @deal.description %></div>
+			
+</div>
