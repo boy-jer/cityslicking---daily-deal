@@ -3,6 +3,7 @@ jQuery(function()
 	
 	function lightbox(url)
 	{
+    window.scrollTo(0,0);
 		$('div#lightbox, img#close, div#shadow').toggle('fade');
 		$('#lightbox').load(url);
 	}
@@ -16,7 +17,6 @@ jQuery(function()
 	$('a.sign-in').click(function()
 	{
 		lightbox('/sign-in');
-    window.scrollTo(0,0);
 		return false;
 	});
 	
@@ -114,6 +114,12 @@ jQuery(function()
 	$('a.save').click(function()
 	{
 		lightbox('/save/deal/' + $(this).attr('href'));
+		return false;
+	});
+
+	$('a.tell-a-friend').click(function()
+	{
+		lightbox('/share/deal/' + $(this).attr('href'));
 		return false;
 	});
 		

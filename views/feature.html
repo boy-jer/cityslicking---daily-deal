@@ -2,7 +2,7 @@
 <div class="specs">
 	<h1><%= deal.title %></h1>
 	<p class="buttons">
-		<a href="#" class="pill tell-a-friend">Tell a Friend</a>
+		<a href="<%= deal.id %>" class="pill tell-a-friend">Tell a Friend</a>
 		<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 		<a href="/deals/<%= deal.id %>" class="pill see-details">See Details</a>
 	</p>

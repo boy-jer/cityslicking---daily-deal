@@ -357,11 +357,12 @@ div#lightbox {
 }
 
 div#lightbox p#flash {
-	width: 391px;
+	width: 413px;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	text-align: left;
 	padding: 11px;
+	margin: 0 -11px 11px -11px;
 }
 
 div#shadow {

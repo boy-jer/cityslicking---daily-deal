@@ -1,13 +1,19 @@
 get '/save/deal/:id/?' do
   @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
-  deliver 'deals/confirmation', :layout => false
+  deliver 'confirmation', :layout => false
+end
+
+get '/share/deal/:id/?' do
+  @deal = Deal.get(params[:id])
+  deliver 'share', :layout => false
 end
 
 post '/save/phone/:id/?' do
   @deal = Deal.get(params[:id])
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web')
-  "<p>#{@deal.code}</p>"
+  session[:flash] = "#{@deal.code}"
+  deliver 'share', :layout => false
 end
 
 post '/save/email/:id/?' do
@@ -19,7 +25,8 @@ post '/save/email/:id/?' do
     :subject => 'CitySlicking Deal',
     :body    => "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
   )
-  "<p>Check your inbox!</p>"
+  session[:flash] = "<p>Check your inbox!</p>"
+  deliver 'share', :layout => false
 end
 
 post '/save/sms/:id/?' do
@@ -33,7 +40,8 @@ post '/save/sms/:id/?' do
     'Body' => "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
   }
   account.request("/#{settings.sms_server[:api_version]}/Accounts/#{settings.sms_server[:account_sid]}/SMS/Messages", 'POST', msg)
-  "<p>Check your phone!</p>"
+  session[:flash] = "Check your phone!"
+  deliver 'share', :layout => false
 end
 
 

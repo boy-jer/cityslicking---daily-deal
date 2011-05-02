@@ -3,7 +3,7 @@
 	<h1 style="color: #800; font-size: 28px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
 	
 	<p align="center">
-		<a href="/deals/1/use?keepThis=true&TB_iframe=true&height=300&width=320" title="" class="thickbox"><img src="/images/save_deal.png"></a>
+		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 	</p>
 		
 	<p style="text-align: center;"><a href="/deals">&larr; Back to Deals</a></p>

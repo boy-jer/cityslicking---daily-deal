@@ -238,9 +238,9 @@ div#lightbox p#flash {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	text-align: left;
-	padding: 3px;
+	padding: 3px 11px;
+	margin: 0 -11px -11px -11px;
 }
-
 
 div#shadow {
 	position: absolute;
