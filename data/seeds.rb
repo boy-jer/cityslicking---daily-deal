@@ -15,9 +15,17 @@ elk_grove = City.create(:name => 'Elk Grove, CA', :short_name => 'elkgrove')
 turlock   = City.create(:name => 'Turlock, CA',   :short_name => 'turlock' )
 
 
-jarrod = User.create(:email => 'jarrodtaylor@cityslicking.com', :password => 'demo')
-john   = User.create(:email => 'john@cityslicking.com',         :password => 'demo')
-admin  = User.create(:email => 'admin@cityslicking.com',        :password => 'admin', :admin => true)
+jarrodtaylor = User.create(:email => 'jarrod@city-slicking.com',       :password => 'cityslicking', :admin => true)
+johndickey   = User.create(:email => 'johndickey@city-slicking.com',   :password => 'cityslicking', :admin => true)
+chriskimble  = User.create(:email => 'chriskimble@city-slicking.com',  :password => 'cityslicking', :admin => true)
+doreenavila  = User.create(:email => 'doreenavila@city-slicking.com',  :password => 'cityslicking', :admin => true)
+geraldavila  = User.create(:email => 'geraldavila@city-slicking.com',  :password => 'cityslicking', :admin => true)
+jeremyavila  = User.create(:email => 'jeremyavila@city-slicking.com',  :password => 'cityslicking', :admin => true)
+kylegoni     = User.create(:email => 'kylegoni@city-slicking.com',     :password => 'cityslicking', :admin => true)
+larrykimble  = User.create(:email => 'larrykimble@city-slicking.com',  :password => 'cityslicking', :admin => true)
+mattcross    = User.create(:email => 'mattcross@city-slicking.com',    :password => 'cityslicking', :admin => true)
+nicoledickey = User.create(:email => 'nicoledickey@city-slicking.com', :password => 'cityslicking', :admin => true)
+skiptaylor   = User.create(:email => 'skiptaylor@city-slicking.com',   :password => 'cityslicking', :admin => true)
 
 
 tahoe_joe = Merchant.create(
