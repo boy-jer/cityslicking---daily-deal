@@ -69,6 +69,7 @@ end
 
 get '/profile/?' do
   @user = User.get(session[:user])
+  @confirmations = @user.confirmations
   deliver 'profile'
 end
 

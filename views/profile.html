@@ -42,7 +42,7 @@
 
 			<form action="/verify" method="post" id="mobile-verification">
 				<p>
-					+1 <input type="text" class="textfield" name="mobile" value="<%= @user.mobile %>" />
+					+1 <input type="text" class="textfield" name="mobile" value="<%= @user.mobile %>" style="width: 180px;" />
 					<input type="submit" name="verify" value="Verify" />
 				</p>
 			</form>
@@ -66,13 +66,17 @@
 
 	<p><em>City Slicking does not charge for this service. Standard message and data rates may apply. US numbers only.</em></p>
 	
-	<h2>Deal History</h2>
+	<% if @confirmations.count > 0 %>
 	
-	<% @user.confirmations.each do |confirmation| %>
-	<p>
-		<strong><%= confirmation.deal.title %></strong>
-		<em><%= format_date confirmation.created_at %></em>
-	</p>
+		<h2>Deal History</h2>
+	
+		<% @confirmations.each do |confirmation| %>
+		<p>
+			<strong><%= confirmation.deal.title %></strong>
+			<em><%= format_date confirmation.created_at %></em>
+		</p>
+		<% end %>
+
 	<% end %>
 	
 </div>
