@@ -7,12 +7,13 @@ module Fixture
 end
 
 
-san_jose  = City.create(:name => 'San Jose, CA',  :short_name => 'sanjose' )
-modesto   = City.create(:name => 'Modesto, CA',   :short_name => 'modesto' )
-stockton  = City.create(:name => 'Stockton, CA',  :short_name => 'stockton')
-lodi      = City.create(:name => 'Lodi, CA',      :short_name => 'lodi'    )
-elk_grove = City.create(:name => 'Elk Grove, CA', :short_name => 'elkgrove')
-turlock   = City.create(:name => 'Turlock, CA',   :short_name => 'turlock' )
+san_jose   = City.create(:name => 'San Jose, CA',   :short_name => 'sanjose'   )
+modesto    = City.create(:name => 'Modesto, CA',    :short_name => 'modesto'   )
+stockton   = City.create(:name => 'Stockton, CA',   :short_name => 'stockton'  )
+lodi       = City.create(:name => 'Lodi, CA',       :short_name => 'lodi'      )
+elk_grove  = City.create(:name => 'Elk Grove, CA',  :short_name => 'elkgrove'  )
+turlock    = City.create(:name => 'Turlock, CA',    :short_name => 'turlock'   )
+sacramento = City.create(:name => 'Sacramento, CA', :short_name => 'sacramento')
 
 
 jarrodtaylor = User.create(:email => 'jarrod@city-slicking.com',       :password => 'cityslicking', :admin => true)
@@ -63,7 +64,7 @@ tahoe_joe = Merchant.create(
       :first_percent            => 50,
       :return_percent           => 25,
       :max_returns              => 5,
-      :city_deals => [{:city => san_jose}, {:city => modesto}, {:city => stockton}],
+      :city_deals => [{:city => san_jose}, {:city => modesto}, {:city => stockton}, {:city => sacramento}],
       :locations => [
         {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356'}
       ]
@@ -128,7 +129,7 @@ trader_vic = Merchant.create(
       :first_percent            => 50,
       :return_percent           => 25,
       :max_returns              => 5,
-      :city_deals => [{:city => modesto}, {:city => stockton}, {:city => lodi}],
+      :city_deals => [{:city => modesto}, {:city => stockton}, {:city => lodi}, {:city => sacramento}],
       :locations => [
         {:street => '626 S. Racine Ave.', :city => 'San Jose', :state => 'CA', :zip => '87654'}
       ]
@@ -214,7 +215,7 @@ starlight = Merchant.create(
       :first_percent            => 50,
       :return_percent           => 25,
       :max_returns              => 5,
-      :city_deals => [{:city => stockton}, {:city => lodi}, {:city => elk_grove}],
+      :city_deals => [{:city => stockton}, {:city => lodi}, {:city => elk_grove}, {:city => sacramento}],
       :locations => [
         {:street => '1629 N. Halsted', :city => 'Lodi', :state => 'CA', :zip => '76543'}
       ]
@@ -258,7 +259,7 @@ threadless = Merchant.create(
       :first_percent            => 50,
       :return_percent           => 25,
       :max_returns              => 5,
-      :city_deals => [{:city => san_jose}, {:city => stockton}, {:city => modesto}, {:city => lodi}, {:city => elk_grove}, {:city => turlock}],
+      :city_deals => [{:city => san_jose}, {:city => stockton}, {:city => modesto}, {:city => lodi}, {:city => elk_grove}, {:city => turlock}, {:city => sacramento}],
       :locations => [
         {:street => '3011 N. Broadway St.', :city => 'San Francisco', :state => 'CA', :zip => '54321'},
         {:street => '1905 W. Division St.', :city => 'San Francisco', :state => 'CA', :zip => '54321'}
