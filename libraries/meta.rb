@@ -16,5 +16,10 @@ end
 
 get '/admin/resources/?' do
   auth_admin
-  deliver 'admin/resources'
+  deliver 'admin/resources/resources'
+end
+
+get '/admin/resources/advertising-and-promotions-agreement/?' do
+  auth_admin
+  deliver 'admin/resources/advertising-and-promotions-agreement'
 end
