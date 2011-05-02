@@ -1,5 +1,4 @@
 <div class="doc">
-<form method="post">
 
 	<h1>ADVERTISING AND PROMOTIONS AGREEMENT</h1>
 	
@@ -18,18 +17,15 @@
 	<h3>AND:</h3>
 	
 	<p>
-		<input type="text" class="textfield" style="width: 200px;" name="text1" value="<%= params[:text1] %>" />
-		(the "Customer"), a company organized and existing under the laws of the State of
-		<input type="text" class="textfield" style="width: 50px;" name="text2" value="<%= params[:text2] %>" />
-		, with its head office located at:
-		<br />
-		<textarea style="height: 75px; width: 400px;" name="text3"><%= params[:text3] %></textarea>
+		<%= params[:text1] %> (the "Customer"), a company organized and existing under the laws of the State of
+		<%= params[:text2] %>, with its head office located at:
 	</p>
+	
+	<p><%= params[:text3] %></p>
 	
 	<h2>ENGAGEMENT OF SERVICES</h2>
 	<p>
-		<input type="text" class="textfield" style="width: 200px;" name="text4" value="<%= params[:text4] %>" />
-		, (the “Customer” hereinafter) will work with CitySlicking, LLC  (the “Advertising Service Provider” or “ASP” hereinafter) representative to offer coupons and other promotional information via the City-Slicking websites (e.g. www.city-slicking.com).  Each iteration of such offerings is hereinafter termed as a “campaign”.
+		<%= params[:text4] %>, (the “Customer” hereinafter) will work with CitySlicking, LLC  (the “Advertising Service Provider” or “ASP” hereinafter) representative to offer coupons and other promotional information via the City-Slicking websites (e.g. www.city-slicking.com).  Each iteration of such offerings is hereinafter termed as a “campaign”.
 	</p>
 	
 	<h2>COMPENSATION</h2>
@@ -103,23 +99,17 @@
 	<p>
 		<strong>CITYSLICKING, LLC</strong><br />
 		Print Name and Title<br />
-		<input type="text" class="textfield" name="text5" value="<%= params[:text5] %>" /><br />
+		<%= params[:text5] %><br />
 		<em><%= format_day Time.now %></em>
 	</p>
 
 	<p>
 		<strong>THE CUSTOMER</strong><br />
 		Print Name and Title<br />
-		<input type="text" class="textfield" name="text6" value="<%= params[:text6] %>" /><br />
+		<%= params[:text6] %><br />
 		<em><%= format_day Time.now %></em>
 	</p>
 	
-	<p>
-		<input type="submit" value="Send email" />
-	</p>
-	
-</form>
-
 <hr />
 
 <h1>Schedule A</h1>
