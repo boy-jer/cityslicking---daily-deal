@@ -1,6 +1,8 @@
 jQuery(function()
 {
 	
+	$('.markItUp').markItUp(mySettings);
+	
 	function lightbox(url)
 	{
     window.scrollTo(0,0);
