@@ -12,6 +12,7 @@ p#flash {
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=3);
 	background-color: lightyellow;
 	padding: 11px 33px;
 	font-size: 13px;
@@ -106,6 +107,7 @@ div#features div#featured-deals div.deal {
 	padding: 22px;
 	-webkit-box-shadow: 1px 1px 7px #777;
 	-moz-box-shadow: 1px 1px 7px #777;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=3);
 	overflow: auto;
 }
 
@@ -217,6 +219,7 @@ div#explainations {
 	overflow: hidden;
 	-webkit-box-shadow: 1px 1px 5px #777;
 	-moz-box-shadow: 1px 1px 5px #777;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=3);
 	border: 2px solid white;
 	background-color: #CCE8F7;
 	height: 252px;
@@ -257,6 +260,7 @@ div.doc {
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=3);
 	background-color: white;
 	padding: 33px 51px;
 	font-size: 13px;

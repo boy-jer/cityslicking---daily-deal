@@ -76,6 +76,7 @@ div.doc {
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=3);
 	background-color: white;
 	padding: 33px 51px;
 	font-size: 13px;
