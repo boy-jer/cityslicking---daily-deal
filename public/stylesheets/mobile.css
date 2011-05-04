@@ -209,6 +209,10 @@ div.person strong {
 	font-size: 100%;
 }
 
+p#how-it-works img {
+	width: 100%;
+}
+
 img#close {
 	position: absolute;
 	top: 23px;

@@ -83,6 +83,10 @@ div.doc {
 	overflow: auto;
 }
 
+p#how-it-works {
+	text-align: center;
+}
+
 div#footer {
 	font-size: 11px;
 	color: white;
