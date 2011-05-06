@@ -5,7 +5,12 @@
 
 # Use the Sinatra framework
   
-  gem 'sinatra', '>= 1.2.3'
+  gem 'sinatra', '1.2.3'
+  
+  
+# Use an older version of Tilt until the new one is debugged
+
+  gem 'tilt', '1.2.2'
 
 
 # Markdown parsing
@@ -20,8 +25,9 @@
 
 # Use DataMapper
 
-  gem 'dm-core'
-  gem 'dm-sqlite-adapter'
+  gem 'dm-core',            '1.1.1', :git => 'https://github.com/datamapper/dm-core.git'
+  gem 'dm-do-adapter',      '1.1.1', :git => 'https://github.com/datamapper/dm-do-adapter.git'
+  gem 'dm-sqlite-adapter',  '1.1.1', :git => 'https://github.com/datamapper/dm-sqlite-adapter.git'
   gem 'dm-migrations'
   gem 'dm-validations'
   gem 'dm-timestamps'
