@@ -74,13 +74,16 @@ div#menu a:hover, div#menu a.sticky { color: white; }
 
 div.doc {
 	margin: auto;
-	-webkit-box-shadow: 1px 1px 3px #777;
-	-moz-box-shadow: 1px 1px 3px #777;
-	filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=3);
 	background-color: white;
 	padding: 33px 51px;
 	font-size: 13px;
 	overflow: auto;
+	-webkit-border-radius: 3px;
+}
+
+div.doc h1 {
+	margin-top: 0;
+	line-height: 120%;
 }
 
 p#how-it-works {

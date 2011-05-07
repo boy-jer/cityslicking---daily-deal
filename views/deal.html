@@ -4,7 +4,7 @@
 		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 	</p>
 	
-	<h1 style="color: #800; font-size: 36px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
+	<h1 style="color: #800;"><%= @deal.title %></h1>
 	
 	<p><a href="<%= request.referrer %>">&larr; Back to Deals</a></p>
 	

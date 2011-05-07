@@ -261,10 +261,13 @@ div.doc {
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
 	filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=3);
-	background-color: white;
-	padding: 33px 51px;
-	font-size: 13px;
-	overflow: auto;
+	padding: 33px 51px 22px 51px;
+	margin-top: 22px;
+	-webkit-border-radius: 3px;
+}
+
+div.doc h1 {
+	font-size: 36px;
 }
 
 div.deal-listing {
