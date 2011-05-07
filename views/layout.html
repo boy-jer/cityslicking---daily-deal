@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="/markitup/sets/markdown/style.css" />
 </head>
 
-<body>
+<body<%= ' class="home"' if request.path_info.include? "/home" %>>
 	
 	<a href="/"><img id="logo" src="/images/City-Slicking_logo.png" /></a>
 	
@@ -53,6 +53,27 @@
 	<%= yield %>
 	
 	<div id="footer">
+		<div id="explainations">
+			<div class="box">
+				<img src="/images/save_tag.png" />
+				<h1>HOW IT WORKS</h1>
+				<p>You pay nothing up front. Just select the deals you want to use, show the discount code on your phone to the cashier and collect your savings.</p>
+				<p><a href="/how-it-works">Find out more &rarr;</a></p>
+			</div>
+
+			<div class="box">
+				<h1>DAILY DEALS</h1>
+				<p>Never miss another deal! Our latest savings can be delivered right to your inbox every morning with our Daily Deals newsletter.</p>
+				<p style="text-align: center;"><img src="/images/subscribe.png" style="float: none;"></p>
+			</div>
+
+			<div class="box">
+				<h1>ON THE MOVE</h1>
+				<img src="/images/iPhone.png" style="height: 210px; margin-left: 11px;" />
+				<p>Try City Slicking on your smartphone to make great deals even easier while you're on the move.</p>
+			</div>
+		</div>
+		
 		<p id="sharing">
 			<img id="share" src="/images/share_arrow.png" />
 			<a href="#"><img src="/images/facebook.png" /></a>
