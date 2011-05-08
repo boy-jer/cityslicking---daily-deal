@@ -55,9 +55,14 @@ post '/sign-in/?' do
   if errors > 0
     session[:flash] = msgs
     deliver 'sign-in', :layout => false
-  else
-    session[:flash] = 'Welcome to City Slicking!'
-    '<script type="text/javascript" charset="utf-8">window.location = "/home"</script>'
+  else    
+    if params[:account_type] == 'new'
+      session[:flash] = 'Welcome to City Slicking! From here you can fill out your profile, check your deal history and sign up for SMS deals.'
+      '<script type="text/javascript" charset="utf-8">window.location = "/profile"</script>'
+    else
+      session[:flash] = 'Welcome to City Slicking!'
+      '<script type="text/javascript" charset="utf-8">window.location = "' + request.referrer + '"</script>'
+    end
   end
   
 end
