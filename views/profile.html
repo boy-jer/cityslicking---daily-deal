@@ -55,7 +55,7 @@
 	<% end %>
 
 	<% if !@user.optin? && @user.mobile %>
-		<div id="finish-verification">Now text DEALS to (415) 599-2671 from <%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %> to finish the process.</div>
+		<div id="finish-verification">Now text DEALS to (408) 514-5609 from <%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %> to finish the process.</div>
 	<% end %>
 
 	<% if @user.optin? && @user.mobile %>

@@ -68,12 +68,15 @@ get '/sign-out/?' do
 end
 
 get '/profile/?' do
+  auth_slicker
   @user = User.get(session[:user])
   @confirmations = @user.confirmations
   deliver 'profile'
 end
 
 post '/profile/?' do
+  auth_slicker
+  
   params[:email].strip!
   params[:email].downcase!
   params[:password].strip!
@@ -135,7 +138,7 @@ get '/optedin/?' do
   user = User.get(session[:user])
   unless user.optin?
     mobile = User.get(session[:user]).mobile
-    "<p><span style='background-color: lightyellow;'>Now text <strong>DEALS</strong> to <strong>(415) 599-2671</strong> from <em>#{Phoner::Phone.parse(mobile, :country_code => '1').format(:us)}</em> to finish the process.</span></p>"
+    "<p><span style='background-color: lightyellow;'>Now text <strong>DEALS</strong> to <strong>(408) 514-5609</strong> from <em>#{Phoner::Phone.parse(mobile, :country_code => '1').format(:us)}</em> to finish the process.</span></p>"
   else
     "<script type='text/javascript' charset='utf-8'>window.location = '/profile';</script>"
   end
