@@ -8,7 +8,6 @@ html {
 }
 
 p#flash {
-	width: 762px;
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
@@ -80,6 +79,9 @@ div#menu {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#000));
 	text-align: center;
 	line-height: 100%;
+	-webkit-box-shadow: 1px 1px 3px #777;
+	-moz-box-shadow: 1px 1px 3px #777;
+	
 }
 
 div#menu a { padding: 22px 7px 15px 7px; }
@@ -171,7 +173,7 @@ a#right-arrow { right: 50%; margin-right: -356px; }
 div#other-deals {
 	position: absolute;
 	text-align: center;
-	top: 375px;
+	margin-top: 288px;
 	width: 780px;
 }
 
