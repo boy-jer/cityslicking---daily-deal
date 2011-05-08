@@ -50,19 +50,19 @@
 	</p>
 	
 	<p>
-		<input type="radio" name="account_type" id="existing" value="existing" checked  /> I have an account.
+		<input type="radio" name="account_type" id="new" value="new" checked /> I'm new!
 		<br />
-		<input type="radio" name="account_type" id="new" value="new" <%= "checked" if params[:account_type] == "new" %>  /> I'm new!
+		<input type="radio" name="account_type" id="existing" value="existing" <%= "checked" if params[:account_type] == "existing" %>  /> I have an account.
 		<br />
 		<input type="radio" name="account_type" id="merchant" value="merchant" <%= "checked" if params[:account_type] == "merchant" %> /> I'm a merchant.
 	</p>
 	
 	<p>
 		<label for="password">Password</label>
-		<input type="password" class="textfield" id="password" name="password" value="cityslicking" />
+		<input type="password" class="textfield" id="password" name="password" value="<%= params[:password] %>" />
 	</p>
 	
-	<p id="zip_paragraph" <%= 'style="display: none;"' unless params[:account_type] == "new" %>>
+	<p id="zip_paragraph" <%= 'style="display: none;"' unless params[:account_type] == "new" || params[:account_type].nil? %>>
 		<label for="zip">Zip code</label>
 		<input type="zip" class="textfield" id="zip" name="zip" value="<%= params[:zip] %>" />
 	</p>
