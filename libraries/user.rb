@@ -16,6 +16,7 @@ post '/sign-in/?' do
   params[:email].downcase!
   params[:password].strip!
   params[:password].downcase!
+  params[:zip].strip!
   
   if params[:account_type] == 'new'
     unless params[:email].length == 0 || params[:password].length == 0 || params[:zip].length == 0
@@ -23,7 +24,7 @@ post '/sign-in/?' do
         errors = errors + 1
         msgs << "Email address is already in use. Try again.<br />"
       else
-        user = User.new(:email => params[:email], :password => params[:password])
+        user = User.new(:email => params[:email], :password => params[:password], :zip => params[:zip])
         if user.save
           Pony.mail(:via => :smtp, :via_options => settings.mail_server,
             :to => params[:email],
