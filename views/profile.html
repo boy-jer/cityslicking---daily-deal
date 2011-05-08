@@ -34,6 +34,11 @@
 		</p>
 	</form>
 	
+	<% if @user.subscriber? %>
+		<h2>Daily Deals</h2>
+		<p>You've subscribed to our Daily Deals newsletter. <a href="/unsubscribe">You can unsubscribe here.</a></p>
+	<% end %>
+	
 	<h2>Mobile Deals</h2>
 
 	<% if !@user.optin? && !@user.mobile %>

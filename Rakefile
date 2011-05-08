@@ -35,7 +35,21 @@
   
 # Handles data
   
-  namespace :database do
+  namespace :db do
+    
+    
+  # Non-destructive
+    
+    desc 'Auto upgrades the database'
+    task :upgrade do
+      require 'bundler'
+      Bundler.require
+      Encoding.default_external = 'utf-8'
+      Dir.glob File.dirname(__FILE__) + '/libraries/*.rb', &method(:require)
+      DataMapper.finalize
+      DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data/development.sqlite3")
+      DataMapper.auto_upgrade!
+    end
     
     
   # Destructive

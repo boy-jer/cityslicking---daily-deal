@@ -108,6 +108,22 @@ post '/profile/?' do
   redirect '/profile'
 end
 
+get '/subscribe/?' do
+  auth_slicker
+  user = User.get(session[:user])
+  user.update(:subscriber => true)
+  session[:flash] = 'You are now subscribed to the Daily Deals newsletter.'
+  redirect request.referrer
+end
+
+get '/unsubscribe/?' do
+  auth_slicker
+  user = User.get(session[:user])
+  user.update(:subscriber => false)
+  session[:flash] = 'You have unsubscribed to the Daily Deals newsletter.'
+  redirect request.referrer
+end 
+
 post '/verify/?' do
   mobile = Phoner::Phone.parse params[:mobile], :country_code => '1'
   user = User.get(session[:user])
@@ -165,6 +181,8 @@ class User
   
   property :optin,      Boolean, :default => false
   property :optin_msg,  String
+  
+  property :subscriber, Boolean, :default => false
   
   property :admin,      Boolean, :default => false
   

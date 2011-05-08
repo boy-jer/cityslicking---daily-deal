@@ -64,7 +64,9 @@
 			<div class="box">
 				<h1>DAILY DEALS</h1>
 				<p>Never miss another deal! Our latest savings can be delivered right to your inbox every morning with our Daily Deals newsletter.</p>
-				<p style="text-align: center;"><img src="/images/subscribe.png" style="float: none;"></p>
+				<p style="text-align: center;">
+						<a href="/subscribe" <%= 'class="sign-in"' unless session[:user] %>><img src="/images/subscribe.png" style="float: none;"></a>
+				</p>
 			</div>
 
 			<div class="box">
