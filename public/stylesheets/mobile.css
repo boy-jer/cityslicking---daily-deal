@@ -66,6 +66,10 @@ div#cities { right: 11px; }
 
 div#other-cities a { width: 120px; }
 
+span#comingsoon {
+	width: 126px;
+}
+
 a#current-city {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#444));
 	width: 120px;

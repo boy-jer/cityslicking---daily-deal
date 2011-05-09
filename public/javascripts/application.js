@@ -129,6 +129,13 @@ jQuery(function()
 		return false;
 	});
 	
+	$('#next-city-link').click(function()
+	{
+		$('#other-cities').toggle("blind");
+		lightbox('/next-city');
+		return false;
+	});
+	
 	if ($('#finish-verification').length)
 	{
 		$.PeriodicalUpdater(

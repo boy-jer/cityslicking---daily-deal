@@ -14,6 +14,20 @@ get '/cities/:short_name/?' do
   redirect request.referrer
 end
 
+get '/next-city/?' do
+  deliver 'next-city', :layout => false
+end
+
+post '/next-city/?' do
+  Pony.mail(:via => :smtp, :via_options => settings.mail_server,
+    :to => 'suggestions@city-slicking.com',
+    :subject => 'City suggestion',
+    :body => params[:city]
+  )
+  session[:flash] = 'Thanks for the suggestion!'
+  '<script type="text/javascript" charset="utf-8">window.location = "' + request.referrer + '"</script>'
+end
+
 
 class City  
   include DataMapper::Resource

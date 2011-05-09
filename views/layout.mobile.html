@@ -27,6 +27,16 @@
 				<% City.all(:order => :name).each do |city| %>
 					<a class="other-city" href="/cities/<%= city.short_name %>"><%= city.name %></a>
 				<% end %>
+				<a class="other-city" href="#" id="next-city-link">Where should<br />we go next?</a>
+				<span id="comingsoon">
+					<h2>Coming Soon</h2>
+					San Francisco/Bay Area<br />
+					L.A. Area<br />
+					San Diego<br />
+					Oakland/East Bay<br />
+					Fresno<br />
+					Bakersfield
+				</span>
 			</div>
 			<a id="current-city" href="#"><%= session[:city_name] %></a>
 		</div>
