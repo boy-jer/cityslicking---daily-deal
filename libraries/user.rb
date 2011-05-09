@@ -174,6 +174,66 @@ get '/stop-sending-me-sms/?' do
 end
 
 
+get '/admin/users/?' do
+  auth_admin
+  @users = User.all
+  deliver 'admin/users/index'
+end
+
+get '/admin/users/edit/:id/?' do
+  auth_admin
+  @user = User.get(params[:id])
+  @confirmations = @user.confirmations
+  deliver 'admin/users/user'
+end
+
+post '/admin/users/edit/:id/?' do
+  auth_admin
+  
+  params[:email].strip!
+  params[:email].downcase!
+  params[:password].strip!
+  params[:password].downcase!
+  params[:zip].strip!
+  params[:age].strip!
+  
+  if params[:email].length == 0 || params[:password].length == 0
+    session[:flash] = 'You must provide both and email and a password to update.'
+    redirect '/admin/users/edit/' + params[:id]
+  end
+  
+  user = User.get(params[:id])
+  
+  unless params[:email] == user.email
+    if User.all(:email => params[:email]).count > 0
+      session[:flash] = 'Email address is already in use. Try again.'
+      redirect '/admin/users/edit/' + params[:id]
+    end
+  end
+  
+  params[:gender] = 'unknown' unless params[:gender]
+  
+  user.update(
+    :email    => params[:email],
+    :password => params[:password],
+    :zip      => params[:zip],
+    :age      => params[:age],
+    :gender   => params[:gender]
+  )
+  session[:flash] = 'User account details have been updated.'
+  redirect '/admin/users/edit/' + params[:id]
+  
+end
+
+get '/admin/users/delete/:id/?' do
+  auth_admin
+  user = User.get(params[:id])
+  user.destroy
+  session[:flash] = 'User removed.'
+  redirect '/admin/users'
+end
+
+
 class User
   include DataMapper::Resource
   

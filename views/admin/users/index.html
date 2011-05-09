@@ -1,0 +1,15 @@
+<div class="doc">
+
+	<h1>Users</h1>
+	<hr />
+	<table width="100%">
+	<% @users.each do |user| %>
+	<tr>
+		<td><a href="/admin/users/edit/<%= user.id %>">Edit</a></td>
+		<td><%= user.email %></td>
+		<td><%= 'admin' if user.admin? %></td>
+	</tr>
+	<% end %>
+	</table>
+	
+</div>

@@ -1,0 +1,55 @@
+<div class="doc">
+	
+	<h1>Edit User</h1>
+
+	<p><a href="/admin/users">&larr; Back to list</a></p>
+
+	<h2>Account Details</h2>
+	
+	<form method="post" id="account-details">
+		<p>
+			<label for="email">Email address</label>
+			<input type="text" class="textfield" name="email" id="email" value="<%= @user.email %>" />
+		</p>
+		
+		<p>
+			<label for="password">Password</label>
+			<input type="password" class="textfield" name="password" id="password" value="<%= @user.password %>" />
+		</p>
+		
+		<p>
+			<label for="zip">Zip code</label>
+			<input type="text" class="textfield" name="zip" id="zip" value="<%= @user.zip %>" />
+		</p>
+		
+		<p>
+			<label for="age">Age</label>
+			<input type="text" class="textfield" name="age" id="age" value="<%= @user.age %>" />
+		</p>
+		
+		<p>
+			<input type="radio" name="gender" value="male" <%= 'checked' if @user.gender == 'male' %>> Male
+			&nbsp;
+			<input type="radio" name="gender" value="female" <%= 'checked' if @user.gender == 'female' %>> Female
+		</p>
+		
+		<p>
+			<input type="submit" value="Update Account Details" />
+			or <a href="/admin/users/delete/<%= @user.id %>">remove</a>
+		</p>
+	</form>
+			
+	<% if @confirmations.count > 0 %>
+	
+		<h2>Deal History</h2>
+	
+		<% @confirmations.each do |confirmation| %>
+		<p>
+			<strong><%= confirmation.deal.title %></strong>
+			<em><%= format_date confirmation.created_at %></em>
+		</p>
+		<% end %>
+
+	<% end %>
+	
+</div>
