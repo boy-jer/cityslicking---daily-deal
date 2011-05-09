@@ -5,14 +5,23 @@ get '/save/deal/:id/?' do
 end
 
 get '/share/deal/:id/?' do
-  @deal = Deal.get(params[:id])
   deliver 'share', :layout => false
+end
+
+post '/share/deal/:id/?' do
+  Pony.mail(:via => :smtp, :via_options => settings.mail_server,
+    :to      => params[:email],
+    :subject => 'CitySlicking Deal',
+    :body    => "Check out this new deal on City-Slicking: http://city-slicking.com/deals/" + params[:id]
+  )  
+  session[:flash] = "Thanks for sharing."
+  '<script type="text/javascript" charset="utf-8">window.location = "/deals/' + params[:id] + '"</script>'
 end
 
 post '/save/phone/:id/?' do
   @deal = Deal.get(params[:id])
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web')
-  session[:flash] = "#{@deal.code}"
+  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
   deliver 'share', :layout => false
 end
 

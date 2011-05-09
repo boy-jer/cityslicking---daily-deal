@@ -1,5 +1,19 @@
 <%= flash %>
 
-<h1>Share this deal</h1>
+<h1>Share the deal</h1>
 
-<p>Sharing widgets go here!</p>
+<p>
+	Help us spread the word.
+</p>
+
+<p>
+	<a style="display: inline;" href="http://twitter.com/share" class="twitter-share-button" data-url="http://city-slicking.com/deals/<%= params[:id] %>" data-text="Check out this new deal on City-Slicking!" data-count="none" data-via="cityslicking">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcity-slicking.com%2Fdeals%2F<%= params[:id] %>&amp;send=true&amp;layout=button_count&amp;width=93&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:93px; height:20px; display: inline;" allowTransparency="true"></iframe>
+</p>
+
+<form method="post" action="/share/deal/<%= params[:id] %>">
+	<p><input type="text" class="textfield" name="email" id="email" placeholder="Friend's email address" /></p>
+	<p><input type="submit" value="Send email" /></p>
+</form>
+
