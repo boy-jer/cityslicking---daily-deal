@@ -29,7 +29,7 @@ post '/sign-in/?' do
           Pony.mail(:via => :smtp, :via_options => settings.mail_server,
             :to => params[:email],
             :subject => 'Welcome to City Slicking',
-            :body => 'Welcome to City Slicking. <instructions go here>'
+            :body => "Hey, congrats! You've just left Slackerville and you're headed for some serious Slick Deals. From now on, you'll be getting daily deal options from the gang at City-Slicking.com. We've negotiated hard and twisted arms to bring you really great local bargains. Look for our emails and of course, check out all the action @ City-Slicking.com anytime! And hey, tell your friends, tell your family, heck, tell the world!! Slickers Rule, Slackers Drool!"            
           )
           session[:user] = user.id
         else
