@@ -32,7 +32,10 @@ post '/save/email/:id/?' do
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to      => @user.email,
     :subject => 'CitySlicking Deal',
-    :body    => "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
+    :body    =>
+"#{@deal.code}
+
+Congratulations, Slicker!  Here's your special deal code.  Be sure to check out the deal so you know the when's and where's and if there's any instructions.  Basically, just show this code to the merchant and enjoy!"
   )
   session[:flash] = "<p>Check your inbox!</p>"
   deliver 'share', :layout => false
