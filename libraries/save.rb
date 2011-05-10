@@ -12,7 +12,7 @@ post '/share/deal/:id/?' do
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to      => params[:email],
     :subject => 'CitySlicking Deal',
-    :body    => "Check out this new deal on City-Slicking: http://city-slicking.com/deals/" + params[:id]
+    :body    => "You won't believe the deal I just got!  I'm dancing, I'm singing, I'm laughing out loud - well, at least I feel like it.  Anyway, I thought I'd share it with you too.  Check it out at http://city-slicking.com/deals/" + params[:id]
   )  
   session[:flash] = "Thanks for sharing."
   '<script type="text/javascript" charset="utf-8">window.location = "/deals/' + params[:id] + '"</script>'
