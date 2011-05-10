@@ -52,6 +52,15 @@ post '/sign-in/?' do
     end
   end
   
+  if params[:account_type] == 'merchant'
+    if merchant = Merchant.first(:id => params[:email], :password => params[:password])
+      session[:merchant] = merchant.id
+    else
+      errors = errors + 1
+      msgs << 'Merchant ID/password combo is incorrect. Try again.<br />'
+    end
+  end
+  
   if errors > 0
     session[:flash] = msgs
     deliver 'sign-in', :layout => false
@@ -59,6 +68,8 @@ post '/sign-in/?' do
     if params[:account_type] == 'new'
       session[:flash] = 'Welcome to City Slicking! From here you can fill out your profile, check your deal history and sign up for SMS deals.'
       '<script type="text/javascript" charset="utf-8">window.location = "/profile"</script>'
+    elsif params[:account_type] == 'merchant'
+      '<script type="text/javascript" charset="utf-8">window.location = "/merchants/stats"</script>'
     else
       session[:flash] = 'Welcome to City Slicking!'
       '<script type="text/javascript" charset="utf-8">window.location = "' + request.referrer + '"</script>'
@@ -68,8 +79,9 @@ post '/sign-in/?' do
 end
 
 get '/sign-out/?' do
-  session[:user] = nil
-  session[:flash] = 'You are now signed out.'
+  session[:user]      = nil
+  session[:merchant]  = nil if session[:merchant]
+  session[:flash]     = 'You are now signed out.'
   redirect '/home'
 end
 

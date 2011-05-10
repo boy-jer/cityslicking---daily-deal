@@ -1,0 +1,18 @@
+<div class="doc">
+	
+	<h1><%= @merchant.name %></h1>
+	
+  <% @merchant.deals.each do |deal| %>
+	<p>
+		<strong><%= deal.title %></strong> &nbsp;
+		<em><%= format_day deal.publish_date %> - <%= format_day deal.expiration_date %></em><br />
+		<em><%= deal.confirmations.count %> uses to date</em><br />
+		<% if deal.active? %>
+			Actived on <%= format_day deal.date_activated %><br />
+			Authorized on <%= format_day deal.preview_authorized_date %> by <%= deal.preview_authorized_by %><br />
+		<% end %>
+		<a href="/deals/<%= deal.id %>">View this deal</a>
+	</p>
+	<% end %>
+
+</div>

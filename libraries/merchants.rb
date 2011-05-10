@@ -1,3 +1,9 @@
+get '/merchants/stats/?' do
+  auth_merchant
+  @merchant = Merchant.get(session[:merchant])
+  deliver 'admin/merchant-stats'
+end
+
 get '/admin/merchants/?' do
   auth_admin
   @merchants = Merchant.all(:order => :name)
@@ -12,6 +18,7 @@ end
 post '/admin/merchants/new/?' do
   auth_admin
   Merchant.create(
+    :password         => params[:password],
     :name             => params[:name],
     :owner            => params[:owner],
     :manager          => params[:manager],
@@ -44,6 +51,7 @@ post '/admin/merchants/edit/:id/?' do
   auth_admin
   merchant = Merchant.get(params[:id])
   merchant.update(
+    :password         => params[:password],
     :name             => params[:name],
     :owner            => params[:owner],
     :manager          => params[:manager],
@@ -78,29 +86,31 @@ end
 class Merchant
   include DataMapper::Resource
   
-  property    :id,          Serial
-  property    :deleted_at,  ParanoidDateTime
+  property    :id,                Serial
+  property    :deleted_at,        ParanoidDateTime
   timestamps  :at
   
-  property  :name,              String
-  property  :owner,             String
-  property  :manager,           String
-  property  :email,             String
-  property  :site,              String
-  property  :type_of_business,  String
-  property  :phone1,            String
-  property  :phone2,            String
-  property  :phone3,            String
+  property    :password,          String
   
-  property :physical_street, String
-  property :physical_city,   String
-  property :physical_state,  String
-  property :physical_zip,    String
+  property    :name,              String
+  property    :owner,             String
+  property    :manager,           String
+  property    :email,             String
+  property    :site,              String
+  property    :type_of_business,  String
+  property    :phone1,            String
+  property    :phone2,            String
+  property    :phone3,            String
+  
+  property    :physical_street,   String
+  property    :physical_city,     String
+  property    :physical_state,    String
+  property    :physical_zip,      String
 
-  property :mailing_street, String
-  property :mailing_city,   String
-  property :mailing_state,  String
-  property :mailing_zip,    String
+  property    :mailing_street,    String
+  property    :mailing_city,      String
+  property    :mailing_state,     String
+  property    :mailing_zip,       String
   
   has n, :deals
   

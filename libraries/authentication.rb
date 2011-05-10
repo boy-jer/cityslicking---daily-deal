@@ -29,4 +29,14 @@
     end
     
     
+  # Must be a merchant
+  
+    def auth_merchant
+      unless session[:merchant]
+        session[:flash] = 'You must be signed in as a merchant to see that page.'
+        redirect '/home'
+      end
+    end
+    
+    
   end

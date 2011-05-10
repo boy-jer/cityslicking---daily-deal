@@ -62,6 +62,11 @@
 		</p>
 		
 		<p>
+			<label for="password">Password<%= " (ID: #{@merchant.id})" if @merchant.id %></label>
+			<input type="text" class="textfield" name="password" id="password" value="<%= @merchant.password %>" />
+		</p>
+		
+		<p>
 			<input type="submit" value="Save" />
 			<% if @merchant.id %>
 				or <a href="/admin/merchants/delete/<%= @merchant.id %>">remove</a>
