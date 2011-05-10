@@ -54,6 +54,13 @@ post '/save/sms/:id/?' do
 end
 
 
+get '/admin/deals/uses/:id/?' do
+  auth_admin
+  @deal = Deal.get(params[:id])
+  deliver 'admin/deals/uses'
+end
+
+
 class Confirmation
   include DataMapper::Resource
   

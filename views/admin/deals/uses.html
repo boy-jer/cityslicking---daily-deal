@@ -1,0 +1,31 @@
+<div class="doc">
+		
+	<h1><%= @deal.title %></h1>
+	<h2><%= @deal.merchant.name %></h2>
+	
+	<p><a href="/admin/deals">&larr; Back to deals</a></p>
+
+	<% if @deal.confirmations.count > 0 %>
+
+		<table width="100%">
+			<tr>
+				<th style="text-align: left;">Date</th>
+				<th style="text-align: left;">Method</th>
+				<th style="text-align: left;">User</th>
+			</tr>
+			<% @deal.confirmations.each do |confirmation| %>
+			<tr>
+				<td><%= format_day confirmation.updated_at %></td>
+				<td><%= confirmation.method %></td>
+				<td><%= confirmation.user.email %></td>
+			</tr>
+			<% end %>
+		</table>
+
+	<% else %>
+	
+	<p>No uses to date.</p>
+
+	<% end %>
+	
+</div>
