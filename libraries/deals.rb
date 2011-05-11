@@ -67,26 +67,53 @@ post '/admin/deals/new/?' do
   
   File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
   
-  deal.locations.create(
-    :street => params[:street1],
-    :city   => params[:city1],
-    :state  => params[:state1],
-    :zip    => params[:zip1]
-  ) if params[:street1].strip.length > 0
+  if params[:street1].strip.length > 0
+    street = params[:street1]
+    city   = params[:city1]
+    state  = params[:state1]
+    zip    = params[:zip1]
+    coords = Geocode.get_coords_from_addr(street, city, state)
+    deal.locations.create(
+      :street => street,
+      :city   => city,
+      :state  => state,
+      :zip    => zip,
+      :lat    => coords[:lat],
+      :long   => coords[:long]
+    )
+  end
   
-  deal.locations.create(
-    :street => params[:street2],
-    :city   => params[:city2],
-    :state  => params[:state2],
-    :zip    => params[:zip2]
-  ) if params[:street2].strip.length > 0
+  if params[:street2].strip.length > 0
+    street = params[:street2]
+    city   = params[:city2]
+    state  = params[:state2]
+    zip    = params[:zip2]
+    coords = Geocode.get_coords_from_addr(street, city, state)
+    deal.locations.create(
+      :street => street,
+      :city   => city,
+      :state  => state,
+      :zip    => zip,
+      :lat    => coords[:lat],
+      :long   => coords[:long]
+    )
+  end
   
-  deal.locations.create(
-    :street => params[:street3],
-    :city   => params[:city3],
-    :state  => params[:state3],
-    :zip    => params[:zip3]
-  ) if params[:street3].strip.length > 0
+  if params[:street3].strip.length > 0
+    street = params[:street3]
+    city   = params[:city3]
+    state  = params[:state3]
+    zip    = params[:zip3]
+    coords = Geocode.get_coords_from_addr(street, city, state)
+    deal.locations.create(
+      :street => street,
+      :city   => city,
+      :state  => state,
+      :zip    => zip,
+      :lat    => coords[:lat],
+      :long   => coords[:long]
+    )
+  end
     
   params[:cities].each do |c|
     deal.city_deals.create(:city_id => c.first)
@@ -144,27 +171,54 @@ post '/admin/deals/edit/:id/?' do
   File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
   
   deal.locations.all.destroy
+    
+  if params[:street1].strip.length > 0
+    street = params[:street1]
+    city   = params[:city1]
+    state  = params[:state1]
+    zip    = params[:zip1]
+    coords = Geocode.get_coords_from_addr(street, city, state)
+    deal.locations.create(
+      :street => street,
+      :city   => city,
+      :state  => state,
+      :zip    => zip,
+      :lat    => coords[:lat],
+      :long   => coords[:long]
+    )
+  end
   
-  deal.locations.create(
-    :street => params[:street1],
-    :city   => params[:city1],
-    :state  => params[:state1],
-    :zip    => params[:zip1]
-  ) if params[:street1].strip.length > 0
+  if params[:street2].strip.length > 0
+    street = params[:street2]
+    city   = params[:city2]
+    state  = params[:state2]
+    zip    = params[:zip2]
+    coords = Geocode.get_coords_from_addr(street, city, state)
+    deal.locations.create(
+      :street => street,
+      :city   => city,
+      :state  => state,
+      :zip    => zip,
+      :lat    => coords[:lat],
+      :long   => coords[:long]
+    )
+  end
   
-  deal.locations.create(
-    :street => params[:street2],
-    :city   => params[:city2],
-    :state  => params[:state2],
-    :zip    => params[:zip2]
-  ) if params[:street2].strip.length > 0
-  
-  deal.locations.create(
-    :street => params[:street3],
-    :city   => params[:city3],
-    :state  => params[:state3],
-    :zip    => params[:zip3]
-  ) if params[:street3].strip.length > 0
+  if params[:street3].strip.length > 0
+    street = params[:street3]
+    city   = params[:city3]
+    state  = params[:state3]
+    zip    = params[:zip3]
+    coords = Geocode.get_coords_from_addr(street, city, state)
+    deal.locations.create(
+      :street => street,
+      :city   => city,
+      :state  => state,
+      :zip    => zip,
+      :lat    => coords[:lat],
+      :long   => coords[:long]
+    )
+  end
   
   deal.save
   
@@ -251,6 +305,9 @@ class Location
   property :state,  String
   property :zip,    String
   
-  belongs_to :deal
+  property :lat,    String
+  property :long,   String
   
+  belongs_to :deal
+    
 end

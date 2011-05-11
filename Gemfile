@@ -1,7 +1,7 @@
 # Look here to download gems
   
   source 'http://rubygems.org'
-
+  
 
 # Use the Sinatra framework
   
@@ -49,3 +49,10 @@
 
   gem 'twiliolib'
   gem 'phone', '>= 1.0'
+
+
+# Used for parsing Google Maps API responses
+
+  require 'cgi'
+  require 'net/http'
+  gem 'json'

@@ -67,7 +67,7 @@ tahoe_joe = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => san_jose}, {:city => modesto}, {:city => stockton}, {:city => sacramento}],
       :locations => [
-        {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356'}
+        {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356', :lat => '37.7022620', :long => '-121.0671580'}
       ]
     },
     {
@@ -88,7 +88,7 @@ tahoe_joe = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => lodi}, {:city => elk_grove}, {:city => turlock}],
       :locations => [
-        {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356'}
+        {:street => '3801 Pelandale Ave', :city => 'Modesto', :state => 'CA', :zip => '95356', :lat => '37.7022620', :long => '-121.0671580'}
       ]
     }
   ]
@@ -132,7 +132,7 @@ trader_vic = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => modesto}, {:city => stockton}, {:city => lodi}, {:city => sacramento}],
       :locations => [
-        {:street => '626 S. Racine Ave.', :city => 'San Jose', :state => 'CA', :zip => '87654'}
+        {:street => '626 S. Racine Ave.', :city => 'San Jose', :state => 'CA', :zip => '87654', :lat => '37.2923184', :long => '-121.8422625'}
       ]
     },
     {
@@ -153,7 +153,7 @@ trader_vic = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => elk_grove}, {:city => turlock}, {:city => san_jose}],
       :locations => [
-        {:street => '626 S. Racine Ave.', :city => 'San Jose', :state => 'CA', :zip => '87654'}
+        {:street => '626 S. Racine Ave.', :city => 'San Jose', :state => 'CA', :zip => '87654', :lat => '37.2923184', :long => '-121.8422625'}
       ]
     }
   ]
@@ -197,7 +197,7 @@ starlight = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => turlock}, {:city => san_jose}, {:city => modesto}],
       :locations => [
-        {:street => '1629 N. Halsted', :city => 'Lodi', :state => 'CA', :zip => '76543'}
+        {:street => '1629 N. Halsted', :city => 'Lodi', :state => 'CA', :zip => '76543', :lat => '38.1301968', :long => '-121.2724473'}
       ]
     },
     {
@@ -218,7 +218,7 @@ starlight = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => stockton}, {:city => lodi}, {:city => elk_grove}, {:city => sacramento}],
       :locations => [
-        {:street => '1629 N. Halsted', :city => 'Lodi', :state => 'CA', :zip => '76543'}
+        {:street => '1629 N. Halsted', :city => 'Lodi', :state => 'CA', :zip => '76543', :lat => '38.1301968', :long => '-121.2724473'}
       ]
     }
   ]
@@ -262,8 +262,8 @@ threadless = Merchant.create(
       :max_returns              => 5,
       :city_deals => [{:city => san_jose}, {:city => stockton}, {:city => modesto}, {:city => lodi}, {:city => elk_grove}, {:city => turlock}, {:city => sacramento}],
       :locations => [
-        {:street => '3011 N. Broadway St.', :city => 'San Francisco', :state => 'CA', :zip => '54321'},
-        {:street => '1905 W. Division St.', :city => 'San Francisco', :state => 'CA', :zip => '54321'}
+        {:street => '3011 N. Broadway St.', :city => 'San Francisco', :state => 'CA', :zip => '54321', :lat => '37.7928060', :long => '-122.4463628'},
+        {:street => '1905 W. Division St.', :city => 'San Francisco', :state => 'CA', :zip => '54321', :lat => '37.7692101', :long => '-122.4077936'}
       ]
     }
   ]
