@@ -4,7 +4,11 @@ get '/home/?' do
 end
 
 get '/deals/?' do
-  @deals = City.get(session[:city_id]).deals(:order => :expiration_date.asc, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
+  if params[:find] && params[:find].length > 0
+    @deals = Deal.search(session[:city_id], params[:find])
+  else
+    @deals = Deal.live(session[:city_id])
+  end
   deliver 'deals'
 end
 
@@ -217,6 +221,14 @@ class Deal
   
   has n, :confirmations
   has n, :users, :through => :confirmations
+  
+  def self.live(city)
+    City.get(city).deals(:order => :expiration_date.asc, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
+  end
+  
+  def self.search(city, query)
+    self.live(city).all(:title.like => "%#{query}%")
+  end
   
 end
 

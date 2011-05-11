@@ -24,7 +24,7 @@ label {
 	font-size: 90%;
 }
 
-input.textfield {
+input.textfield, input.searchfield {
 	-webkit-appearance: none;
 	width: 400px;
 	border: 1px solid #ddd;
@@ -33,12 +33,19 @@ input.textfield {
 	font-size: 16px;
 }
 
-input.textfield:focus {
+input.textfield:focus, input.searchfield:focus {
 	outline: none;
 	background-color: lightyellow;
 	border: 1px solid #999;
 }
 
+input.searchfield {
+	width: 500px;
+}
+
+input.searchfield:focus {
+	background-color: mintcream;
+}
 
 textarea {
 	-webkit-appearance: none;
@@ -113,11 +120,22 @@ div#features div#featured-deals div.deal {
 	overflow: auto;
 }
 
+div.doc div.deal {
+	border-top: 1px solid #dedede;
+	clear: both;
+	padding: 11px;
+	overflow: auto;
+}
+
 img.deal-pic { float: left; }
 
 div.specs {
 	float: right;
 	width: 298px;
+}
+
+div.doc div.deal div.specs {
+	width: 380px;
 }
 
 div.specs h1 {
@@ -227,30 +245,38 @@ div.doc h1 {
 	font-size: 36px;
 }
 
-div.deal-listing {
+a.deal-listing {
 	border-top: 1px solid #dedede;
 	clear: both;
-	padding: 11px 0;
+	padding: 11px 11px 0 11px;
+	overflow: auto;
+	display: block;
+	text-decoration: none;
+	color: black;
 }
 
-div.deal-listing p.expiration {
+a.deal-listing:hover {
+	background-color: #DEF0FB;
+}
+
+a.deal-listing p.expiration {
 	float: right;
 }
 
-div.deal-listing img {
+a.deal-listing img {
 	float: left;
 	height: 60px;
 	margin-right: 11px;
 	margin-bottom: 11px;
 }
 
-div.deal-listing h2 {
+a.deal-listing h2 {
 	margin-top: 0;
 	padding-top: 0;
 	margin-bottom: 0;
 }
 
-div.deal-listing p.legalese {
+a.deal-listing p.legalese {
 	margin: 0;
 }
 

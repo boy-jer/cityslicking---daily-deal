@@ -147,4 +147,18 @@ jQuery(function()
 		});
 	}
 	
+	$('.deal-listing').click(function()
+	{
+		$(this).slideUp(100);
+		$(this).next().slideDown(100);
+		return false;
+	});
+
+	$('.doc .deal').mouseleave(function()
+	{
+		$(this).delay(100).slideUp(100);
+		$(this).prev().delay(100).slideDown(100);
+		return false;
+	});
+		
 });
