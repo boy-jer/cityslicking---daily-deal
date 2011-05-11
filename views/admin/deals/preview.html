@@ -3,7 +3,7 @@
 	/
 	<a href="/admin/deals">I'm done</a>
 	<br />
-	Email an image to 49e5ff1f980d07ce77d9@cloudmailin.net with the subject line <%= params[:id] %> to set the image.
+	To set the image via email: <a href="mailto:49e5ff1f980d07ce77d9@cloudmailin.net">49e5ff1f980d07ce77d9@cloudmailin.net</a> with the subject line <%= params[:id] %>
 </p>
 
 <%= deliver 'deal', :layout => false %>
