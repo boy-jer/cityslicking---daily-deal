@@ -38,6 +38,11 @@
 # Use Pony and Gmail for email
 
   gem 'pony'
+  
+  
+# Use Mail for parsing incoming email
+
+  gem 'mail'
 
 
 # Use Twilio SMS

@@ -177,6 +177,13 @@ post '/admin/deals/edit/:id/?' do
   redirect "admin/deals/preview/#{deal.id}"
 end
 
+post '/deal-images/?' do
+  # 49e5ff1f980d07ce77d9@cloudmailin.net
+  mail = Mail.new(params[:mail])
+  
+  File.open("public/images/deals/#{mail.subject}.jpg", 'wb') {|f| f.write(mail.attachments.first.decoded) } if mail.attachments
+end
+
 get '/admin/deals/delete/:id/?' do
   auth_admin
   deal = Deal.get(params[:id])
