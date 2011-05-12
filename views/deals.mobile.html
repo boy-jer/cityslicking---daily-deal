@@ -10,17 +10,12 @@
 	</form>
 	<% @deals.each do |deal| %>
 	
-		<a class="deal-listing" id="<%= deal.id %>" href="#">
-			<p class="expiration">Expires <%= format_day deal.expiration_date %></p>
-			<img src="/images/deals/<%= deal.id %>.jpg" />
-			<h2 style="color: #800; width: 500px;"><%= deal.title %></h2>
+		<a class="deal-listing-mobile" href="/deals/<%= deal.id %>">
+			<h2><%= deal.title %></h2>
 			<p class="legalese"><%= deal.legalese %></p>
+			<p class="expiration">Expires <%= format_day deal.expiration_date %></p>
 		</a>
-		
-		<div class="deal" id="details-<%= deal.id %>" style="display: none;">
-			<%= deliver 'feature', :layout => false, :locals => {:deal => deal} %>
-		</div>
-		
+				
 	<% end %>
 	
 	<% if @deals.count == 0 %>

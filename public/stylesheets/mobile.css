@@ -25,7 +25,7 @@ label {
 	font-size: 90%;
 }
 
-input.textfield {
+input.textfield, input.searchfield {
 	-webkit-appearance: none;
 	width: 247px;
 	border: 1px solid #ddd;
@@ -34,12 +34,19 @@ input.textfield {
 	font-size: 16px;
 }
 
-input.textfield:focus {
+input.textfield:focus, input.searchfield:focus {
 	outline: none;
 	background-color: lightyellow;
 	border: 1px solid #999;
 }
 
+input.searchfield {
+	width: 96%;
+}
+
+input.searchfield:focus {
+	background-color: mintcream;
+}
 
 textarea {
 	-webkit-appearance: none;
@@ -161,29 +168,30 @@ div.doc h1, div#explainations h2 {
 	text-align: center;
 }
 
-div.deal-listing {
+a.deal-listing-mobile {
 	border-top: 1px solid #dedede;
 	clear: both;
 	padding: 11px 0;
+	color: black;
+	overflow: auto;
+	display: block;
+	text-decoration: none;
 }
 
-div.deal-listing p.expiration {
-	float: right;
-}
-
-div.deal-listing img {
-	display: none;
-}
-
-div.deal-listing h2 {
+a.deal-listing-mobile p {
 	margin-top: 0;
-	padding-top: 0;
 	margin-bottom: 0;
-	font-size: 16px;
 }
 
-div.deal-listing p.legalese {
+a.deal-listing-mobile p.expiration {
+	font-style: italic;
+	font-size: 90%;
+}
+
+a.deal-listing-mobile h2 {
 	margin: 0;
+	font-size: 16px;
+	color: #800;
 }
 
 div.person {
