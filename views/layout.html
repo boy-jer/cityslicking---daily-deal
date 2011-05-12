@@ -111,6 +111,10 @@
 			<a href="/contact-us">Contact</a>
 			/
 			<a href="/admin">Admin</a>
+			<% if session[:user] || session[:merchant] %>
+			/
+			<a href="/sign-out">Sign Out</a>
+			<% end %>
 			<br />
 			&copy; Copyright 2011 City Slicking, LLC. All rights reserved.
 		</p>
