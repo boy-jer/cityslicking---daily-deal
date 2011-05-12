@@ -3,7 +3,7 @@
 <img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" />
 
 <p class="buttons">
-	<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+	<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-mobile"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 	<br />
 	<a href="<%= deal.id %>" class="pill tell-a-friend" id="tell-a-friend">Tell a Friend</a>
 	<a href="/deals/<%= deal.id %>" class="pill" id="see-details">See Details</a>

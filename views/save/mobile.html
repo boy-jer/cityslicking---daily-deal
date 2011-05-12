@@ -1,0 +1,64 @@
+<script type="text/javascript" charset="utf-8">
+	jQuery(function()
+	{
+		
+		function difference(num1, num2) { return (num1 > num2)? num1-num2 : num2-num1 }
+		
+		$('#smartphone').click(function()
+		{
+			var deal = $(this).attr('href');
+			navigator.geolocation.getCurrentPosition(gps_enabled, noLocation, {enableHighAccuracy:true,maximumAge:300000});
+			return false;
+		});
+		
+		function gps_enabled(position)
+		{
+			var vacinity = <%= @deal.locations.count %>;
+			<% @deal.locations.each do |location| %>
+				if ((difference(position.coords.latitude, <%= location.lat %>) < 0.3) && (difference(position.coords.longitude, <%= location.long %>) < 0.3))
+				{
+					vacinity = vacinity - 1;
+				}
+			<% end %>
+			
+			if (vacinity < <%= @deal.locations.count %>)
+			{
+				var deal = $('#smartphone').attr('href');
+				$.post('/save/gps/' + deal, function(data) {
+				  $('#lightbox').html(data);
+				});
+			}
+			else
+			{
+				alert("Oops, remember you gotta be in the store to do this. Please grab this deal you're there. Happy Slicking!!")
+			}
+		}
+		
+		function noLocation()
+		{
+			var deal = $('#smartphone').attr('href');
+			$.post('/save/phone/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+		}
+						
+	});
+	
+</script>
+<center>
+<h1 style="color: #800; line-height: 120%;"><%= @deal.title %></h1>
+
+<p><em>This deal is available at:</em></p>
+<ul style="margin: 0; padding: 0;">
+<% @deal.locations.each do |location| %>
+	<li style="list-style-type: none;">
+		<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+	</li>
+<% end %>
+</ul>
+<strong>
+	<p><a href="<%= params[:id] %>" id="smartphone">Show me the deal code!</a></p>
+</strong>
+
+<p class="legalese"><em><%= @deal.legalese %></em></p>
+</center>

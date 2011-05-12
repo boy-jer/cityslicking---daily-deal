@@ -1,7 +1,19 @@
+get '/save/feature/:id/?' do
+  @deal = Deal.get(params[:id])
+  @user = User.get(session[:user])
+  deliver 'save/feature', :layout => false
+end
+
 get '/save/deal/:id/?' do
   @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
-  deliver 'confirmation', :layout => false
+  deliver 'save/deal', :layout => false
+end
+
+get '/save/mobile/:id/?' do
+  @deal = Deal.get(params[:id])
+  @user = User.get(session[:user])
+  deliver 'save/mobile', :layout => false
 end
 
 get '/share/deal/:id/?' do
@@ -16,6 +28,13 @@ post '/share/deal/:id/?' do
   )  
   session[:flash] = "Thanks for sharing."
   '<script type="text/javascript" charset="utf-8">window.location = "/deals/' + params[:id] + '"</script>'
+end
+
+post '/save/gps/:id/?' do
+  @deal = Deal.get(params[:id])
+  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'gps')
+  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
+  deliver 'share', :layout => false
 end
 
 post '/save/phone/:id/?' do

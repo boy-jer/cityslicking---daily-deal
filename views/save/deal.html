@@ -1,0 +1,52 @@
+<script type="text/javascript" charset="utf-8">
+	jQuery(function()
+	{
+		
+		$('#smartphone').click(function()
+		{
+			var deal = $(this).attr('href');
+			$.post('/save/phone/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+			return false;
+		});
+
+		$('#email').click(function()
+		{
+			var deal = $(this).attr('href');
+			$.post('/save/email/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+			return false;
+		});
+
+		$('#sms').click(function()
+		{
+			var deal = $(this).attr('href');
+			$.post('/save/sms/' + deal, function(data) {
+			  $('#lightbox').html(data);
+			});
+			return false;
+		});
+				
+	});
+	
+</script>
+<center>
+<h1 style="color: #800; line-height: 120%;"><%= @deal.title %></h1>
+
+<p><em>This deal is available at:</em></p>
+<ul style="margin: 0; padding: 0;">
+<% @deal.locations.each do |location| %>
+	<li style="list-style-type: none;">
+		<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+	</li>
+<% end %>
+</ul>
+<strong>
+<p><a href="<%= params[:id] %>" id="email">Send it to my inbox (Email)</a></p>
+</strong>
+<p>You can also use this deal from our mobile site.</p>
+
+<p class="legalese"><em><%= @deal.legalese %></em></p>
+</center>

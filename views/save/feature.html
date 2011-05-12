@@ -32,14 +32,22 @@
 	});
 	
 </script>
-
+<center>
 <h1 style="color: #800; line-height: 120%;"><%= @deal.title %></h1>
-<p class="legalese"><%= @deal.legalese %></p>
+
+<p><em>This deal is available at:</em></p>
+<ul style="margin: 0; padding: 0;">
 <% @deal.locations.each do |location| %>
-	<p class="map">
+	<li style="list-style-type: none;">
 		<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
-	</p>
+	</li>
 <% end %>
-<p><a href="<%= params[:id] %>" id="smartphone">Save to my smartphone (In-store use)</a></p>
+</ul>
+<strong>
 <p><a href="<%= params[:id] %>" id="email">Send it to my inbox (Email)</a></p>
 <p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>><a href="<%= params[:id] %>" id="sms">Send it to my phone (SMS)</a></p>
+</strong>
+<p>You can also use this deal from our mobile site.</p>
+
+<p class="legalese"><em><%= @deal.legalese %></em></p>
+</center>

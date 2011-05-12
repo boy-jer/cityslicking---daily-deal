@@ -110,10 +110,22 @@ jQuery(function()
 		$("#mobile-btn-3").removeClass("inactive").addClass("active");
 		return false;
 	});
+		
+	$('div#featured-deals a.save-feature').click(function()
+	{
+		lightbox('/save/feature/' + $(this).attr('href'));
+		return false;
+	});
 	
-	$('a.save').click(function()
+	$('a.save-deal, div.doc a.save-feature').click(function()
 	{
 		lightbox('/save/deal/' + $(this).attr('href'));
+		return false;
+	});
+	
+	$('a.save-mobile').click(function()
+	{
+		lightbox('/save/mobile/' + $(this).attr('href'));
 		return false;
 	});
 
