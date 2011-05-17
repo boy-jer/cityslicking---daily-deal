@@ -11,9 +11,14 @@
 	<% @deals.each do |deal| %>
 	
 		<a class="deal-listing-mobile" href="/deals/<%= deal.id %>">
-			<h2><%= deal.title %></h2>
-			<p class="legalese"><%= deal.legalese %></p>
-			<p class="expiration">Expires <%= format_day deal.expiration_date %></p>
+			<p class="expiration">
+				Good till: <%= format_american_day deal.expiration_date %>
+				<% if deal.confirmations.count > 99 %>
+					<span style="color: #333;"><br />Grabbed: <%= deal.confirmations.count %></span>
+				<% end %>
+			</p>
+			<h2><%= deal.first_percent %>% DEAL</h2>
+			<p class="legalese"><%= deal.merchant.name %></p>
 		</a>
 				
 	<% end %>

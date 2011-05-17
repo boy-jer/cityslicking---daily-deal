@@ -89,6 +89,13 @@
     end
     
     
+  # Formats a date for use in the US
+    
+    def format_american_day(date)
+      date.strftime("%m/%d/%y")
+    end
+    
+    
   # Converts a date into three select form elements
   # One for month, day and year
   # Each element is named after the field argument and appended with a date part

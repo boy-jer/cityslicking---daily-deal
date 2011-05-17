@@ -169,13 +169,15 @@ div.doc h1, div#explainations h2 {
 }
 
 a.deal-listing-mobile {
-	border-top: 1px solid #dedede;
 	clear: both;
-	padding: 11px 0;
-	color: black;
+	padding: 11px;
+	color: #333;
 	overflow: auto;
 	display: block;
 	text-decoration: none;
+	margin: auto -11px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(150,210,241)), to(#fff));
+	font-weight: bold;
 }
 
 a.deal-listing-mobile p {
@@ -184,14 +186,18 @@ a.deal-listing-mobile p {
 }
 
 a.deal-listing-mobile p.expiration {
-	font-style: italic;
 	font-size: 90%;
+	color: white;
+	float: right;
+	padding-top: 3px;
+	text-align: right;
 }
 
 a.deal-listing-mobile h2 {
 	margin: 0;
-	font-size: 16px;
-	color: #800;
+	margin-bottom: 3px;
+	font-size: 22px;
+	color: white;
 }
 
 div.person {
