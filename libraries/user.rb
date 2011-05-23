@@ -53,7 +53,7 @@ post '/sign-in/?' do
   end
   
   if params[:account_type] == 'merchant'
-    if merchant = Merchant.first(:id => params[:email], :password => params[:password])
+    if merchant = Merchant.first(:email => params[:email], :password => params[:password])
       session[:merchant] = merchant.id
     else
       errors = errors + 1
