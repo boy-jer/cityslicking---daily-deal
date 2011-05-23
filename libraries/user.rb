@@ -232,6 +232,11 @@ post '/admin/users/edit/:id/?' do
     :age      => params[:age],
     :gender   => params[:gender]
   )
+  if params[:admin]
+    user.update(:admin => true)
+  else
+    user.update(:admin => false)
+  end
   session[:flash] = 'User account details have been updated.'
   redirect '/admin/users/edit/' + params[:id]
   

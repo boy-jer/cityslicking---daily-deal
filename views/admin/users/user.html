@@ -18,6 +18,10 @@
 		</p>
 		
 		<p>
+			<input type="checkbox" name="admin" value="admin" <%= 'checked' if @user.admin? %>> Admin
+		</p>
+		
+		<p>
 			<label for="zip">Zip code</label>
 			<input type="text" class="textfield" name="zip" id="zip" value="<%= @user.zip %>" />
 		</p>
@@ -32,7 +36,7 @@
 			&nbsp;
 			<input type="radio" name="gender" value="female" <%= 'checked' if @user.gender == 'female' %>> Female
 		</p>
-		
+				
 		<p>
 			<input type="submit" value="Update Account Details" />
 			or <a href="/admin/users/delete/<%= @user.id %>">remove</a>
