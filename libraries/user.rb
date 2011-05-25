@@ -12,6 +12,15 @@ post '/sign-in/?' do
     msgs << "You must agree to the Terms of Service to use this site.<br />"
   end
   
+  if params[:account_type] == 'merchant'
+    if merchant = Merchant.first(:email => params[:email], :password => params[:password])
+      session[:merchant] = merchant.id
+    else
+      errors = errors + 1
+      msgs << 'Merchant ID/password combo is incorrect. Try again.<br />'
+    end
+  end
+  
   params[:email].strip!
   params[:email].downcase!
   params[:password].strip!
@@ -51,16 +60,7 @@ post '/sign-in/?' do
       msgs << 'Email/password combo is incorrect. Try again.<br />'
     end
   end
-  
-  if params[:account_type] == 'merchant'
-    if merchant = Merchant.first(:email => params[:email], :password => params[:password])
-      session[:merchant] = merchant.id
-    else
-      errors = errors + 1
-      msgs << 'Merchant ID/password combo is incorrect. Try again.<br />'
-    end
-  end
-  
+    
   if errors > 0
     session[:flash] = msgs
     deliver 'sign-in', :layout => false
