@@ -232,11 +232,11 @@ post '/admin/users/edit/:id/?' do
     :age      => params[:age],
     :gender   => params[:gender]
   )
-  if params[:admin]
-    user.update(:admin => true)
-  else
-    user.update(:admin => false)
-  end
+  
+  params[:salesman] ? user.update(:salesman => true) : user.update(:salesman => false)
+  params[:writer]   ? user.update(:writer => true)   : user.update(:writer => false)
+  params[:admin]    ? user.update(:admin => true)    : user.update(:admin => false)
+
   session[:flash] = 'User account details have been updated.'
   redirect '/admin/users/edit/' + params[:id]
   
@@ -271,6 +271,8 @@ class User
   property :subscriber, Boolean, :default => false
   
   property :admin,      Boolean, :default => false
+  property :salesman,   Boolean, :default => false
+  property :writer,     Boolean, :default => false
   
   has n, :confirmations
   has n, :deals, :through => :confirmations
