@@ -21,7 +21,13 @@
   # Adds a class of 'sticky' to an element
   
     def sticky(path)
-      'class="sticky"' if request.path_info.include? "/#{path}"
+      if path == 'admin'
+        'class="sticky"' if request.path_info.include? "/#{path}"
+      else
+        unless request.path_info.include? "admin"
+          'class="sticky"' if request.path_info.include? "/#{path}"
+        end
+      end
     end
     
     

@@ -141,6 +141,12 @@ jQuery(function()
 		return false;
 	});
 	
+	$('#admin').click(function()
+	{
+		$('#admin-links').toggle("blind");
+		return false;
+	});
+	
 	$('#next-city-link').click(function()
 	{
 		$('#other-cities').toggle("blind");

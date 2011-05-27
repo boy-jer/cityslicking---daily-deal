@@ -49,28 +49,40 @@
 		</div>
 		<a id="current-city" href="#"><%= session[:city_name] %></a>
 	</div>
-	
+		
 	<div id="menu">
-		<% unless request.path_info.include? "/admin" %>
-			<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS!</a>
-			<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
-			<% if session[:user] || session[:merchant] %>
-				<% if session[:user] %>
-					<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
-				<% elsif session[:merchant] %>
-					<a id="merchant-stats" href="/merchants/stats" <%= sticky('stats') %>>STATS</a>
-				<% end %>
-				<a id="sign-out" href="/sign-out">SIGN OUT</a>
-			<% else %>
-				<a id="sign-in" class="sign-in" href="#">SIGN IN</a>
-			<% end %>
+		
+		<a id="deals" href="/deals" <%= sticky('deals') %>>DEALS!</a>
+		<a id="merchants" href="/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
+		
+		<% if session[:user] %>
+			<a id="profile" href="/profile" <%= sticky('profile') %>>PROFILE</a>
+		<% end %>
+		
+		<% if session[:merchant] %>
+			<a id="merchant-stats" href="/merchants/stats" <%= sticky('stats') %>>STATS</a>
+		<% end %>
+		
+		<% if session[:admin] %>
+			<a id="admin" href="#" <%= sticky('admin') %>>ADMIN</a>
+		<% end %>
+		
+		<% if session[:user] || session[:merchant] %>
+			<a id="sign-out" href="/sign-out">SIGN OUT</a>
 		<% else %>
+			<a id="sign-in" class="sign-in" href="#">SIGN IN</a>
+		<% end %>
+
+	</div>
+
+	<% if session[:admin] %>
+		<div id="admin-links" style="display: none;">
 			<a href="/admin/merchants" <%= sticky('merchants') %>>MERCHANTS</a>
 			<a href="/admin/deals" <%= sticky('deals') %>>DEALS</a>
 			<a href="/admin/resources" <%= sticky('resources') %>>RESOURCES</a>
 			<a href="/admin/users" <%= sticky('users') %>>USERS</a>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 	
 	<%= flash %>
 	<%= yield %>
@@ -114,8 +126,6 @@
 			<a href="/policies">Policies</a>
 			/
 			<a href="/contact-us">Contact</a>
-			/
-			<a href="/admin">Admin</a>
 			<% if session[:user] || session[:merchant] %>
 			/
 			<a href="/sign-out">Sign Out</a>

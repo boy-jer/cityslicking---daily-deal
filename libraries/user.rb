@@ -54,7 +54,8 @@ post '/sign-in/?' do
   
   if params[:account_type] == 'existing'
     if user = User.first(:email => params[:email], :password => params[:password])
-      session[:user] = user.id
+      session[:user]  = user.id
+      session[:admin] = true if user.admin?
     else
       errors = errors + 1
       msgs << 'Email/password combo is incorrect. Try again.<br />'
@@ -81,6 +82,7 @@ end
 get '/sign-out/?' do
   session[:user]      = nil
   session[:merchant]  = nil if session[:merchant]
+  session[:admin]     = nil if session[:admin]
   session[:flash]     = 'You are now signed out.'
   redirect '/home'
 end
