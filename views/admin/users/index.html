@@ -3,11 +3,20 @@
 	<h1>Users</h1>
 	<hr />
 	<table width="100%">
+	<tr>
+		<td></td>
+		<td><strong>Email</strong></td>
+		<td align="center"><strong>Salesman</strong></td>
+		<td align="center"><strong>Writer</strong></td>
+		<td align="center"><strong>Admin</strong></td>
+	</tr>
 	<% @users.each do |user| %>
 	<tr>
 		<td><a href="/admin/users/edit/<%= user.id %>">Edit</a></td>
 		<td><%= user.email %></td>
-		<td><%= 'admin' if user.admin? %></td>
+		<td align="center"><%= '&#10003;' if user.salesman? %></td>
+		<td align="center"><%= '&#10003;' if user.writer? %></td>
+		<td align="center"><%= '&#10003;' if user.admin? %></td>
 	</tr>
 	<% end %>
 	</table>
