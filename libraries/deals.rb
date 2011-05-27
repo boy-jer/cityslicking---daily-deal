@@ -275,6 +275,30 @@ class Deal
   property  :return_percent,          Integer,  :default => 25
   property  :max_returns,             Integer,  :default => 5
   
+  property  :date_sent_1,       Date,  :default => Chronic.parse('now')
+  property  :amount_sent_1,     Float, :default => 0
+  property  :date_received_1,   Date,  :default => Chronic.parse('now')
+  property  :amount_received_1, Float, :default => 0
+  property  :salesman_1,        Integer
+
+  property  :date_sent_2,       Date,  :default => Chronic.parse('now')
+  property  :amount_sent_2,     Float, :default => 0
+  property  :date_received_2,   Date,  :default => Chronic.parse('now')
+  property  :amount_received_2, Float, :default => 0
+  property  :salesman_2,        Integer
+
+  property  :date_sent_3,       Date,  :default => Chronic.parse('now')
+  property  :amount_sent_3,     Float, :default => 0
+  property  :date_received_3,   Date,  :default => Chronic.parse('now')
+  property  :amount_received_3, Float, :default => 0
+  property  :salesman_3,        Integer
+
+  property  :date_sent_4,       Date,  :default => Chronic.parse('now')
+  property  :amount_sent_4,     Float, :default => 0
+  property  :date_received_4,   Date,  :default => Chronic.parse('now')
+  property  :amount_received_4, Float, :default => 0
+  property  :salesman_4,        Integer  
+  
   belongs_to :merchant
   has n,     :locations
   has n,     :cities, :through => Resource

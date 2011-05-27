@@ -7,9 +7,8 @@
 	<% @deals.each do |deal| %>
 	<tr>
 		<td><a href="/admin/deals/edit/<%= deal.id %>">Edit</a></td>
-		<td><%= deal.title %><br /><em><%= deal.merchant.name %></em></td>
-		<td><%= deal.publish_date %> - <%= deal.expiration_date %></td>
-		<td style="text-align: right;"><a href="/admin/deals/uses/<%= deal.id %>"><%= deal.confirmations.count %> uses</a></td>
+		<td><br /><%= deal.title %><br /><em><%= deal.merchant.name %></em></td>
+		<td style="text-align: right;"><a href="/admin/deals/report/<%= deal.id %>">report</a></td>
 	</tr>
 	<% end %>
 	</table>

@@ -76,10 +76,58 @@ post '/save/sms/:id/?' do
 end
 
 
-get '/admin/deals/uses/:id/?' do
+get '/admin/deals/report/:id/?' do
   auth_admin
   @deal = Deal.get(params[:id])
-  deliver 'admin/deals/uses'
+  deliver 'admin/deals/report'
+end
+
+post '/admin/deals/report/:id/?' do
+  
+  deal = Deal.get(params[:id])
+  
+  if params[:commit] == 'Save Invoice 1'
+    deal.update(
+      :date_sent_1        => Chronic.parse("#{params[:date_sent_1_year]}-#{params[:date_sent_1_month]}-#{params[:date_sent_1_day]}"),
+      :amount_sent_1      => params[:amount_sent_1],
+      :date_received_1    => Chronic.parse("#{params[:date_received_1_year]}-#{params[:date_received_1_month]}-#{params[:date_received_1_day]}"),
+      :amount_received_1  => params[:amount_received_1],
+      :salesman_1         => params[:salesman_1]
+    )
+  end
+
+  if params[:commit] == 'Save Invoice 2'
+    deal.update(
+      :date_sent_2        => Chronic.parse("#{params[:date_sent_2_year]}-#{params[:date_sent_2_month]}-#{params[:date_sent_2_day]}"),
+      :amount_sent_2      => params[:amount_sent_2],
+      :date_received_2    => Chronic.parse("#{params[:date_received_2_year]}-#{params[:date_received_2_month]}-#{params[:date_received_2_day]}"),
+      :amount_received_2  => params[:amount_received_2],
+      :salesman_2         => params[:salesman_2]
+    )
+  end
+
+  if params[:commit] == 'Save Invoice 3'
+    deal.update(
+      :date_sent_3        => Chronic.parse("#{params[:date_sent_3_year]}-#{params[:date_sent_3_month]}-#{params[:date_sent_3_day]}"),
+      :amount_sent_3      => params[:amount_sent_3],
+      :date_received_3    => Chronic.parse("#{params[:date_received_3_year]}-#{params[:date_received_3_month]}-#{params[:date_received_3_day]}"),
+      :amount_received_3  => params[:amount_received_3],
+      :salesman_3         => params[:salesman_3]
+    )
+  end
+
+  if params[:commit] == 'Save Invoice 4'
+    deal.update(
+      :date_sent_4        => Chronic.parse("#{params[:date_sent_4_year]}-#{params[:date_sent_4_month]}-#{params[:date_sent_4_day]}"),
+      :amount_sent_4      => params[:amount_sent_4],
+      :date_received_4    => Chronic.parse("#{params[:date_received_4_year]}-#{params[:date_received_4_month]}-#{params[:date_received_4_day]}"),
+      :amount_received_4  => params[:amount_received_4],
+      :salesman_4         => params[:salesman_4]
+    )
+  end
+  
+  session[:flash] = 'Invoice updated.'
+  redirect "/admin/deals/report/#{params[:id]}"
 end
 
 

@@ -1,0 +1,151 @@
+<div class="doc">
+		
+	<h1><%= @deal.title %></h1>
+	<h2><%= @deal.merchant.name %></h2>
+	
+	<p><a href="/admin/deals">&larr; Back to deals</a></p>
+	
+	<p>
+		<strong>Activation date:</strong>
+		<%= @deal.date_activated %>
+	</p>
+	
+	<p>
+		<strong><%= @deal.confirmations.count %> Total Uses</strong>:
+		<%= @deal.confirmations(:method => 'gps').count %> GPS &bull;
+		<%= @deal.confirmations(:method => 'sms').count %> SMS &bull;
+		<%= @deal.confirmations(:method => 'email').count %> Email &bull;
+		<%= @deal.confirmations(:method => 'web').count %> Web
+	</p>
+	
+	<form method="post">
+		<h2>Invoice 1</h2>
+		<p>
+			<label>Sent</label>
+			<%= date_to_field('date_sent_1', @deal.date_sent_1) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_sent_1" value="<%= dollarize @deal.amount_sent_1 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Received</label>
+			<%= date_to_field('date_received_1', @deal.date_received_1) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_received_1" value="<%= dollarize @deal.amount_received_1 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Pay to</label>
+			<select name="salesman_1">
+					<option value="0"></option>
+				<% User.all(:salesman => 't').each do |user| %>
+					<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_1 == user.id  %>><%= user.email %></option>
+				<% end %>
+			</select>
+			on <%= format_day Chronic.parse('now') %>
+			&nbsp;
+			<strong>$<%= dollarize(@deal.amount_received_1 / 10) %></strong> (10% of received)
+		</p>
+		<p><input type="submit" name="commit" value="Save Invoice 1" /></p>
+	
+		<h2>Invoice 2</h2>
+		<p>
+			<label>Sent</label>
+			<%= date_to_field('date_sent_2', @deal.date_sent_2) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_sent_2" value="<%= dollarize @deal.amount_sent_2 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Received</label>
+			<%= date_to_field('date_received_2', @deal.date_received_2) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_received_2" value="<%= dollarize @deal.amount_received_2 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Pay to</label>
+			<select name="salesman_2">
+					<option value="0"></option>
+				<% User.all(:salesman => 't').each do |user| %>
+				<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_2 == user.id  %>><%= user.email %></option>
+				<% end %>
+			</select>
+			on <%= format_day Chronic.parse('now') %>
+			&nbsp;
+			<strong>$<%= dollarize(@deal.amount_received_2 / 10) %></strong> (10% of received)
+		</p>
+		<p><input type="submit" name="commit" value="Save Invoice 2" /></p>
+	
+		<h2>Invoice 3</h2>
+		<p>
+			<label>Sent</label>
+			<%= date_to_field('date_sent_3', @deal.date_sent_3) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_sent_3" value="<%= dollarize @deal.amount_sent_3 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Received</label>
+			<%= date_to_field('date_received_3', @deal.date_received_3) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_received_3" value="<%= dollarize @deal.amount_received_3 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Pay to</label>
+			<select name="salesman_3">
+					<option value="0"></option>
+				<% User.all(:salesman => 't').each do |user| %>
+				<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_3 == user.id  %>><%= user.email %></option>
+				<% end %>
+			</select>
+			on <%= format_day Chronic.parse('now') %>
+			&nbsp;
+			<strong>$<%= dollarize(@deal.amount_received_3 / 10) %></strong> (10% of received)
+		</p>
+		<p><input type="submit" name="commit" value="Save Invoice 3" /></p>
+	
+		<h2>Invoice 4</h2>
+		<p>
+			<label>Sent</label>
+			<%= date_to_field('date_sent_4', @deal.date_sent_4) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_sent_4" value="<%= dollarize @deal.amount_sent_4 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Received</label>
+			<%= date_to_field('date_received_4', @deal.date_received_4) %>
+			&nbsp;
+			$ <input type="text" class="textfield" name="amount_received_4" value="<%= dollarize @deal.amount_received_4 %>" style="width: 100px;" />
+		</p>
+		<p>
+			<label>Pay to</label>
+			<select name="salesman_4">
+					<option value="0"></option>
+				<% User.all(:salesman => 't').each do |user| %>
+				<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_4 == user.id  %>><%= user.email %></option>
+				<% end %>
+			</select>
+			on <%= format_day Chronic.parse('now') %>
+			&nbsp;
+			<strong>$<%= dollarize(@deal.amount_received_4 / 10) %></strong> (10% of received)
+		</p>
+		<p><input type="submit" name="commit" value="Save Invoice 4" /></p>
+
+	</form>
+
+	<% if @deal.confirmations.count > 0 %>
+
+		<table width="100%">
+			<tr>
+				<th style="text-align: left;">Date</th>
+				<th style="text-align: left;">Method</th>
+				<th style="text-align: left;">User</th>
+			</tr>
+			<% @deal.confirmations.each do |confirmation| %>
+			<tr>
+				<td><%= format_day confirmation.updated_at %></td>
+				<td><%= confirmation.method %></td>
+				<td><%= confirmation.user.email %></td>
+			</tr>
+			<% end %>
+		</table>
+
+	<% end %>
+	
+</div>

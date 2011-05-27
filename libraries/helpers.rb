@@ -62,7 +62,7 @@
   # Example: dollarize(4.3) will return '$4.30'  
     
     def dollarize(num)
-      num = "$%.2f" % num.to_f
+      num = "%.2f" % num.to_f
     end
   
   
