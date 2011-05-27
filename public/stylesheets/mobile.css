@@ -171,7 +171,7 @@ div.doc h1, div#explainations h2 {
 a.deal-listing-mobile {
 	clear: both;
 	padding: 11px;
-	color: #333;
+	color: #444;
 	overflow: auto;
 	display: block;
 	text-decoration: none;
@@ -191,6 +191,7 @@ a.deal-listing-mobile p.expiration {
 	float: right;
 	padding-top: 3px;
 	text-align: right;
+	text-shadow: 1px 1px 1px #999;
 }
 
 a.deal-listing-mobile h2 {
@@ -198,6 +199,7 @@ a.deal-listing-mobile h2 {
 	margin-bottom: 3px;
 	font-size: 22px;
 	color: white;
+	text-shadow: 1px 1px 1px #999;
 }
 
 div.person {
