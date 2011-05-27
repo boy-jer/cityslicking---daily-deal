@@ -21,6 +21,16 @@
 				<% end %>
 			</select>
 		</p>
+		
+		<p>
+			<label for="created_by">Created by</label>
+			<select name="created_by">
+					<option value="0"></option>
+				<% User.all(:salesman => 't').each do |user| %>
+				<option value="<%= user.id %>" <%= ' selected' if @deal.created_by == user.id  %>><%= user.email %></option>
+				<% end %>
+			</select>
+		</p>
 				
 		<p>
 			<label for="publish_date">Publish Date</label>

@@ -38,6 +38,7 @@ post '/admin/deals/new/?' do
   auth_admin
   deal = Deal.create(
     :title                  => params[:title],
+    :created_by             => params[:created_by],
     :merchant_id            => params[:merchant],
     :publish_date           => Chronic.parse("#{params[:publish_date_year]}-#{params[:publish_date_month]}-#{params[:publish_date_day]}"),
     :expiration_date        => Chronic.parse("#{params[:expiration_date_year]}-#{params[:expiration_date_month]}-#{params[:expiration_date_day]}"),
@@ -133,6 +134,7 @@ post '/admin/deals/edit/:id/?' do
   deal                        = Deal.get(params[:id])
   
   deal.title                  = params[:title]
+  deal.created_by             = params[:created_by]
   deal.merchant_id            = params[:merchant]
   deal.publish_date           = Chronic.parse("#{params[:publish_date_year]}-#{params[:publish_date_month]}-#{params[:publish_date_day]}")
   deal.expiration_date        = Chronic.parse("#{params[:expiration_date_year]}-#{params[:expiration_date_month]}-#{params[:expiration_date_day]}")
@@ -222,12 +224,13 @@ post '/admin/deals/edit/:id/?' do
   
   deal.save
   
-  deal.city_deals.all.destroy
-  
-  params[:cities].each do |c|
-    deal.city_deals.create(:city_id => c.first)
+  if params[:cities]
+    deal.city_deals.all.destroy
+    params[:cities].each do |c|
+      deal.city_deals.create(:city_id => c.first)
+    end
   end
-      
+    
   redirect "admin/deals/preview/#{deal.id}"
 end
 
@@ -260,6 +263,7 @@ class Deal
   timestamps  :at
   
   property  :title,                   Text
+  property  :created_by,              Integer
   property  :active,                  Boolean,  :default => false
   property  :date_activated,          Date
   property  :preview_authorized_by,   String
