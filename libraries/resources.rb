@@ -3,6 +3,11 @@ get '/admin/resources/?' do
   deliver 'admin/resources/resources'
 end
 
+get '/admin/resources/pricing-advantage/?' do
+  auth_admin
+  deliver 'admin/resources/pricing-advantage'
+end
+
 get '/admin/resources/blogger-agreement/?' do
   auth_admin
   deliver 'admin/resources/blogger-agreement'
