@@ -49,6 +49,7 @@ post '/admin/deals/new/?' do
     :description            => params[:description],
     :code                   => params[:code],
     :legalese               => params[:legalese],
+    :neighborhood           => params[:neighborhood],
     :final_corrections_date => Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
   )
   
@@ -145,6 +146,7 @@ post '/admin/deals/edit/:id/?' do
   deal.description            = params[:description]
   deal.code                   = params[:code]
   deal.legalese               = params[:legalese]
+  deal.neighborhood           = params[:neighborhood]
   deal.final_corrections_date = Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
   
   params[:active] ? active = true : active = false
@@ -278,6 +280,7 @@ class Deal
   property  :first_percent,           Integer,  :default => 50
   property  :return_percent,          Integer,  :default => 25
   property  :max_returns,             Integer,  :default => 5
+  property  :neighborhood,            String
   
   property  :date_sent_1,       Date,  :default => Chronic.parse('now')
   property  :amount_sent_1,     Float, :default => 0

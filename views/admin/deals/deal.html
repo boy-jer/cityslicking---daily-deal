@@ -89,6 +89,11 @@
 		</p>
 		
 		<p>
+			<label for="neighborhood">Neighborhood</label>
+			<input type="text" class="textfield" name="neighborhood" id="neighborhood" value="<%= @deal.neighborhood %>" />
+		</p>
+		
+		<p>
 			<label>Location 1</label>
 			<input type="text" class="textfield" name="street1" id="street1" value="<%= @deal.locations[0].street if defined? @deal.locations[0].street %>" /><br />
 			<input type="text" class="textfield" name="city1" id="city1" value="<%= @deal.locations[0].city if defined? @deal.locations[0].city %>" style="width: 200px;" />
