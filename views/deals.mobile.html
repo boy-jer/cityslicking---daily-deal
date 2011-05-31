@@ -13,12 +13,12 @@
 		<a class="deal-listing-mobile" href="/deals/<%= deal.id %>">
 			<p class="expiration">
 				Good till: <%= format_american_day deal.expiration_date %>
-				<% if deal.confirmations.count > 99 %>
-					<span style="color: #333;"><br />Grabbed: <%= deal.confirmations.count %></span>
+				<% if deal.confirmations.count > 0 %>
+					<br />Grabbed: <%= deal.confirmations.count %>
 				<% end %>
 			</p>
 			<h2><%= deal.first_percent %>% DEAL</h2>
-			<p class="legalese"><%= deal.merchant.name %></p>
+			<p class="legalese">at <%= deal.merchant.name %></p>
 			<p style="font-size: 90%; font-style: italic;"><%= deal.neighborhood %></p>
 		</a>
 				

@@ -176,8 +176,9 @@ a.deal-listing-mobile {
 	display: block;
 	text-decoration: none;
 	margin: auto -11px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(150,210,241)), to(#fff));
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8DD074), to(#fff));
 	font-weight: bold;
+	font-size: 14px;
 }
 
 a.deal-listing-mobile p {
