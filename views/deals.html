@@ -10,7 +10,7 @@
 	</form>
 	<% @deals.each do |deal| %>
 	
-		<a class="deal-listing" id="<%= deal.id %>" href="#">
+		<a class="deal-listing" id="<%= deal.id %>" href="#"<%= 'style="background-color: lightyellow;"' if @confirmations.include?(deal.id) %>>
 			<p class="expiration">Expires <%= format_day deal.expiration_date %></p>
 			<img src="/images/deals/<%= deal.id %>.jpg" />
 			<h2 style="color: #800; width: 500px;"><%= deal.title %></h2>

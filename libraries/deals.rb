@@ -4,10 +4,26 @@ get '/home/?' do
 end
 
 get '/deals/?' do
+  @confirmations = []
+  Confirmation.all(:user_id => session[:user]).each {|c| @confirmations << c.deal_id} if session[:user]
   if params[:find] && params[:find].length > 0
     @deals = Deal.search(session[:city_id], params[:find])
   else
     @deals = Deal.live(session[:city_id])
+  end
+  deliver 'deals'
+end
+
+get '/deals/return/?' do
+  @confirmations = []
+  Confirmation.all(:user_id => session[:user]).each {|c| @confirmations << c.deal_id} if session[:user]
+  if params[:find] && params[:find].length > 0
+    @deals = Deal.search(session[:city_id], params[:find])
+  else
+    @deals = []
+    Deal.live(session[:city_id]).each do |d|
+      @deals << d if @confirmations.include?(d.id)
+    end
   end
   deliver 'deals'
 end
