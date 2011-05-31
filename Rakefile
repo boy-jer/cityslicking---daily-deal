@@ -38,6 +38,20 @@
   namespace :db do
     
     
+  # For programmatically altering the data
+  
+    desc 'Ruby script to alter data'
+    task :transmogrify do
+      require 'bundler'
+      Bundler.require
+      Encoding.default_external = 'utf-8'
+      Dir.glob File.dirname(__FILE__) + '/libraries/*.rb', &method(:require)
+      DataMapper.finalize
+      DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data/development.sqlite3")
+      require "#{Dir.pwd}/data/transmogrify.rb"
+    end
+    
+    
   # Non-destructive
     
     desc 'Auto upgrades the database'
