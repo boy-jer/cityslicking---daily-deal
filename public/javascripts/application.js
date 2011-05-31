@@ -20,6 +20,17 @@ jQuery(function()
 		return false;
 	});
 	
+	function delayed_deal(deal)
+	{
+		setTimeout(featured_deal(deal), 1000);
+		return false;
+	};
+	
+	var deal_timer = setInterval(function()
+	{
+		featured_deal($("#right-arrow").attr("href"));
+	}, 8000);
+	
 	function featured_deal(position)
 	{
 		if (position == 1)
@@ -56,30 +67,35 @@ jQuery(function()
 			
 	$('#button-1').click(function()
 	{
+		clearInterval(deal_timer);
 		featured_deal(1);
 		return false;
 	});
 
 	$('#button-2').click(function()
 	{
+		clearInterval(deal_timer);
 		featured_deal(2);
 		return false;
 	});
 
 	$('#button-3').click(function()
 	{
+		clearInterval(deal_timer);
 		featured_deal(3);
 		return false;
 	});
 	
 	$("#left-arrow").click(function()
 	{
+		clearInterval(deal_timer);
 		featured_deal($("#left-arrow").attr("href"));
 		return false;
 	});
 
 	$("#right-arrow").click(function()
 	{
+		clearInterval(deal_timer);
 		featured_deal($("#right-arrow").attr("href"));
 		return false;
 	});
