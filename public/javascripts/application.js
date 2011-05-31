@@ -194,5 +194,14 @@ jQuery(function()
 		$(this).prev().delay(100).slideDown(100);
 		return false;
 	});
+	
+	$('#use-physical-address').click(function()
+	{
+		$('#mailing_street').val($('#physical_street').val());
+		$('#mailing_city').val($('#physical_city').val());
+		$('#mailing_state').val($('#physical_state').val());
+		$('#mailing_zip').val($('#physical_zip').val());
+		return false;
+	});
 		
 });
