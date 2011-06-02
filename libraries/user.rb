@@ -55,7 +55,7 @@ post '/sign-in/?' do
   if params[:account_type] == 'existing'
     if user = User.first(:email => params[:email], :password => params[:password])
       session[:user]  = user.id
-      session[:admin] = true if user.admin?
+      session[:admin] = true if user.admin? || user.salesman? || user.writer?
     else
       errors = errors + 1
       msgs << 'Email/password combo is incorrect. Try again.<br />'
