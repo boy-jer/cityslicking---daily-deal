@@ -95,6 +95,13 @@
     end
     
     
+  # Formats a simple date with time
+  
+    def format_day_with_time(date)
+      date.strftime("%b %d, %Y at %I:%M%P")
+    end
+    
+    
   # Formats a date for use in the US
     
     def format_american_day(date)

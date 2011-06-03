@@ -33,14 +33,14 @@ end
 post '/save/gps/:id/?' do
   @deal = Deal.get(params[:id])
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'gps')
-  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
+  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
   deliver 'share', :layout => false
 end
 
 post '/save/phone/:id/?' do
   @deal = Deal.get(params[:id])
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web')
-  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
+  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
   deliver 'share', :layout => false
 end
 
@@ -52,7 +52,7 @@ post '/save/sms/:id/?' do
   msg = {
     'From' => settings.sms_server[:account_number],
     'To'   => @user.mobile,
-    'Body' => "Present this confirmation code during checkout to receive the discount: #{@deal.code}"
+    'Body' => "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('24 hours from now')}."
   }
   account.request("/#{settings.sms_server[:api_version]}/Accounts/#{settings.sms_server[:account_sid]}/SMS/Messages", 'POST', msg)
   session[:flash] = "Check your phone!"
