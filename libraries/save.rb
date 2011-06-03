@@ -44,22 +44,6 @@ post '/save/phone/:id/?' do
   deliver 'share', :layout => false
 end
 
-post '/save/email/:id/?' do
-  @deal = Deal.get(params[:id])
-  @user = User.get(session[:user])
-  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'email')
-  Pony.mail(:via => :smtp, :via_options => settings.mail_server,
-    :to      => @user.email,
-    :subject => 'CitySlicking Deal',
-    :body    =>
-"#{@deal.code}
-
-Congratulations, Slicker!  Here's your special deal code.  Be sure to check out the deal so you know the when's and where's and if there's any instructions.  Basically, just show this code to the merchant and enjoy!"
-  )
-  session[:flash] = "<p>Check your inbox!</p>"
-  deliver 'share', :layout => false
-end
-
 post '/save/sms/:id/?' do
   @deal = Deal.get(params[:id])
   @user = User.get(session[:user])

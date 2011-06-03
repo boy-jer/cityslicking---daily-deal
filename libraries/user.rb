@@ -278,5 +278,6 @@ class User
   
   has n, :confirmations
   has n, :deals, :through => :confirmations
+  has n, :reservations
   
 end

@@ -1,4 +1,13 @@
 <div class="doc">
+	
+	<% if session[:user] %>
+	<p style="float: right;">
+		<a href="/deals">All Deals</a>
+		<a href="/deals/reserved">My Deals</a>
+		<a href="/deals/return">Return Deals</a>
+	</p>
+	<% end %>
+	
 	<h2>Search for deals in <%= session[:city_name] %></h2>
 	<form>
 		<p>

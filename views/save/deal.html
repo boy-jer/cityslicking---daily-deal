@@ -14,7 +14,7 @@
 		$('#email').click(function()
 		{
 			var deal = $(this).attr('href');
-			$.post('/save/email/' + deal, function(data) {
+			$.post('/reserve/' + deal, function(data) {
 			  $('#lightbox').html(data);
 			});
 			return false;
@@ -44,7 +44,7 @@
 <% end %>
 </ul>
 <strong>
-<p><a href="<%= params[:id] %>" id="email">Send it to my inbox (Email)</a></p>
+<p><a href="<%= params[:id] %>" id="email">Reserve for later</a></p>
 <p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>><a href="<%= params[:id] %>" id="sms">Send it to my phone (SMS)</a></p>
 </strong>
 <p>You can also use this deal from our mobile site.</p>
