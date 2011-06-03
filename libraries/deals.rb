@@ -1,3 +1,7 @@
+get '/home/?' do
+  redirect '/'
+end
+
 get '/?' do
   @deals = Deal.featured(session[:city_id])
   deliver 'featured'
