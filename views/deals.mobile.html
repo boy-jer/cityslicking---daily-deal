@@ -8,6 +8,13 @@
 			<% end %>
 		</p>
 	</form>
+	<% if session[:user] %>
+	<p style="text-align: center;">
+		<a href="/deals">All Deals</a>
+		<a href="/deals/reserved">My Deals</a>
+		<a href="/deals/return">Return Deals</a>
+	</p>
+	<% end %>
 	<% @deals.each do |deal| %>
 	
 		<a class="deal-listing-mobile" href="/deals/<%= deal.id %>">
