@@ -1,4 +1,36 @@
 <div class="doc">
+
+	<h2>Mobile Deals</h2>
+
+	<% if !@user.optin? && !@user.mobile %>
+		<div id="start-verification">
+			<p>You can start sending deal codes to your mobile phone. Enter your mobile number below, then click Verify to start the process.</p>
+
+			<form action="/verify" method="post" id="mobile-verification">
+				<p>
+					+1 <input type="text" class="textfield" name="mobile" value="<%= @user.mobile %>" style="width: 180px;" />
+					<input type="submit" name="verify" value="Verify" />
+				</p>
+			</form>
+		</div>
+	<% end %>
+
+	<% if !@user.optin? && @user.mobile %>
+		<div id="finish-verification">Now text DEALS to (408) 514-5609 from <%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %> to finish the process.</div>
+	<% end %>
+
+	<% if @user.optin? && @user.mobile %>
+		<div id="active-number">
+			<p>You're all set up to send deal codes to your mobile phone at:</p>
+			<p>
+				<strong><%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %></strong>
+				&nbsp;
+				<span class="meta"><a href="/stop-sending-me-sms">stop sending deals to my phone</a></span>
+			</p>
+		</div>
+	<% end %>
+
+	<p><em>City Slicking does not charge for this service. Standard message and data rates may apply. US numbers only.</em></p>
 		
 	<h2>Account Details</h2>
 	
@@ -38,39 +70,7 @@
 		<h2>Daily Deals</h2>
 		<p>You've subscribed to our Daily Deals newsletter. <a href="/unsubscribe">You can unsubscribe here.</a></p>
 	<% end %>
-	
-	<h2>Mobile Deals</h2>
-
-	<% if !@user.optin? && !@user.mobile %>
-		<div id="start-verification">
-			<p>You can start sending deal codes to your mobile phone. Enter your mobile number below, then click Verify to start the process.</p>
-
-			<form action="/verify" method="post" id="mobile-verification">
-				<p>
-					+1 <input type="text" class="textfield" name="mobile" value="<%= @user.mobile %>" style="width: 180px;" />
-					<input type="submit" name="verify" value="Verify" />
-				</p>
-			</form>
-		</div>
-	<% end %>
-
-	<% if !@user.optin? && @user.mobile %>
-		<div id="finish-verification">Now text DEALS to (408) 514-5609 from <%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %> to finish the process.</div>
-	<% end %>
-
-	<% if @user.optin? && @user.mobile %>
-		<div id="active-number">
-			<p>You're all set up to send deal codes to your mobile phone at:</p>
-			<p>
-				<strong><%= Phoner::Phone.parse(@user.mobile, :country_code => '1').format(:us) %></strong>
-				&nbsp;
-				<span class="meta"><a href="/stop-sending-me-sms">stop sending deals to my phone</a></span>
-			</p>
-		</div>
-	<% end %>
-
-	<p><em>City Slicking does not charge for this service. Standard message and data rates may apply. US numbers only.</em></p>
-	
+		
 	<% if @confirmations.count > 0 %>
 	
 		<h2>Deal History</h2>
