@@ -4,33 +4,24 @@ get '/?' do
 end
 
 get '/deals/?' do
-  @confirmations = []
-  Confirmation.all(:user_id => session[:user]).each {|c| @confirmations << c.deal_id} if session[:user]
   if params[:find] && params[:find].length > 0
     @deals = Deal.search(session[:city_id], params[:find])
   else
-    @deals = Deal.live(session[:city_id])
+    session[:user] ? @deals = Deal.unsaved(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
   end
   deliver 'deals'
 end
 
 get '/deals/return/?' do
-  @confirmations = []
-  Confirmation.all(:user_id => session[:user]).each {|c| @confirmations << c.deal_id} if session[:user]
   if params[:find] && params[:find].length > 0
     @deals = Deal.search(session[:city_id], params[:find])
   else
-    @deals = []
-    Deal.live(session[:city_id]).each do |d|
-      @deals << d if @confirmations.include?(d.id)
-    end
+    session[:user] ? @deals = Deal.return(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
   end
   deliver 'deals'
 end
 
 get '/deals/reserved/?' do
-  @confirmations = []
-  Confirmation.all(:user_id => session[:user]).each {|c| @confirmations << c.deal_id} if session[:user]
   @deals = Deal.reserved(session[:city_id], session[:user])
   deliver 'deals'
 end
@@ -102,18 +93,39 @@ class Deal
     City.get(city).deals(:order => :expiration_date.asc, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
   end
   
+  def self.savable(live, user)
+    confirmations = Confirmation.all(:user_id => user)
+    deals = []
+    live.each do |d|
+      deals << d if confirmations.count(:deal_id => d.id) < d.max_returns
+    end
+    deals
+  end
+  
   def self.search(city, query)
     self.live(city).all(:title.like => "%#{query}%")
   end
-  
+    
   def self.featured(city)
     City.get(city).deals(:order => :publish_date.desc, :limit => 3, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
+  end
+  
+  def self.unsaved(city, user)
+    confirmations = []
+    Confirmation.all(:user_id => user).each {|c| confirmations << c.deal_id}
+    self.savable(Deal.live(city).all(:id.not => confirmations), user)
+  end
+  
+  def self.return(city, user)
+    confirmations = []
+    Confirmation.all(:user_id => user).each {|c| confirmations << c.deal_id}
+    self.savable(Deal.live(city).all(:id => confirmations), user)
   end
   
   def self.reserved(city, user)    
     reservations = []
     Reservation.all(:user_id => user).each {|r| reservations << r.deal_id}
-    Deal.live(city).all(:id => reservations)
+    self.savable(Deal.live(city).all(:id => reservations), user)
   end
   
 end

@@ -10,7 +10,7 @@
 	</form>
 	<% if session[:user] %>
 	<p style="text-align: center;">
-		<a href="/deals">All Deals</a>
+		<a href="/deals">New Deals</a>
 		<a href="/deals/reserved">My Deals</a>
 		<a href="/deals/return">Return Deals</a>
 	</p>
@@ -32,6 +32,6 @@
 	<% end %>
 	
 	<% if @deals.count == 0 %>
-		<p>Sorry, no deals matched your search. Try again.</p>
+		<p>Sorry, no deals.</p>
 	<% end %>
 </div>
