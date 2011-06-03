@@ -1,6 +1,6 @@
 get '/?' do
   @deals = City.get(session[:city_id]).deals(:order => :publish_date.desc, :limit => 3, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
-  deliver 'home'
+  deliver 'featured'
 end
 
 get '/deals/?' do

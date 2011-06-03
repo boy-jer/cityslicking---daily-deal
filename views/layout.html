@@ -27,7 +27,7 @@
 	<link rel="shortcut icon" href="/images/favicons/favicon.ico" />
 </head>
 
-<body<%= ' class="home"' if request.path_info.include? "/home" %>>
+<body<%= ' class="featured"' if request.path_info == "/" %>>
 	
 	<a href="/"><img id="logo" src="/images/City-Slicking_logo.png" /></a>
 	
