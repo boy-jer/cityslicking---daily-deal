@@ -54,14 +54,7 @@
 
   DataMapper.finalize
   DataMapper.setup(:default, "sqlite://#{Dir.pwd}/data/development.sqlite3")
-      
-
-# Set root path
-    
-  get '/?' do
-    redirect '/home'
-  end
-
+  
 
 # Run as a Sinatra application on a Rack server
 
