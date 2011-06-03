@@ -5,7 +5,7 @@ end
 
 get '/deals/?' do
   if params[:find] && params[:find].length > 0
-    @deals = Deal.search(session[:city_id], params[:find])
+    session[:user] ? @deals = Deal.search(session[:city_id], params[:find], session[:user]) : @deals = Deal.search(session[:city_id], params[:find])
   else
     session[:user] ? @deals = Deal.unsaved(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
   end
@@ -13,11 +13,7 @@ get '/deals/?' do
 end
 
 get '/deals/return/?' do
-  if params[:find] && params[:find].length > 0
-    @deals = Deal.search(session[:city_id], params[:find])
-  else
-    session[:user] ? @deals = Deal.return(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
-  end
+  @deals = Deal.return(session[:city_id], session[:user])
   deliver 'deals'
 end
 
@@ -102,8 +98,12 @@ class Deal
     deals
   end
   
-  def self.search(city, query)
-    self.live(city).all(:title.like => "%#{query}%")
+  def self.search(city, query, user = nil)
+    unless user.nil?
+      self.savable(self.live(city).all(:title.like => "%#{query}%"), user)
+    else
+      self.live(city).all(:title.like => "%#{query}%")
+    end
   end
     
   def self.featured(city)

@@ -9,7 +9,7 @@
 	<% end %>
 	
 	<h2>Search for deals in <%= session[:city_name] %></h2>
-	<form>
+	<form action="/deals">
 		<p>
 			<input type="text" class="searchfield" name="find" value="<%= params[:find] %>" <%= 'placeholder="Search..."' if @device == '.mobile' %> />
 			<% unless @device == '.mobile' %>
