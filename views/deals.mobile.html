@@ -11,7 +11,9 @@
 	<% if session[:user] %>
 	<p style="text-align: center;">
 		<a href="/deals">New Deals</a>
+		&bull;
 		<a href="/deals/reserved">My Deals</a>
+		&bull;
 		<a href="/deals/return">Return Deals</a>
 	</p>
 	<% end %>
@@ -24,8 +26,8 @@
 					<br />Grabbed: <%= deal.confirmations.count %>
 				<% end %>
 			</p>
-			<h2><%= deal.first_percent %>% DEAL</h2>
-			<p class="legalese">at <%= deal.merchant.name %></p>
+			<h2><%= deal.display_percent %>% Off</h2>
+			<p class="legalese"><%= deal.title %> at <%= deal.merchant.name %></p>
 			<p style="font-size: 90%; font-style: italic;"><%= deal.neighborhood %></p>
 		</a>
 				

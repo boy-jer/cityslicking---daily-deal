@@ -4,9 +4,10 @@
 		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save-deal"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 	</p>
 	
-	<h1 style="color: #800;"><%= @deal.title %></h1>
+	<h1 style="color: #800; margin-bottom: 0;"><%= @deal.display_percent %>% Off at <%= @deal.merchant.name %></h1>
+	<h2 style="margin-top: 7px;"><%= @deal.title %></h2>
 	
-	<p><a href="<%= request.referrer %>">&larr; Back to Deals</a></p>
+	<p><a href="<%= request.referrer %>">&larr; Find more deals</a></p>
 	
 	<hr />
 	

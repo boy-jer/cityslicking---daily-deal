@@ -1,6 +1,8 @@
 <img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" width="297" />
 <div class="specs">
-	<h1><%= deal.title %></h1>
+	<h1 style="font-size: 230%;"><%= deal.display_percent %>% Off at <%= deal.merchant.name %></h1>
+	<h3 style="margin-top: 7px; margin-bottom: 0;"><%= deal.title %></h3>
+	
 	<p class="buttons">
 		<a href="<%= deal.id %>" class="pill tell-a-friend">Tell a Friend</a>
 		<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-feature"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
@@ -8,6 +10,6 @@
 	</p>
 	<p class="meta">
 		<span class="legalese"><%= deal.legalese %></span>
-		<span class="expiration">Expires <%= deal.expiration_date %></span>
+		<!-- ><span class="expiration">Expires <%= deal.expiration_date %></span> -->
 	</p>
 </div>

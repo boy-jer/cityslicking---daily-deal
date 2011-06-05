@@ -4,6 +4,13 @@ end
 
 get '/?' do
   @deals = Deal.featured(session[:city_id])
+  @deals.each {|d| d.display_percent = d.first_percent}
+  if session[:user]
+    confirmations = Confirmation.all(:user_id => session[:user])
+    @deals.each do |d|
+      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
+    end
+  end
   deliver 'featured'
 end
 
@@ -13,21 +20,51 @@ get '/deals/?' do
   else
     session[:user] ? @deals = Deal.unsaved(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
   end
+  @deals.each {|d| d.display_percent = d.first_percent}
+  if session[:user]
+    confirmations = Confirmation.all(:user_id => session[:user])
+    @deals.each do |d|
+      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
+    end
+  end
   deliver 'deals'
 end
 
 get '/deals/return/?' do
   @deals = Deal.return(session[:city_id], session[:user])
+  @deals.each {|d| d.display_percent = d.first_percent}
+  if session[:user]
+    confirmations = Confirmation.all(:user_id => session[:user])
+    @deals.each do |d|
+      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
+    end
+  end
   deliver 'deals'
 end
 
 get '/deals/reserved/?' do
   @deals = Deal.reserved(session[:city_id], session[:user])
+  @deals.each {|d| d.display_percent = d.first_percent}
+  if session[:user]
+    confirmations = Confirmation.all(:user_id => session[:user])
+    @deals.each do |d|
+      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
+    end
+  end
   deliver 'deals'
 end
 
 get '/deals/:id/?' do
   @deal = Deal.get(params[:id])
+  @deal.display_percent = @deal.first_percent
+  if session[:user]
+    confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+    unless confirmations.count < @deal.max_returns
+      session[:flash] = 'You cannot use this deal again.'
+      redirect '/deals'
+    end
+    @deal.display_percent = @deal.return_percent if confirmations.count > 0
+  end
   deliver 'deal'
 end
 
@@ -35,6 +72,8 @@ end
 
 class Deal
   include DataMapper::Resource
+  
+  attr_accessor :display_percent
   
   property    :id,          Serial
   property    :deleted_at,  ParanoidDateTime

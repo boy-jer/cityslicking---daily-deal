@@ -1,6 +1,8 @@
 <div class="doc">
 	
-	<h1 style="color: #800; font-size: 28px; line-height: 120%; margin: 0;"><%= @deal.title %></h1>
+	<h1 style="color: #800; font-size: 28px; line-height: 120%; margin: 0;"><%= @deal.display_percent %>% Off at <%= @deal.merchant.name %></h1>
+	<h2 style="margin-top: 7px; text-align: center;"><%= @deal.title %></h2>
+	
 	
 	<p align="center">
 		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save-mobile"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
