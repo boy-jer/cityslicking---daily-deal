@@ -31,6 +31,12 @@ end
 
 post '/admin/resources/merchants/10/?' do
   auth_admin
+  Agreement.create(
+    :name   => params[:text6],
+    :zip    => params[:text7],
+    :social => params[:text8],
+    :time   => Time.now
+  )
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to        => 'johndickey@city-slicking.com',
     :cc        => 'mattcross@city-slicking.com',
@@ -49,6 +55,12 @@ end
 
 post '/admin/resources/merchants/100/?' do
   auth_admin
+  Agreement.create(
+    :name   => params[:text6],
+    :zip    => params[:text7],
+    :social => params[:text8],
+    :time   => Time.now
+  )
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to        => 'johndickey@city-slicking.com',
     :cc        => 'mattcross@city-slicking.com',
@@ -67,6 +79,12 @@ end
 
 post '/admin/resources/merchants/200/?' do
   auth_admin
+  Agreement.create(
+    :name   => params[:text6],
+    :zip    => params[:text7],
+    :social => params[:text8],
+    :time   => Time.now
+  )
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to        => 'johndickey@city-slicking.com',
     :cc        => 'mattcross@city-slicking.com',
@@ -85,6 +103,12 @@ end
 
 post '/admin/resources/merchants/300/?' do
   auth_admin
+  Agreement.create(
+    :name   => params[:text6],
+    :zip    => params[:text7],
+    :social => params[:text8],
+    :time   => Time.now
+  )
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to        => 'johndickey@city-slicking.com',
     :cc        => 'mattcross@city-slicking.com',
@@ -103,6 +127,12 @@ end
 
 post '/admin/resources/merchants/free/?' do
   auth_admin
+  Agreement.create(
+    :name   => params[:text6],
+    :zip    => params[:text7],
+    :social => params[:text8],
+    :time   => Time.now
+  )
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to        => 'johndickey@city-slicking.com',
     :cc        => 'mattcross@city-slicking.com',

@@ -1,0 +1,36 @@
+<div class="doc">
+	
+	<h1>Agreements</h1>
+
+	<% @agreements.each do |a| %>
+		<p>
+			<a href="/admin/agreements/approve/<%= a.id %>">Approve</a>
+			&nbsp; &nbsp; &nbsp;
+			<strong>Name:</strong> <%= a.name %>
+			&nbsp;
+			<strong>Zip:</strong> <%= a.zip %>
+			&nbsp;
+			<strong>Social:</strong> <%= a.social %>
+			&nbsp;
+			<strong>When:</strong> <%= format_day a.created_at %>
+		</p>
+	<% end %>
+	
+	<h2>Approved</h2>
+	
+	<% @approved.each do |a| %>
+		<p>
+			<strong>Name:</strong> <%= a.name %>
+			&nbsp;
+			<strong>Zip:</strong> <%= a.zip %>
+			&nbsp;
+			<strong>Social:</strong> <%= a.social %>
+			&nbsp;
+			<strong>When:</strong> <%= format_day a.created_at %>
+			&nbsp;
+			<strong>Approved by:</strong> <%= a.approved_by %>
+			&nbsp;
+		</p>
+	<% end %>
+
+</div>
