@@ -233,5 +233,6 @@ end
 get '/admin/deals/preview/:id/?' do
   auth_admin
   @deal = Deal.get(params[:id])
+  @deal.display_percent = @deal.first_percent
   deliver 'admin/deals/preview'
 end
