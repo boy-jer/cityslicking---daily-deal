@@ -5,7 +5,7 @@ end
 
 get '/admin/deals/?' do
   auth_admin
-  @deals = Deal.all(:order => :title)
+  admin?('admin') ? @deals = Deal.all(:order => :title) : @deals = Deal.all(:order => :title, :created_by => session[:user])
   deliver 'admin/deals/index'
 end
 
