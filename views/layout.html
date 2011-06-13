@@ -76,6 +76,7 @@
 		<div id="admin-links" style="display: none;">
 			<% if admin?('admin') || admin?('salesman') %><a href="/admin/merchants" <%= sticky('merchants') %>>MERCHANTS</a><% end %>
 			<% if admin?('admin') || admin?('salesman') || admin?('writer') %><a href="/admin/deals" <%= sticky('deals') %>>DEALS</a><% end %>
+			<% if admin?('admin') || admin?('salesman') %><a href="/admin/calendar" <%= sticky('deals') %>>CALENDAR</a><% end %>
 			<% if admin?('admin') %><a href="/admin/agreements" <%= sticky('agreements') %>>AGREEMENTS</a><% end %>
 			<% if admin?('admin') || admin?('salesman') %><a href="/admin/resources" <%= sticky('resources') %>>RESOURCES</a><% end %>
 			<% if admin?('admin') %><a href="/admin/users" <%= sticky('users') %>>USERS</a><% end %>

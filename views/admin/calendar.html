@@ -1,0 +1,14 @@
+<div class="doc">
+	<h1>Calendar for <%= session[:city_name] %></h1>
+
+	<% @deals.group_by(&:publish_date).each do |date, deals| %>
+		<h3><%= date %></h3>
+		<% deals.each do |d| %>
+			<p>
+				<%= d.title %>
+				<br />
+				<em><%= d.merchant.name %></em>
+			</p>
+		<% end %>
+	<% end %>
+</div>

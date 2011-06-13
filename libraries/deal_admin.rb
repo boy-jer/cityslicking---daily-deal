@@ -3,6 +3,12 @@ get '/admin/?' do
   redirect '/admin/deals'
 end
 
+get '/admin/calendar/?' do
+  auth_admin
+  @deals = City.get(session[:city_id]).deals(:order => :publish_date.asc, :publish_date.gte => Chronic.parse('now'))
+  deliver 'admin/calendar'
+end
+
 get '/admin/deals/?' do
   auth_admin
   admin?('admin') ? @deals = Deal.all(:order => :title) : @deals = Deal.all(:order => :title, :created_by => session[:user])
