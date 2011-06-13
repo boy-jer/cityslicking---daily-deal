@@ -1,15 +1,17 @@
-<img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" width="297" />
+<img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" />
 <div class="specs">
-	<h1 style="font-size: 230%;"><%= deal.display_percent %>% Off at <%= deal.merchant.name %></h1>
-	<h3 style="margin-top: 7px; margin-bottom: 0;"><%= deal.title %></h3>
-	
-	<p class="buttons">
+	<span class="titles">
+		<h1><%= deal.display_percent %>% Off at <%= deal.merchant.name %></h1>
+		<h3 style="margin-top: 7px; margin-bottom: 0;"><%= deal.title %></h3>
+	</span>
+
+	<p class="buttons" style="margin-left: 40px;">
 		<a href="<%= deal.id %>" class="pill tell-a-friend">Tell a Friend</a>
 		<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-feature"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 		<a href="/deals/<%= deal.id %>" class="pill see-details">See Details</a>
 	</p>
 	<p class="meta">
-		<span class="legalese"><%= deal.legalese %></span>
-		<!-- ><span class="expiration">Expires <%= deal.expiration_date %></span> -->
+		<%= deal.legalese %>
+		Expires <%= deal.expiration_date %>
 	</p>
 </div>

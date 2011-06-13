@@ -1,56 +1,32 @@
-get '/home/?' do
-  redirect '/'
-end
-
-get '/?' do
-  @deals = Deal.featured(session[:city_id])
-  @deals.each {|d| d.display_percent = d.first_percent}
-  if session[:user]
-    confirmations = Confirmation.all(:user_id => session[:user])
-    @deals.each do |d|
-      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
-    end
+["/", "/home"].each do |path|
+  get path do
+    redirect '/deals'
   end
-  deliver 'featured'
 end
 
 get '/deals/?' do
+  @features = Deal.featured(session[:city_id])
+  @features.each {|d| d.display_percent = d.first_percent}
+  
+  confirmations = Confirmation.all(:user_id => session[:user]) if session[:user]
+
+  @features.each {|d| d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0} if session[:user]
+  
   if params[:find] && params[:find].length > 0
     session[:user] ? @deals = Deal.search(session[:city_id], params[:find], session[:user]) : @deals = Deal.search(session[:city_id], params[:find])
   else
-    session[:user] ? @deals = Deal.unsaved(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
-  end
-  @deals.each {|d| d.display_percent = d.first_percent}
-  if session[:user]
-    confirmations = Confirmation.all(:user_id => session[:user])
-    @deals.each do |d|
-      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
+    if session[:user] && params[:show] == 'return'
+      @deals = Deal.return(session[:city_id], session[:user])
+    elsif session[:user] && params[:show] == 'reserved'
+      @deals = Deal.reserved(session[:city_id], session[:user])
+    else
+      session[:user] ? @deals = Deal.unsaved(session[:city_id], session[:user]) : @deals = Deal.live(session[:city_id])
     end
   end
-  deliver 'deals'
-end
-
-get '/deals/return/?' do
-  @deals = Deal.return(session[:city_id], session[:user])
+    
   @deals.each {|d| d.display_percent = d.first_percent}
-  if session[:user]
-    confirmations = Confirmation.all(:user_id => session[:user])
-    @deals.each do |d|
-      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
-    end
-  end
-  deliver 'deals'
-end
-
-get '/deals/reserved/?' do
-  @deals = Deal.reserved(session[:city_id], session[:user])
-  @deals.each {|d| d.display_percent = d.first_percent}
-  if session[:user]
-    confirmations = Confirmation.all(:user_id => session[:user])
-    @deals.each do |d|
-      d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0
-    end
-  end
+  @deals.each {|d| d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0} if session[:user]
+  
   deliver 'deals'
 end
 

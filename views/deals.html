@@ -1,24 +1,53 @@
-<div class="doc">
+<% if @features.count > 0 %>
+<div id="features">
+	<img id="today-featured-deal" src="/images/feature_deals.png" />
+	<img id="get-this-deal-free" src="/images/get_deal.png" />
 	
-	<% if session[:user] %>
-	<p style="float: right;">
-		<a href="/deals">New Deals</a>
-		&bull;
-		<a href="/deals/reserved">My Deals</a>
-		&bull;
-		<a href="/deals/return">Return Deals</a>
-	</p>
-	<% end %>
+	<div id="featured-deals" class="featured-position-1">
+		<div class="deal" id="deal-1">
+			<%= deliver 'feature', :layout => false, :locals => {:deal => @features[0]} %>
+		</div>
+		<div class="deal" id="deal-2">
+			<%= deliver 'feature', :layout => false, :locals => {:deal => @features[1]} %>
+		</div>
+		<div class="deal" id="deal-3">
+			<%= deliver 'feature', :layout => false, :locals => {:deal => @features[2]} %>
+		</div>
+	</div>
 	
-	<h2>Search for deals in <%= session[:city_name] %></h2>
-	<form action="/deals">
-		<p>
-			<input type="text" class="searchfield" name="find" value="<%= params[:find] %>" <%= 'placeholder="Search..."' if @device == '.mobile' %> />
-			<% unless @device == '.mobile' %>
-				<input type="submit" value="Search" />
-			<% end %>
+	<a id="left-arrow" href="3"><img src="/images/arrow_left.png" /></a>
+	<a id="right-arrow" href="2"><img src="/images/arrow_right.png" /></a>
+	
+	<div id="other-deals">
+		<a href="#" id="button-1" class="active">1</a>
+		<a href="#" id="button-2" class="inactive">2</a>
+		<a href="#" id="button-3" class="inactive">3</a>
+	</div>
+	
+</div>
+<% end %>
+
+<div class="doc" <%= 'style="margin-top: 420px;"' if @features.count > 0 %>>
+				
+		<% if session[:user] %>
+		<p class="toggle" style="margin: -33px -51px 0 -51px;">
+			<a <%= 'class="sticky"' if params[:show] == nil %> href="/deals">New Deals</a>
+			<a <%= 'class="sticky"' if params[:show] == 'reserved' %> href="/deals?show=reserved">My Deals</a>
+			<a <%= 'class="sticky"' if params[:show] == 'return' %> href="/deals?show=return">Return Deals</a>
 		</p>
-	</form>
+		<% end %>
+	
+		<h2>Deals in <%= session[:city_name] %></h2>
+		<form action="/deals">
+			<p>
+				<input type="text" class="searchfield" name="find" value="<%= params[:find] %>" <%= 'placeholder="Search..."' if @device == '.mobile' %> />
+				<% unless @device == '.mobile' %>
+					<input type="submit" value="Search" />
+				<% end %>
+			</p>
+		</form>
+	
+	
 	<% @deals.each do |deal| %>
 	
 		<a class="deal-listing" id="<%= deal.id %>" href="#">

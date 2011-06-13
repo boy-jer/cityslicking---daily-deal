@@ -7,6 +7,10 @@ html {
 	background-color: #91d9f8;
 }
 
+body {
+	padding-top: 50px;
+}
+
 p#flash {
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
@@ -63,14 +67,19 @@ textarea:focus {
 }
 
 img#logo {
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	margin-left: -450px;
+	z-index: 3;
+	top: 0;
 }
 
 div#cities {
 	right: 50%;
 	margin-right: -450px;
+	position: fixed;
+	top: 0;
+	z-index: 3;
 }
 
 div#other-cities a { width: 200px; }
@@ -88,12 +97,18 @@ div#menu {
 	line-height: 100%;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 2;
 }
 
 div#menu a { padding: 22px 7px 15px 7px; }
 
 div#admin-links {
-	position: absolute;
+	position: fixed;
+	top: 50px;
 	left: 48%;
 	z-index: 1;
 	-webkit-box-shadow: 1px 1px 3px #000;
@@ -120,7 +135,7 @@ div#admin-links a:hover {
 }
 
 div#features {
-	width: 780px;
+	width: 900px;
 	margin: auto;
 	margin-top: 30px;
 }
@@ -135,16 +150,31 @@ img#get-this-deal-free {
 	margin-bottom: -45px;
 }
 
+div#features div#featured-deals {
+	position: absolute;
+	width: 800px;
+	height: 355px;
+	overflow: hidden;
+	margin-top: 30px;
+	margin-left: 50px;
+}
+
 div#features div#featured-deals div.deal {
 	background-color: white;
 	margin: auto;
-	width: 618px;
+	width: 742px;
 	padding: 22px;
 	-webkit-box-shadow: 1px 1px 7px #777;
 	-moz-box-shadow: 1px 1px 7px #777;
 	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=3);
 	overflow: auto;
+	position: absolute;
+	top: 7px;
 }
+
+div.featured-position-1 div#deal-1 { left: 7px; }
+div.featured-position-1 div#deal-2 { left: 807px; }
+div.featured-position-1 div#deal-3 { left: 1607px; }
 
 div.doc div.deal {
 	border-top: 1px solid #dedede;
@@ -153,28 +183,54 @@ div.doc div.deal {
 	overflow: auto;
 }
 
-img.deal-pic { float: left; }
+img.deal-pic {
+	float: left;
+	width: 350px;
+}
 
-div.specs {
+div.doc div.deal img.deal-pic { width: 297px; }
+
+div#features div#featured-deals div.deal div.specs {
 	float: right;
-	width: 298px;
+	width: 370px;
 }
 
 div.doc div.deal div.specs {
 	width: 380px;
+	float: right;
 }
 
-div.specs h1 {
+div.specs span.titles {
+	display: inline-block;
+	height: 110px;
+}
+
+div#features div#featured-deals div.deal div.specs span.titles {
+	display: inline-block;
+	height: 150px;
+}
+
+div.specs span.titles h1 {
 	color: #800;
 	line-height: 120%;
 	margin: 0;
-	font-size: 32px;
+	font-size: 28px;
+}
+
+div#features div#featured-deals div.deal div.specs span.titles h1 {
+	font-size: 36px;
+}
+
+div#features div#featured-deals div.deal div.specs span.titles h3 {
+	font-size: 20px;
+	line-height: 120%;
 }
 
 div.specs p.buttons {
 	text-align: center;
 	vertical-align: top;
 	margin-bottom: 7px;
+	width: 300px;
 }
 
 div.specs a.pill {
@@ -204,21 +260,18 @@ div.specs p.meta {
 	color: #777;
 	font-size: 10px;
 	margin-top: 0;
+	text-align: center;
 }
 
-div.specs p.meta span.legalese { float: left; }
-div.specs p.meta span.expiration { float: right; }
-
-
-a#left-arrow, a#right-arrow { margin-top: 120px; position: absolute; }
-a#left-arrow { left: 50%; margin-left: -362px; }
-a#right-arrow { right: 50%; margin-right: -356px; }
+a#left-arrow, a#right-arrow { margin-top: 150px; position: absolute; }
+a#left-arrow { left: 50%; margin-left: -420px; }
+a#right-arrow { right: 50%; margin-right: -420px; }
 
 div#other-deals {
 	position: absolute;
 	text-align: center;
-	margin-top: 288px;
-	width: 780px;
+	margin-top: 328px;
+	width: 900px;
 }
 
 div#other-deals a {
@@ -238,24 +291,6 @@ div#other-deals a:hover, div#other-deals a.active { color: orange; }
 
 div#other-deals a.active { background-position: bottom center; }
 
-div#featured-deals {
-	position: absolute;
-	width: 677px;
-	height: 255px;
-	overflow: hidden;
-	margin-top: 30px;
-	margin-left: 49px;
-}
-
-div#featured-deals div.deal {
-	position: absolute;
-	top: 7px;
-}
-
-div.featured-position-1 div#deal-1 { left: 7px; }
-div.featured-position-1 div#deal-2 { left: 787px; }
-div.featured-position-1 div#deal-3 { left: 1567px; }
-
 div.doc {
 	width: 730px;
 	margin: auto;
@@ -269,6 +304,28 @@ div.doc {
 
 div.doc h1 {
 	font-size: 36px;
+}
+
+p.toggle {
+	background-color: #f1f1f1;
+	text-align: right;
+}
+
+p.toggle a {
+	display: inline-block;
+	padding: 7px 22px;
+	text-decoration: none;
+	font-size: 90%;
+	color: #333;
+}
+
+p.toggle a:hover {
+	background-color: white;
+}
+
+p.toggle a.sticky, p.toggle a:hover.sticky {
+	background-color: white;
+	font-weight: bold;
 }
 
 a.deal-listing {

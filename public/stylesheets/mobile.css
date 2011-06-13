@@ -42,10 +42,14 @@ input.textfield:focus, input.searchfield:focus {
 
 input.searchfield {
 	width: 96%;
+	padding: 3px;
+	font-size: 13px;
 }
 
 input.searchfield:focus {
 	background-color: mintcream;
+	padding: 6px;
+	font-size: 16px;
 }
 
 textarea {
@@ -91,14 +95,18 @@ div.feature {
 	background-color: white;
 	margin: 11px;
 	padding: 11px;
+	padding-bottom: 1px;
 	-webkit-box-shadow: 1px 1px 5px #777;
-	text-align: center;
+	text-align: left;
 	-webkit-border-radius: 3px;
 }
 
 div.feature img.deal-pic {
-	width: 274px;
+	width: 100px;
 	border: 1px solid #999;
+	float: right;
+	margin-left: 11px;
+	margin-bottom: 11px;
 }
 
 div.feature h1 {
@@ -106,6 +114,15 @@ div.feature h1 {
 	line-height: 120%;
 	margin: 11px;
 	margin-top: 0;
+	font-size: 18px;
+}
+
+div.feature h2 {
+	font-size: 16px;
+}
+
+p.buttons {
+	text-align: center;
 }
 
 a.pill {
@@ -158,6 +175,28 @@ div.doc {
 	margin: 11px;
 }
 
+p.toggle {
+	background-color: #f1f1f1;
+	text-align: left;
+}
+
+p.toggle a {
+	display: inline-block;
+	padding: 7px;
+	text-decoration: none;
+	font-size: 90%;
+	color: #333;
+}
+
+p.toggle a:hover {
+	background-color: white;
+}
+
+p.toggle a.sticky, p.toggle a:hover.sticky {
+	background-color: white;
+	font-weight: bold;
+}
+
 div#explainations {
 	-webkit-border-radius: 3px;
 	background-color: #CCE8F7;
@@ -176,7 +215,7 @@ a.deal-listing-mobile {
 	display: block;
 	text-decoration: none;
 	margin: auto -11px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8DD074), to(#fff));
+	background: -webkit-gradient(linear, 0% 0%, 0% 150%, from(#00d002), to(#ffffff));
 	font-weight: bold;
 	font-size: 14px;
 }

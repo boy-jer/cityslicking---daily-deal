@@ -36,8 +36,8 @@ jQuery(function()
 		if (position == 1)
 		{
 		  $("#deal-1").animate({left: "7px"}, 300 );
-			$("#deal-2").animate({left: "787px"	}, 300 );
-			$("#deal-3").animate({left: "1567px"	}, 300 );
+			$("#deal-2").animate({left: "807px"	}, 300 );
+			$("#deal-3").animate({left: "1607px"	}, 300 );
 			$("#button-1, #button-2, #button-3").removeClass("active inactive").addClass("inactive");
 			$("#button-1").removeClass("inactive").addClass("active");
 			$("#left-arrow").attr("href", "3");
@@ -45,9 +45,9 @@ jQuery(function()
 		}
 		else if (position == 2)
 		{
-		  $("#deal-1").animate({left: "-773px"}, 300 );
+		  $("#deal-1").animate({left: "-793px"}, 300 );
 			$("#deal-2").animate({left: "7px"	}, 300 );
-			$("#deal-3").animate({left: "787px"	}, 300 );
+			$("#deal-3").animate({left: "807px"	}, 300 );
 			$("#button-1, #button-2, #button-3").removeClass("active inactive").addClass("inactive");
 			$("#button-2").removeClass("inactive").addClass("active");
 			$("#left-arrow").attr("href", "1");
@@ -55,8 +55,8 @@ jQuery(function()
 		}
 		else if (position == 3)
 		{
-		  $("#deal-1").animate({left: "-1553px"}, 300 );
-			$("#deal-2").animate({left: "-773px"	}, 300 );
+		  $("#deal-1").animate({left: "-1593px"}, 300 );
+			$("#deal-2").animate({left: "-793px"	}, 300 );
 			$("#deal-3").animate({left: "7px"	}, 300 );
 			$("#button-1, #button-2, #button-3").removeClass("active inactive").addClass("inactive");
 			$("#button-3").removeClass("inactive").addClass("active");
