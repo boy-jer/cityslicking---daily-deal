@@ -1,4 +1,4 @@
-<% if @features.count > 0 %>
+<% if @features.count > 2 %>
 <div id="features">
 	<img id="today-featured-deal" src="/images/feature_deals.png" />
 	<img id="get-this-deal-free" src="/images/get_deal.png" />
@@ -27,7 +27,7 @@
 </div>
 <% end %>
 
-<div class="doc" <%= 'style="margin-top: 420px;"' if @features.count > 0 %>>
+<div class="doc" <%= 'style="margin-top: 420px;"' if @features.count > 2 %>>
 				
 		<% if session[:user] %>
 		<p class="toggle" style="margin: -33px -51px 0 -51px;">

@@ -1,5 +1,5 @@
 <% unless (params[:featured] == 'false') || (params[:find] && params[:find].length > 0) %>
-
+<% if @features.count > 2 %>
 	<p style="text-align: center; margin-top: 22px;">
 		<img id="today-featured-deal" src="/images/feature_deals.png" />
 	</p>
@@ -22,7 +22,7 @@
 		<a href="#" id="mobile-btn-2" class="inactive">2</a>
 		<a href="#" id="mobile-btn-3" class="inactive">3</a>
 	</div>
-
+<% end %>
 <% end %>
 
 <div class="doc" style="padding-bottom: 0;">
