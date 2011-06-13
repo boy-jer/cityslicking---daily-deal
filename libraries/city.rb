@@ -9,10 +9,6 @@ end
 
 get '/cities/:short_name/?' do
   city = City.first(:short_name => params[:short_name])
-  if Deal.live(city.id).count == 0
-    session[:flash] = "Sorry, there are no deals in #{city.name} right now."
-    redirect '/cities/sanjose' 
-  end
   session[:city_id] = city.id
   session[:city_name] = city.name
   redirect request.referrer
