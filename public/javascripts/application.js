@@ -19,13 +19,7 @@ jQuery(function()
 		lightbox('/sign-in');
 		return false;
 	});
-	
-	function delayed_deal(deal)
-	{
-		setTimeout(featured_deal(deal), 1000);
-		return false;
-	};
-	
+		
 	var deal_timer = setInterval(function()
 	{
 		featured_deal($("#right-arrow").attr("href"));
@@ -100,30 +94,58 @@ jQuery(function()
 		return false;
 	});
 	
+	var mobile_deal_timer = setInterval(function()
+	{
+		mobile_featured_deal($('span#deal-counter').attr('class'));
+	}, 8000);
+	
+	function mobile_featured_deal(position)
+	{
+		if (position == 1)
+		{
+			$("#feature-1, #feature-2, #feature-3").hide();
+			$("#feature-1").show();
+			$("#mobile-btn-1, #mobile-btn-2, #mobile-btn-3").removeClass("active inactive").addClass("inactive");
+			$("#mobile-btn-1").removeClass("inactive").addClass("active");
+			$("#deal-counter").attr("class", "2");
+		}
+		else if (position == 2)
+		{
+			$("#feature-1, #feature-2, #feature-3").hide();
+			$("#feature-2").show();
+			$("#mobile-btn-1, #mobile-btn-2, #mobile-btn-3").removeClass("active inactive").addClass("inactive");
+			$("#mobile-btn-2").removeClass("inactive").addClass("active");
+			$("#deal-counter").attr("class", "3");
+		}
+		else if (position == 3)
+		{
+			$("#feature-1, #feature-2, #feature-3").hide();
+			$("#feature-3").show();
+			$("#mobile-btn-1, #mobile-btn-2, #mobile-btn-3").removeClass("active inactive").addClass("inactive");
+			$("#mobile-btn-3").removeClass("inactive").addClass("active");
+			$("#deal-counter").attr("class", "1");
+		}
+	}
+	
+	
 	$("#mobile-btn-1").click(function()
 	{
-		$("#feature-1, #feature-2, #feature-3").hide();
-		$("#feature-1").show();
-		$("#mobile-btn-1, #mobile-btn-2, #mobile-btn-3").removeClass("active inactive").addClass("inactive");
-		$("#mobile-btn-1").removeClass("inactive").addClass("active");
+		clearInterval(mobile_deal_timer);
+		mobile_featured_deal(1);
 		return false;
 	});
 
 	$("#mobile-btn-2").click(function()
 	{
-		$("#feature-1, #feature-2, #feature-3").hide();
-		$("#feature-2").show();
-		$("#mobile-btn-1, #mobile-btn-2, #mobile-btn-3").removeClass("active inactive").addClass("inactive");
-		$("#mobile-btn-2").removeClass("inactive").addClass("active");
+		clearInterval(mobile_deal_timer);
+		mobile_featured_deal(2);
 		return false;
 	});
 
 	$("#mobile-btn-3").click(function()
 	{
-		$("#feature-1, #feature-2, #feature-3").hide();
-		$("#feature-3").show();
-		$("#mobile-btn-1, #mobile-btn-2, #mobile-btn-3").removeClass("active inactive").addClass("inactive");
-		$("#mobile-btn-3").removeClass("inactive").addClass("active");
+		clearInterval(mobile_deal_timer);
+		mobile_featured_deal(3);
 		return false;
 	});
 		
