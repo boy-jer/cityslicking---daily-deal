@@ -7,10 +7,6 @@ html {
 	background-color: #91d9f8;
 }
 
-body {
-	padding-top: 50px;
-}
-
 p#flash {
 	margin: auto;
 	-webkit-box-shadow: 1px 1px 3px #777;
@@ -67,19 +63,14 @@ textarea:focus {
 }
 
 img#logo {
-	position: fixed;
+	position: absolute;
 	left: 50%;
 	margin-left: -450px;
-	z-index: 3;
-	top: 0;
 }
 
 div#cities {
 	right: 50%;
 	margin-right: -450px;
-	position: fixed;
-	top: 0;
-	z-index: 3;
 }
 
 div#other-cities a { width: 200px; }
@@ -97,11 +88,7 @@ div#menu {
 	line-height: 100%;
 	-webkit-box-shadow: 1px 1px 3px #777;
 	-moz-box-shadow: 1px 1px 3px #777;
-	position: fixed;
-	left: 0;
 	top: 0;
-	right: 0;
-	z-index: 2;
 }
 
 div#menu a { padding: 22px 7px 15px 7px; }
