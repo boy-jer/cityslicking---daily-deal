@@ -18,3 +18,6 @@ sf.update(:name => 'S.F./Bay Area, CA') if sf
 
 la = City.first(:short_name => 'losangeles')
 la.update(:name => 'L.A. Area, CA') if la
+
+turlock = City.first(:short_name => 'turlock')
+turlock.destroy if turlock
