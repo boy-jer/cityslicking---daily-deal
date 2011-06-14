@@ -1,14 +1,18 @@
 <div class="doc">
 	
 	<p class="deal-btn">
-		<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save-deal"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+		<% unless @deal.in_use %>
+			<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save-deal"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+		<% else %>
+			<img src="/images/deal_in_use.png">
+		<% end %>
 	</p>
 	
 	<h1 style="color: #800; margin-bottom: 0;"><%= @deal.display_percent %>% Off at <%= @deal.merchant.name %></h1>
 	<h2 style="margin-top: 7px;"><%= @deal.title %></h2>
 	
 	<p><a href="<%= request.referrer %>">&larr; Find more deals</a></p>
-	
+				
 	<hr />
 	
 	<div class="left">

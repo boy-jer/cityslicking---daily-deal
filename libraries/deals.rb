@@ -27,6 +27,27 @@ get '/deals/?' do
   @deals.each {|d| d.display_percent = d.first_percent}
   @deals.each {|d| d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0} if session[:user]
   
+  if session[:user]
+    @deals.each do |d|
+      confirmations.all(:deal_id => d.id).each do |c|
+        in_use_count = 0
+        if c.expires
+          in_use_count = in_use_count + 1 if c.expires > Time.now.to_datetime
+        end
+        d.in_use = true if in_use_count > 0
+      end
+    end
+    @features.each do |d|
+      confirmations.all(:deal_id => d.id).each do |c|
+        in_use_count = 0
+        if c.expires
+          in_use_count = in_use_count + 1 if c.expires > Time.now.to_datetime
+        end
+        d.in_use = true if in_use_count > 0
+      end
+    end
+  end
+  
   deliver 'deals'
 end
 
@@ -40,6 +61,15 @@ get '/deals/:id/?' do
       redirect '/deals'
     end
     @deal.display_percent = @deal.return_percent if confirmations.count > 0
+    
+    confirmations.each do |c|
+      in_use_count = 0
+      if c.expires
+        in_use_count = in_use_count + 1 if c.expires > Time.now.to_datetime
+      end
+      @deal.in_use = true if in_use_count > 0
+    end
+
   end
   deliver 'deal'
 end
@@ -50,7 +80,8 @@ class Deal
   include DataMapper::Resource
   
   attr_accessor :display_percent
-  
+  attr_accessor :in_use
+    
   property    :id,          Serial
   property    :deleted_at,  ParanoidDateTime
   timestamps  :at

@@ -32,14 +32,14 @@ end
 
 post '/save/gps/:id/?' do
   @deal = Deal.get(params[:id])
-  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'gps')
+  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'gps', :expires => Chronic.parse('4 hours from now'))
   session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
   deliver 'share', :layout => false
 end
 
 post '/save/phone/:id/?' do
   @deal = Deal.get(params[:id])
-  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web')
+  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web', :expires => Chronic.parse('4 hours from now'))
   session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
   deliver 'share', :layout => false
 end
@@ -47,7 +47,7 @@ end
 post '/save/sms/:id/?' do
   @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
-  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'sms')
+  Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'sms', :expires => Chronic.parse('24 hours from now'))
   account = Twilio::RestAccount.new(settings.sms_server[:account_sid], settings.sms_server[:account_token])
   msg = {
     'From' => settings.sms_server[:account_number],
@@ -123,6 +123,7 @@ class Confirmation
   property    :id,          Serial
   
   property    :method,      String
+  property    :expires,     DateTime
   
   belongs_to :user
   belongs_to :deal

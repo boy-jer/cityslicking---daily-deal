@@ -7,7 +7,11 @@
 
 	<p class="buttons" style="margin-left: 40px;">
 		<a href="<%= deal.id %>" class="pill tell-a-friend">Tell a Friend</a>
-		<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-feature"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+		<% unless deal.in_use %>
+			<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-feature"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+		<% else %>
+			<img src="/images/deal_in_use.png">
+		<% end %>
 		<a href="/deals/<%= deal.id %>" class="pill see-details">See Details</a>
 	</p>
 	<p class="meta">
