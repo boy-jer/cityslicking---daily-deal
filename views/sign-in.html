@@ -5,6 +5,7 @@
 		$('#existing').click(function()
 		{
 			$('p#zip_paragraph').hide();
+			$('p#daily-deals').hide();
 			$('p#sign-in-btn').show();
 			$('p#register-btn').hide();
 		});
@@ -12,6 +13,7 @@
 		$('#new').click(function()
 		{
 			$('p#zip_paragraph').show();
+			$('p#daily-deals').show();
 			$('p#sign-in-btn').hide();
 			$('p#register-btn').show();
 		});
@@ -19,6 +21,7 @@
 		$('#merchant').click(function()
 		{
 			$('p#zip_paragraph').hide();
+			$('p#daily-deals').hide();
 			$('p#sign-in-btn').show();
 			$('p#register-btn').hide();
 		});
@@ -46,6 +49,11 @@
 		<input type="email" class="textfield" id="email" name="email" value="<%= params[:email] %>" />
 	</p>
 	
+	<p id="daily-deals" <%= 'style="display: none;"' unless params[:account_type] == "new" || params[:account_type].nil? %>>
+		<input type="checkbox" name="subscribe" id="subscribe" checked />
+		<span style="font-size: 90%;">Sign me up for the <strong>Daily Deals</strong> newletter!</span>
+	</p>
+	
 	<p>
 		<input type="radio" name="account_type" id="new" value="new" checked /> I'm new!
 		<br />
@@ -58,7 +66,7 @@
 		<label for="password">Password</label>
 		<input type="password" class="textfield" id="password" name="password" value="<%= params[:password] %>" />
 	</p>
-	
+		
 	<p id="zip_paragraph" <%= 'style="display: none;"' unless params[:account_type] == "new" || params[:account_type].nil? %>>
 		<label for="zip">Zip code</label>
 		<input type="zip" class="textfield" id="zip" name="zip" value="<%= params[:zip] %>" />

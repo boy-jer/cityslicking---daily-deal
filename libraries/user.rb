@@ -41,6 +41,7 @@ post '/sign-in/?' do
             :body => "Hey, congrats! You've just left Slackerville and you're headed for some serious Slick Deals. From now on, you'll be getting daily deal options from the gang at City-Slicking.com. We've negotiated hard and twisted arms to bring you really great local bargains. Look for our emails and of course, check out all the action @ City-Slicking.com anytime! And hey, tell your friends, tell your family, heck, tell the world!! Slickers Rule, Slackers Drool!"            
           )
           session[:user] = user.id
+          user.update(:subscriber => true) if params[:subscribe]          
         else
           errors = errors + 1
           msgs << "Registration error.<br />"
