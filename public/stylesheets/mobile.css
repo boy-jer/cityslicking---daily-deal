@@ -101,12 +101,9 @@ div.feature {
 	-webkit-border-radius: 3px;
 }
 
-div.feature img.deal-pic {
-	width: 100px;
+div.feature p img.deal-pic {
+	width: 276px;
 	border: 1px solid #999;
-	float: right;
-	margin-left: 11px;
-	margin-bottom: 11px;
 }
 
 div.feature h1 {
@@ -114,11 +111,12 @@ div.feature h1 {
 	line-height: 120%;
 	margin: 11px;
 	margin-top: 0;
-	font-size: 18px;
+	font-size: 28px;
+	text-align: center;
 }
 
 div.feature h2 {
-	font-size: 16px;
+	text-align: center;
 }
 
 p.buttons {
@@ -227,11 +225,9 @@ a.deal-listing-mobile p {
 
 a.deal-listing-mobile p.expiration {
 	font-size: 90%;
-	color: white;
 	float: right;
 	padding-top: 3px;
 	text-align: right;
-	text-shadow: 1px 1px 1px #999;
 }
 
 a.deal-listing-mobile h2 {

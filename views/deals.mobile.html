@@ -50,12 +50,12 @@
 		<a class="deal-listing-mobile" href="/deals/<%= deal.id %>">
 			<p class="expiration">
 				Good till: <%= format_american_day deal.expiration_date %>
-				<% if deal.confirmations.count > 0 %>
+				<% if deal.confirmations.count > 99 %>
 					<br />Grabbed: <%= deal.confirmations.count %>
 				<% end %>
 			</p>
 			<h2><%= deal.display_percent %>% Off</h2>
-			<p class="legalese"><%= deal.title %> at <%= deal.merchant.name %></p>
+			<p class="legalese" style="font-size: 110%;"><%= deal.merchant.name %></p>
 			<p style="font-size: 90%; font-style: italic;"><%= deal.neighborhood %></p>
 		</a>
 				
@@ -64,4 +64,17 @@
 	<% if @deals.count == 0 %>
 		<p>Sorry, no deals.</p>
 	<% end %>
+</div>
+
+<div class="doc" id="explainations">
+		<h2>How It Works</h2>
+		<p>You pay nothing up front. Just select the deals you want to use, show the discount code on your phone to the cashier and collect your savings.</p>
+		<p style="text-align: right;"><a href="/how-it-works">Find out more &rarr;</a></p>
+</div>
+<div class="doc" id="explainations">
+		<h2>Daily Deals</h2>
+		<p>Never miss another deal! Our latest savings can be delivered right to your inbox every morning with our Daily Deals newsletter.</p>
+		<p style="text-align: center;">
+			<a href="/subscribe" <%= 'class="sign-in"' unless session[:user] %>><img src="/images/subscribe.png" style="float: none;"></a>
+		</p>
 </div>

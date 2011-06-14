@@ -1,11 +1,15 @@
-<img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" />
-
 <h1 style="margin: 0;"><%= deal.display_percent %>% Off at <%= deal.merchant.name %></h1>
 <h2 style="margin-top: 7px;"><%= deal.title %></h2>
+<p><img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" /></p>
 
 <p class="buttons">
 	<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-mobile"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 	<br />
 	<a href="<%= deal.id %>" class="pill tell-a-friend" id="tell-a-friend">Tell a Friend</a>
 	<a href="/deals/<%= deal.id %>" class="pill" id="see-details">See Details</a>
+</p>
+<p class="meta" style="text-align: center;">
+	<span class="legalese"><%= deal.legalese %></span>
+	<br />
+ 	<span class="expiration">Expires <%= deal.expiration_date %></span>
 </p>
