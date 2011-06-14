@@ -295,7 +295,7 @@ div.doc h1 {
 }
 
 p.toggle {
-	background-color: #f1f1f1;
+	background-color: #e7e7e7;
 	text-align: right;
 }
 
@@ -303,7 +303,6 @@ p.toggle a {
 	display: inline-block;
 	padding: 7px 22px;
 	text-decoration: none;
-	font-size: 90%;
 	color: #333;
 }
 
