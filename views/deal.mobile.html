@@ -6,7 +6,7 @@
 	
 	<p align="center">
 		<% unless @deal.in_use %>
-			<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save-deal"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+			<a href="<%= params[:id] %>" title="" <%= session[:user] ? 'class="save-mobile"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
 		<% else %>
 			<img src="/images/deal_in_use.png">
 		<% end %>
