@@ -166,12 +166,6 @@ jQuery(function()
 		lightbox('/save/mobile/' + $(this).attr('href'));
 		return false;
 	});
-
-	$('a.tell-a-friend').click(function()
-	{
-		lightbox('/share/deal/' + $(this).attr('href'));
-		return false;
-	});
 		
 	$('#current-city').click(function()
 	{
@@ -225,5 +219,11 @@ jQuery(function()
 		$('#mailing_zip').val($('#physical_zip').val());
 		return false;
 	});
-		
+
+	if ($('.share-this-deal').length > 0)
+	{
+		$('div.share').effect("pulsate", { times:3 }, 700);
+		$('div.share form p input.textfield').select();
+	}
+	
 });

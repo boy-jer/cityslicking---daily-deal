@@ -16,14 +16,27 @@
 	
 	<p style="text-align: center;"><img src="/images/deals/<%= @deal.id %>.jpg" style="width: 276px;" /></p>
 	
-	<div class="right"><p><%= @deal.legalese %></p><%= markdown @deal.description %></div>
+	<div class="share<%= ' share-this-deal-mobile' if params['share'] %>">
+		<h3>SHARE THIS DEAL</h3>
+		<form method="post" action="/share/deal/<%= params[:id] %>">
+			<p><input type="email" class="textfield" name="email" id="email" placeholder="Friend's email address" /></p>
+			<p>
+				<a style="display: inline;" href="http://twitter.com/share" class="twitter-share-button" data-url="http://city-slicking.com/deals/<%= params[:id] %>" data-text="Check out this new deal on City-Slicking!" data-count="none" data-via="cityslicking">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcity-slicking.com%2Fdeals%2F<%= params[:id] %>&amp;send=true&amp;layout=button_count&amp;width=96&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:96px; height:20px; display: inline;" allowTransparency="true"></iframe>
+			</p>
+		</form>
+	</div>
+	
+	<div class="right">
+		<p style="color: #777; font-style: italic;"><%= @deal.legalese %></p>
+		<%= markdown @deal.description %>
+	</div>
 	
 	<% @deal.locations.each do |location| %>
 		<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
-		<p class="map" align="center">
-			<img src="http://maps.google.com/maps/api/staticmap?center=<%= addr %>&zoom=15&size=276x240&markers=color:blue|<%= addr %>&sensor=false" />
-			<br />
+		<p class="map">
 			<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&ie=UTF8&hq=&hnear=<%= location.street %>,+<%= location.city %>,+<%= location.state %>+<%= location.zip %>&z=17"><%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %></a>
+			<img src="http://maps.google.com/maps/api/staticmap?center=<%= addr %>&zoom=15&size=298x240&markers=color:blue|<%= addr %>&sensor=false" />
 		</p>
 	<% end %>
 	

@@ -12,8 +12,9 @@
 	<h2 style="margin-top: 7px;"><%= @deal.title %></h2>
 	
 	<p><a href="<%= request.referrer %>">&larr; Find more deals</a></p>
-				
+
 	<hr />
+	
 	
 	<div class="left">
 		<p><img src="/images/deals/<%= @deal.id %>.jpg" width="297" /></p>
@@ -26,6 +27,24 @@
 		<% end %>
 	</div>
 
-	<div class="right"><p><%= @deal.legalese %></p><%= markdown @deal.description %></div>
-	
+	<div class="right">
+		<div class="share<%= ' share-this-deal' if params['share'] %>">
+			<h3>SHARE THIS DEAL</h3>
+			<form method="post" action="/share/deal/<%= params[:id] %>">
+				<p>
+					<input type="text" class="textfield" name="email" id="email" placeholder="Friend's email address" />
+					<br />
+					<input type="submit" value="Send email" />
+					<span style="float: right; margin-top: 1px;">
+						<a style="display: inline;" href="http://twitter.com/share" class="twitter-share-button" data-url="http://city-slicking.com/deals/<%= params[:id] %>" data-text="Check out this new deal on City-Slicking!" data-count="none" data-via="cityslicking">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcity-slicking.com%2Fdeals%2F<%= params[:id] %>&amp;send=true&amp;layout=button_count&amp;width=93&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:93px; height:20px; display: inline;" allowTransparency="true"></iframe>
+					</span>
+				</p>
+			</form>
+		</div>
+		
+		<p style="font-style: italic; color: #777;"><%= @deal.legalese %></p>
+		<%= markdown @deal.description %>
+	</div>
+		
 </div>

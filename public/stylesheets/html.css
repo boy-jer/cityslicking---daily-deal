@@ -391,6 +391,40 @@ div.person strong {
 	font-size: 100%;
 }
 
+div.share {
+	text-align: left;
+	font-style: normal;
+	background-color: lightyellow;
+	padding: 11px;
+	padding-bottom: 0;
+	background-color: white;
+	color: #121212;
+	-webkit-border-radius: 3px;
+	border: 3px solid #CCE8F7;
+	margin-top: 13px;
+}
+
+div.share h3 {
+	background-color: #CCE8F7;
+	padding: 11px;
+	margin: -11px;
+	margin-bottom: 11px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDF7FF), to(#CCE8F7));
+	color: #408B99;
+	font-size: 100%;
+}
+
+div.share form p input.textfield {
+	width: 355px;
+	font-size: 13px;
+	margin-bottom: 7px;
+}
+
+div.share form p input.textfield:focus {
+	background-color: mintcream;
+	border-color: silver;
+}
+
 img#close {
 	position: absolute;
 	top: 23px;

@@ -16,11 +16,9 @@ get '/save/mobile/:id/?' do
   deliver 'save/mobile', :layout => false
 end
 
-get '/share/deal/:id/?' do
-  deliver 'share', :layout => false
-end
-
 post '/share/deal/:id/?' do
+  params[:email].strip!
+  params[:email] = 'deals@city-slicking.com' if params[:email] == ''
   Pony.mail(:via => :smtp, :via_options => settings.mail_server,
     :to      => params[:email],
     :subject => 'CitySlicking Deal',
