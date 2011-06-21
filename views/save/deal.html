@@ -2,24 +2,6 @@
 	jQuery(function()
 	{
 		
-		$('#smartphone').click(function()
-		{
-			var deal = $(this).attr('href');
-			$.post('/save/phone/' + deal, function(data) {
-			  $('#lightbox').html(data);
-			});
-			return false;
-		});
-
-		$('#email').click(function()
-		{
-			var deal = $(this).attr('href');
-			$.post('/reserve/' + deal, function(data) {
-			  $('#lightbox').html(data);
-			});
-			return false;
-		});
-
 		$('#sms').click(function()
 		{
 			var deal = $(this).attr('href');
@@ -44,7 +26,7 @@
 <% end %>
 </ul>
 <strong>
-<p><a href="<%= params[:id] %>" id="email">Reserve for later</a></p>
+	<p><a href="/reserve/<%= params[:id] %>">Reserve for later</a></p>
 <p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>><a href="<%= params[:id] %>" id="sms">Send it to my phone (SMS)</a></p>
 </strong>
 <p>You can also use this deal from our mobile site.</p>

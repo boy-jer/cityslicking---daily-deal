@@ -4,7 +4,12 @@
 
 <p class="buttons">
 	<% unless deal.in_use %>
-		<a href="<%= deal.id %>" title="" <%= session[:user] ? 'class="save-mobile"' : 'class="sign-in"' %>><img src="/images/save_deal.png"></a>
+		<% if session[:user] %>
+			<a href="/save/mobile/<%= deal.id %>"><img src="/images/save_deal.png"></a>
+		<% else %>
+			<a href="/sign-in"><img src="/images/save_deal.png"></a>
+		<% end %>
+		
 	<% else %>
 		<img src="/images/deal_in_use.png">
 	<% end %>

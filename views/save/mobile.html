@@ -24,9 +24,7 @@
 			if (vacinity < <%= @deal.locations.count %>)
 			{
 				var deal = $('#smartphone').attr('href');
-				$.post('/save/gps/' + deal, function(data) {
-				  $('#lightbox').html(data);
-				});
+				window.location = "/save/gps/" + deal
 			}
 			else
 			{
@@ -37,14 +35,14 @@
 		function noLocation()
 		{
 			var deal = $('#smartphone').attr('href');
-			$.post('/save/phone/' + deal, function(data) {
-			  $('#lightbox').html(data);
-			});
+			window.location = "/save/phone/" + deal
 		}
 						
 	});
 	
 </script>
+<div class="doc">
+
 <center>
 <h1 style="color: #800; line-height: 120%;"><%= @deal.title %></h1>
 
@@ -62,3 +60,5 @@
 
 <p class="legalese"><em><%= @deal.legalese %></em></p>
 </center>
+
+</div>

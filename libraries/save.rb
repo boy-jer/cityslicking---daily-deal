@@ -11,9 +11,13 @@ get '/save/deal/:id/?' do
 end
 
 get '/save/mobile/:id/?' do
+  unless mobile_request?
+    session[:flash] = 'Sorry, but you have to be using your smartphone to save with this deal.'
+    redirect "/deals/#{params[:id]}"
+  end
   @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
-  deliver 'save/mobile', :layout => false
+  deliver 'save/mobile'
 end
 
 post '/share/deal/:id/?' do
@@ -28,18 +32,18 @@ post '/share/deal/:id/?' do
   '<script type="text/javascript" charset="utf-8">window.location = "/deals/' + params[:id] + '"</script>'
 end
 
-post '/save/gps/:id/?' do
+get '/save/gps/:id/?' do
   @deal = Deal.get(params[:id])
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'gps', :expires => Chronic.parse('4 hours from now'))
-  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
-  deliver 'share', :layout => false
+  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}.<br />Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
+  js_redirect "/deals/#{@deal.id}"
 end
 
-post '/save/phone/:id/?' do
+get '/save/phone/:id/?' do
   @deal = Deal.get(params[:id])
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web', :expires => Chronic.parse('4 hours from now'))
-  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
-  deliver 'share', :layout => false
+  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}.<br />Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
+  js_redirect "/deals/#{@deal.id}"
 end
 
 post '/save/sms/:id/?' do

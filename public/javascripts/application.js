@@ -222,7 +222,7 @@ jQuery(function()
 
 	if ($('.share-this-deal').length > 0)
 	{
-		$('div.share').effect("pulsate", { times:3 }, 700);
+		$('div.share').effect("pulsate", { times:3 }, 1000);
 		$('div.share form p input.textfield').select();
 	}
 	
