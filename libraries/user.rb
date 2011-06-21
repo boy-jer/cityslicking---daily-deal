@@ -1,5 +1,5 @@
 get '/sign-in/?' do
-  deliver 'sign-in', :layout => false
+  mobile_request? ? deliver('sign-in') : deliver('sign-in', :layout => false)
 end
 
 post '/sign-in/?' do
@@ -65,16 +65,16 @@ post '/sign-in/?' do
     
   if errors > 0
     session[:flash] = msgs
-    deliver 'sign-in', :layout => false
+    mobile_request? ? deliver('sign-in') : deliver('sign-in', :layout => false)
   else    
     if params[:account_type] == 'new'
       session[:flash] = 'Welcome to City Slicking! From here you can fill out your profile, check your deal history and sign up for SMS deals.'
-      '<script type="text/javascript" charset="utf-8">window.location = "/profile"</script>'
+      js_redirect '/profile'
     elsif params[:account_type] == 'merchant'
-      '<script type="text/javascript" charset="utf-8">window.location = "/merchants/stats"</script>'
+      js_redirect '/merchants/stats'
     else
       session[:flash] = 'Welcome to City Slicking!'
-      '<script type="text/javascript" charset="utf-8">window.location = "' + request.referrer + '"</script>'
+      mobile_request? ? js_redirect('/deals') : js_redirect(request.referrer)
     end
   end
   

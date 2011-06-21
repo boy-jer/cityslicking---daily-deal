@@ -38,7 +38,7 @@
 	});
 </script>
 
-<%= flash %>
+<%= flash unless mobile_request? %>
 
 <form method="post" action="/sign-in">
 	
@@ -78,11 +78,11 @@
 	</p>	
 	
 	<p id="sign-in-btn">
-		<input type="submit" class="button" id="commit" name="commit" value="Sign in" />
+		<input type="submit" <%= 'class="button"' unless mobile_request? %> id="commit" name="commit" value="Sign in" />
 	</p>
 
 	<p id="register-btn" style="display: none;">
-		<input type="submit" class="button" id="commit" name="commit" value="Register" />
+		<input type="submit" <%= 'class="button"' unless mobile_request? %> id="commit" name="commit" value="Register" />
 	</p>
 	
 </form>

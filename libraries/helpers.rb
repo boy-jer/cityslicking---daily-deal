@@ -16,6 +16,11 @@
         "<p id='flash'>#{msg}</p>"
       end
     end
+    
+    
+    def js_redirect(url)
+      '<script type="text/javascript" charset="utf-8">window.location = "' + url + '"</script>'
+    end
   
   
   # Adds a class of 'sticky' to an element
