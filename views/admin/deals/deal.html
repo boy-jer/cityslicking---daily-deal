@@ -3,32 +3,31 @@
 <div class="doc">
 	
 	<p><a href="/admin">&larr; Back to list</a></p>
-	
-	<h1>Deal</h1>
-	
+		
 	<form method="post" enctype="multipart/form-data">
 		
-		<p class="left-field">
-			<label for="merchant">Merchant</label>
-			<select name="merchant" id="merchant">
-				<% Merchant.each do |merchant| %>
-					<option value="<%= merchant.id %>" <%= "selected" if @deal.merchant_id == merchant.id %>><%= merchant.name %></option>
-				<% end %>
-			</select>
-		</p>
+		<fieldset>
+			<legend>Deal</legend>
+			<p class="left-field">
+				<label for="merchant">Merchant</label>
+				<select name="merchant" id="merchant">
+					<% Merchant.each do |merchant| %>
+						<option value="<%= merchant.id %>" <%= "selected" if @deal.merchant_id == merchant.id %>><%= merchant.name %></option>
+					<% end %>
+				</select>
+			</p>
 		
-		<p class="right-field">
-			<label for="created_by">Salesperson</label>
-			<select name="created_by">
-					<option value="0"></option>
-				<% User.all(:salesman => 't').each do |user| %>
-				<option value="<%= user.id %>" <%= ' selected' if @deal.created_by == user.id  %>><%= user.email %></option>
-				<% end %>
-			</select>
-		</p>
+			<p class="right-field">
+				<label for="created_by">Salesperson</label>
+				<select name="created_by">
+						<option value="0"></option>
+					<% User.all(:salesman => 't').each do |user| %>
+					<option value="<%= user.id %>" <%= ' selected' if @deal.created_by == user.id  %>><%= user.email %></option>
+					<% end %>
+				</select>
+			</p>
+		</fieldset>
 		
-		<br /><br /><br />
-
 		<fieldset>
 			<legend>Description</legend>
 			<p>

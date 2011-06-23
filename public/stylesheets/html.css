@@ -537,6 +537,11 @@ fieldset {
 	margin-top: 30px;
 }
 
+legend {
+	font-weight: bold;
+	font-size: 170%;
+}
+
 p.left-field {
 	width: 45%;
 	float: left;
@@ -545,11 +550,6 @@ p.left-field {
 p.right-field {
 	width: 55%;
 	float: right;
-}
-
-legend {
-	font-weight: bold;
-	font-size: 150%;
 }
 
 div#footer p#sharing { float: right; padding-top: 4px; padding-bottom: 11px;}
