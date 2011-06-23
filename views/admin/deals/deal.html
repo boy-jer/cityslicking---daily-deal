@@ -100,8 +100,33 @@
 			</p>
 		
 			<p>
-				<label for="code">Code</label>
+				<label for="code">Redemption code</label>
 				<input type="text" class="textfield" name="code" id="code" value="<%= @deal.code %>" />
+			</p>
+			
+			<p>
+				<input type="checkbox" name="phone" id="phone" checked /> Enable smartphone redemption<br />
+				<textarea cols="100" rows="2" name="phone_msg" id="phone_msg">
+Present this confirmation code during checkout to receive the discount: #{@deal.code}.
+				</textarea>
+			</p>
+			
+			<p>
+				<input type="checkbox" name="sms" id="sms" checked /> Enable SMS redemption<br />
+				<textarea cols="100" rows="2" name="sms_msg" id="sms_msg">
+Present this confirmation code during checkout to receive the discount: #{@deal.code}.
+				</textarea>
+			</p>
+
+			<p>
+				<input type="checkbox" name="email" id="email" checked /> Enable email reservations<br />
+				<textarea cols="100" rows="7" name="email_msg" id="email_msg">
+Congratulations, Slicker!  We've reserved this deal for you to use later.  Be sure to check out the deal so you know the when's and where's and if there's any instructions.  When you're ready, just follow this link:
+
+<a href='http://city-slicking.com/save/mobile/#{params[:id]}'>#{deal.title}</a>
+
+Not valid if printed.
+				</textarea>
 			</p>
 		</fieldset>
 		
