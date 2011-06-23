@@ -531,6 +531,27 @@ div.box img {
 	float: right;
 }
 
+fieldset {
+	border: none;
+	border-top: 1px solid silver;
+	margin-top: 30px;
+}
+
+p.left-field {
+	width: 45%;
+	float: left;
+}
+
+p.right-field {
+	width: 55%;
+	float: right;
+}
+
+legend {
+	font-weight: bold;
+	font-size: 150%;
+}
+
 div#footer p#sharing { float: right; padding-top: 4px; padding-bottom: 11px;}
 div#footer p#sharing a { margin-left: 11px; }
 div#footer p#links { float: left; }
