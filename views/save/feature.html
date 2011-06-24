@@ -1,35 +1,26 @@
-<script type="text/javascript" charset="utf-8">
-	jQuery(function()
-	{
-		
-		$('#sms').click(function()
-		{
-			var deal = $(this).attr('href');
-			$.post('/save/sms/' + deal, function(data) {
-			  $('#lightbox').html(data);
-			});
-			return false;
-		});
-				
-	});
-	
-</script>
 <center>
-<h1 style="color: #800; line-height: 120%;"><%= @deal.title %></h1>
+	<h1 style="color: #800; margin-bottom: 0;"><%= @deal.display_percent %>% Off at <%= @deal.merchant.name %></h1>
+	<h2 style="margin-top: 7px;"><%= @deal.title %></h2>
 
-<p><em>This deal is available at:</em></p>
-<ul style="margin: 0; padding: 0;">
-<% @deal.locations.each do |location| %>
-	<li style="list-style-type: none;">
-		<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
-	</li>
-<% end %>
-</ul>
-<strong>
-<p><a href="/reserve/<%= params[:id] %>">Reserve for later</a></p>
-<p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>><a href="<%= params[:id] %>" id="sms">Send it to my phone (SMS)</a></p>
-</strong>
-<p>You can also use this deal from our mobile site.</p>
+	<ul style="margin: 0; padding: 0;">
+	<% @deal.locations.each do |location| %>
+		<li style="list-style-type: none;">
+			<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+		</li>
+	<% end %>
+	</ul>
+	
+	<p>
+		<a href="/reserve/<%= params[:id] %>"><strong>Reserve this deal to use later on my smartphone</strong></a>
+		<br />(Email a reminder and link)
+	</p>
+		
+	<p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>>
+		<a href="/save/sms/<%= params[:id] %>"><strong>SMS directly to my phone</strong></a>
+			<br />(Must redeem within 24 hours)
+	</p>
+	
+	<p>You can also use this deal from our mobile site.</p>
 
-<p class="legalese"><em><%= @deal.legalese %></em></p>
+	<p class="legalese"><em><%= @deal.legalese %></em></p>
 </center>

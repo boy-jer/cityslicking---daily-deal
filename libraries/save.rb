@@ -1,12 +1,22 @@
 get '/save/feature/:id/?' do
-  @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
+
+  @deal = Deal.get(params[:id])  
+  @deal.display_percent = @deal.first_percent
+  confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+  @deal.display_percent = @deal.return_percent if confirmations.count > 0
+  
   deliver 'save/feature', :layout => false
 end
 
 get '/save/deal/:id/?' do
-  @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
+
+  @deal = Deal.get(params[:id])  
+  @deal.display_percent = @deal.first_percent
+  confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+  @deal.display_percent = @deal.return_percent if confirmations.count > 0
+
   deliver 'save/deal', :layout => false
 end
 
@@ -15,8 +25,13 @@ get '/save/mobile/:id/?' do
     session[:flash] = 'Sorry, but you have to be using your smartphone to save with this deal.'
     redirect "/deals/#{params[:id]}"
   end
-  @deal = Deal.get(params[:id])
   @user = User.get(session[:user])
+
+  @deal = Deal.get(params[:id])  
+  @deal.display_percent = @deal.first_percent
+  confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+  @deal.display_percent = @deal.return_percent if confirmations.count > 0
+
   deliver 'save/mobile'
 end
 
@@ -29,36 +44,57 @@ post '/share/deal/:id/?' do
     :body    => "You won't believe the deal I just got!  I'm dancing, I'm singing, I'm laughing out loud - well, at least I feel like it.  Anyway, I thought I'd share it with you too.  Check it out at http://city-slicking.com/deals/" + params[:id]
   )  
   session[:flash] = "Thanks for sharing."
-  '<script type="text/javascript" charset="utf-8">window.location = "/deals/' + params[:id] + '"</script>'
+  redirect "/deals/#{params[:id]}"
 end
 
 get '/save/gps/:id/?' do
-  @deal = Deal.get(params[:id])
+  @user = User.get(session[:user])
+
+  @deal = Deal.get(params[:id])  
+  @deal.display_percent = @deal.first_percent
+  confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+  @deal.display_percent = @deal.return_percent if confirmations.count > 0
+  
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'gps', :expires => Chronic.parse('4 hours from now'))
-  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}.<br />Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
-  js_redirect "/deals/#{@deal.id}"
+  
+  session[:flash] = "Present this confirmation code during checkout to receive #{@deal.display_percent} off: #{@deal.code}.<br />Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
+  redirect "/deals/#{@deal.id}"
 end
 
 get '/save/phone/:id/?' do
-  @deal = Deal.get(params[:id])
+  @user = User.get(session[:user])
+
+  @deal = Deal.get(params[:id])  
+  @deal.display_percent = @deal.first_percent
+  confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+  @deal.display_percent = @deal.return_percent if confirmations.count > 0
+
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'web', :expires => Chronic.parse('4 hours from now'))
-  session[:flash] = "Present this confirmation code during checkout to receive the discount: #{@deal.code}.<br />Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
-  js_redirect "/deals/#{@deal.id}"
+
+  session[:flash] = "Present this confirmation code during checkout to receive #{@deal.display_percent} off: #{@deal.code}.<br />Good until #{format_day_with_time Chronic.parse('4 hours from now')}."
+  redirect "/deals/#{@deal.id}"
 end
 
-post '/save/sms/:id/?' do
-  @deal = Deal.get(params[:id])
+get '/save/sms/:id/?' do
   @user = User.get(session[:user])
+
+  @deal = Deal.get(params[:id])  
+  @deal.display_percent = @deal.first_percent
+  confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
+  @deal.display_percent = @deal.return_percent if confirmations.count > 0
+
   Confirmation.create(:user_id => session[:user], :deal_id => @deal.id, :method => 'sms', :expires => Chronic.parse('24 hours from now'))
+
   account = Twilio::RestAccount.new(settings.sms_server[:account_sid], settings.sms_server[:account_token])
   msg = {
     'From' => settings.sms_server[:account_number],
     'To'   => @user.mobile,
-    'Body' => "Present this confirmation code during checkout to receive the discount: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('24 hours from now')}."
+    'Body' => "Present this confirmation code during checkout to receive #{@deal.display_percent} off: #{@deal.code}. Good until #{format_day_with_time Chronic.parse('24 hours from now')}."
   }
   account.request("/#{settings.sms_server[:api_version]}/Accounts/#{settings.sms_server[:account_sid]}/SMS/Messages", 'POST', msg)
-  session[:flash] = "Check your phone!"
-  deliver 'share', :layout => false
+
+  session[:flash] = "Check your phone! And don't forget to share this deals with your friends!"
+  redirect "/deals/#{params[:id]}/?share=true"  
 end
 
 

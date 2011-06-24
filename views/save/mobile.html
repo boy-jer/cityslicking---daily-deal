@@ -53,21 +53,20 @@
 <div class="doc">
 
 <center>
-<h1 style="color: #800; line-height: 120%;"><%= @deal.title %></h1>
+	<h1 style="color: #800; margin-bottom: 0;"><%= @deal.display_percent %>% Off at <%= @deal.merchant.name %></h1>
+	<h2 style="margin-top: 7px;"><%= @deal.title %></h2>
 
-<p><em>This deal is available at:</em></p>
-<ul style="margin: 0; padding: 0;">
-<% @deal.locations.each do |location| %>
-	<li style="list-style-type: none;">
-		<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
-	</li>
-<% end %>
-</ul>
-<strong>
-	<p><a href="<%= params[:id] %>" id="smartphone">Show me the deal code!</a></p>
-</strong>
+	<p><em>This deal is available at:</em></p>
+	<ul style="margin: 0; padding: 0;">
+	<% @deal.locations.each do |location| %>
+		<li style="list-style-type: none;">
+			<%= "#{location.street}, #{location.city}, #{location.state} #{location.zip}" %>
+		</li>
+	<% end %>
+	</ul>
+	<p><strong><a href="<%= params[:id] %>" id="smartphone">Show me the deal code!</a></strong><br />(Must redeem within 4 hours)</p>
 
-<p class="legalese"><em><%= @deal.legalese %></em></p>
+	<p class="legalese"><em><%= @deal.legalese %></em></p>
 </center>
 
 </div>
