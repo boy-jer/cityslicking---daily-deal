@@ -36,7 +36,8 @@ post '/admin/deals/new/?' do
     :code                   => params[:code],
     :legalese               => params[:legalese],
     :neighborhood           => params[:neighborhood],
-    :final_corrections_date => Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
+    :final_corrections_date => Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}"),
+    :email_msg              => params[:email_msg]
   )
   
   deal.save
@@ -149,6 +150,7 @@ post '/admin/deals/edit/:id/?' do
   deal.legalese               = params[:legalese]
   deal.neighborhood           = params[:neighborhood]
   deal.final_corrections_date = Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
+  deal.email_msg              = params[:email_msg]
   
   params[:phone] ? phone = true : phone = false
   if deal.phone

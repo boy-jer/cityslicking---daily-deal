@@ -114,12 +114,13 @@
 
 			<p>
 				<input type="checkbox" name="email" id="email" <%= 'checked="checked"' if @deal.email? %> /> Enable email reservations (customize email message below)<br />
+				<% if @deal.email_msg %>
+					<textarea cols="100" rows="7" name="email_msg" id="email_msg"><%= @deal.email_msg %></textarea>
+				<% else %>
 				<textarea cols="100" rows="7" name="email_msg" id="email_msg">
-Congratulations, Slicker!  We've reserved this deal for you to use later.  Be sure to check out the deal so you know the when's and where's and if there's any instructions.  When you're ready, just follow this link:
+Congratulations, Slicker!  We've reserved this deal for you to use later.  Be sure to check out the deal so you know the when's and where's and if there's any instructions.  When you're ready, just follow the link above.
 
-<a href='http://city-slicking.com/save/mobile/#{params[:id]}'>#{deal.title}</a>
-
-Not valid if printed.
+Not valid if printed.<% end %>
 				</textarea>
 			</p>
 		</fieldset>
