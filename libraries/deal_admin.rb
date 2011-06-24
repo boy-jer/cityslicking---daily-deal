@@ -41,6 +41,21 @@ post '/admin/deals/new/?' do
   
   deal.save
   
+  if params[:phone]
+    deal.phone = true
+    deal.save
+  end
+  
+  if params[:sms]
+    deal.sms = true
+    deal.save
+  end
+  
+  if params[:email]
+    deal.email = true
+    deal.save
+  end
+  
   if params[:active]
     deal.active = true
     deal.date_activated = Chronic.parse('today')
@@ -134,6 +149,27 @@ post '/admin/deals/edit/:id/?' do
   deal.legalese               = params[:legalese]
   deal.neighborhood           = params[:neighborhood]
   deal.final_corrections_date = Chronic.parse("#{params[:final_corrections_date_year]}-#{params[:final_corrections_date_month]}-#{params[:final_corrections_date_day]}")
+  
+  params[:phone] ? phone = true : phone = false
+  if deal.phone
+    deal.phone = false unless phone
+  else
+    deal.phone = true if phone
+  end
+  
+  params[:sms] ? sms = true : sms = false
+  if deal.sms
+    deal.sms = false unless sms
+  else
+    deal.sms = true if sms
+  end
+  
+  params[:email] ? email = true : email = false
+  if deal.email
+    deal.email = false unless email
+  else
+    deal.email = true if email
+  end
   
   params[:active] ? active = true : active = false
   if deal.active

@@ -64,7 +64,12 @@
 		</li>
 	<% end %>
 	</ul>
-	<p><strong><a href="<%= params[:id] %>" id="smartphone">Show me the deal code!</a></strong><br />(Must redeem within 4 hours)</p>
+	
+	<% if @deal.phone? %>
+		<p><strong><a href="<%= params[:id] %>" id="smartphone">Show me the deal code!</a></strong><br />(Must redeem within 4 hours)</p>
+	<% else %>
+		<p><strong>This deal isn't available to use on your smartphone.</strong></p>
+	<% end %>
 
 	<p class="legalese"><em><%= @deal.legalese %></em></p>
 </center>

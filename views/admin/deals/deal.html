@@ -105,15 +105,15 @@
 			</p>
 			
 			<p>
-				<input type="checkbox" name="phone" id="phone" checked /> Enable smartphone redemption
+				<input type="checkbox" name="phone" id="phone" <%= 'checked="checked"' if @deal.phone? %> /> Enable smartphone redemption
 			</p>
 			
 			<p>
-				<input type="checkbox" name="sms" id="sms" checked /> Enable SMS redemption
+				<input type="checkbox" name="sms" id="sms" <%= 'checked="checked"' if @deal.sms? %> /> Enable SMS redemption
 			</p>
 
 			<p>
-				<input type="checkbox" name="email" id="email" checked /> Enable email reservations (customize email message below)<br />
+				<input type="checkbox" name="email" id="email" <%= 'checked="checked"' if @deal.email? %> /> Enable email reservations (customize email message below)<br />
 				<textarea cols="100" rows="7" name="email_msg" id="email_msg">
 Congratulations, Slicker!  We've reserved this deal for you to use later.  Be sure to check out the deal so you know the when's and where's and if there's any instructions.  When you're ready, just follow this link:
 

@@ -10,17 +10,27 @@
 	<% end %>
 	</ul>
 	
-	<p>
-		<a href="/reserve/<%= params[:id] %>"><strong>Reserve this deal to use later on my smartphone</strong></a>
-		<br />(Email a reminder and link)
-	</p>
-		
-	<p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>>
-		<a href="/save/sms/<%= params[:id] %>"><strong>SMS directly to my phone</strong></a>
+	<% if @deal.email? %>
+		<p>
+			<a href="/reserve/<%= params[:id] %>"><strong>Reserve this deal to use later on my smartphone</strong></a>
+			<br />(Email a reminder and link)
+		</p>
+	<% end %>
+
+	<% if @deal.sms? %>
+		<p <%= "style='display: none;'" unless @user.optin? && @user.mobile %>>
+			<a href="/save/sms/<%= params[:id] %>"><strong>SMS directly to my phone</strong></a>
 			<br />(Must redeem within 24 hours)
-	</p>
+		</p>
+	<% end %>
 	
-	<p>You can also use this deal from our mobile site.</p>
+	<% if @deal.phone? %>
+		<% if @deal.email? || @deal.sms? %>
+			<p>You can also use this deal from our mobile site.</p>
+		<% else %>
+			<p><strong>You can only use this deal from our mobile site.</strong></p>
+		<% end %>
+	<% end %>
 
 	<p class="legalese"><em><%= @deal.legalese %></em></p>
 </center>

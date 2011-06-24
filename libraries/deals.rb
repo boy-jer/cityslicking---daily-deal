@@ -104,6 +104,11 @@ class Deal
   property  :max_returns,             Integer,  :default => 5
   property  :neighborhood,            String
   
+  property  :phone,                   Boolean,  :default => true
+  property  :sms,                     Boolean,  :default => true
+  property  :email,                   Boolean,  :default => true
+  property  :email_msg,               Text
+  
   property  :date_sent_1,       Date,  :default => Chronic.parse('now')
   property  :amount_sent_1,     Float, :default => 0
   property  :date_received_1,   Date,  :default => Chronic.parse('now')

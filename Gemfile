@@ -28,7 +28,7 @@
   gem 'dm-core',            '1.1.1', :git => 'https://github.com/datamapper/dm-core.git'
   gem 'dm-do-adapter',      '1.1.1', :git => 'https://github.com/datamapper/dm-do-adapter.git'
   gem 'dm-sqlite-adapter',  '1.1.1', :git => 'https://github.com/datamapper/dm-sqlite-adapter.git'
-  gem 'dm-migrations'
+  gem 'dm-migrations',      '1.1.1', :git => 'https://github.com/datamapper/dm-migrations.git'
   gem 'dm-validations'
   gem 'dm-timestamps'
   gem 'dm-aggregates'
