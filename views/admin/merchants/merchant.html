@@ -1,4 +1,4 @@
-<% @merchant = Merchant.new unless @merchant %>
+<% @merchant = Merchant.new(:created_by => session[:user]) unless @merchant %>
 
 <div class="doc">
 
@@ -66,6 +66,15 @@
 			<input type="text" class="textfield" name="password" id="password" value="<%= @merchant.password %>" />
 		</p>
 		
+		<p <%= hidden if session[:user] == 29 %>>
+			<label for="created_by">Created by</label>
+			<select name="created_by">
+				<% (User.all(:salesman => 't', :order => :email) + User.all(:admin => 't', :order => :email)).each do |user| %>
+					<option value="<%= user.id %>" <%= ' selected' if @merchant.created_by == user.id  %>><%= user.email %></option>
+				<% end %>
+			</select>
+		</p>
+				
 		<p>
 			<input type="submit" value="Save" />
 			<% if @merchant.id %>

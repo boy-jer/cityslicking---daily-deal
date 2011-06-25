@@ -7,6 +7,7 @@ end
 get '/admin/merchants/?' do
   auth_admin
   @merchants = Merchant.all(:order => :name)
+  @merchants = @merchants.all(:created_by => session[:user], :order => :name) if session[:user] == 29
   deliver 'admin/merchants/index'
 end
 
@@ -19,6 +20,7 @@ post '/admin/merchants/new/?' do
   auth_admin
   Merchant.create(
     :password         => params[:password],
+    :created_by       => params[:created_by],
     :name             => params[:name],
     :owner            => params[:owner],
     :manager          => params[:manager],
@@ -52,6 +54,7 @@ post '/admin/merchants/edit/:id/?' do
   merchant = Merchant.get(params[:id])
   merchant.update(
     :password         => params[:password],
+    :created_by       => params[:created_by],
     :name             => params[:name],
     :owner            => params[:owner],
     :manager          => params[:manager],
@@ -91,6 +94,8 @@ class Merchant
   timestamps  :at
   
   property    :password,          String
+  
+  property    :created_by,        Integer, :default => 1
   
   property    :name,              String
   property    :owner,             String
