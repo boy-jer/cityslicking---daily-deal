@@ -49,6 +49,11 @@
 
   gem 'twiliolib'
   gem 'phone', '>= 1.0'
+  
+  
+# Used for scheduling cron jobs
+
+  gem 'whenever', :require => false
 
 
 # Used for parsing Google Maps API responses
