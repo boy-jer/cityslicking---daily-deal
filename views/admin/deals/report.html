@@ -11,11 +11,12 @@
 	</p>
 	
 	<p>
-		<strong><%= @deal.confirmations.count %> Total Uses</strong>:
-		<%= @deal.confirmations(:method => 'gps').count %> GPS &bull;
-		<%= @deal.confirmations(:method => 'sms').count %> SMS &bull;
-		<%= @deal.confirmations(:method => 'email').count %> Email &bull;
-		<%= @deal.confirmations(:method => 'web').count %> Web
+		<strong><%= @deal.confirmations.count %> Total uses</strong>
+		<br />
+		<%= @deal.confirmations(:method => 'gps').count %> GPS uses<br />
+		<%= @deal.confirmations(:method => 'web').count %> Non-GPS phone uses<br />
+		<%= @deal.confirmations(:method => 'sms').count %> SMS uses<br />
+		<%= @deal.confirmations(:method => 'email').count %> Email reservations
 	</p>
 	
 	<form method="post">
@@ -36,7 +37,7 @@
 			<label>Pay to</label>
 			<select name="salesman_1">
 					<option value="0"></option>
-				<% User.all(:salesman => 't').each do |user| %>
+				<% User.all(:salesman => 't', :order => :email).each do |user| %>
 					<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_1 == user.id  %>><%= user.email %></option>
 				<% end %>
 			</select>
@@ -63,7 +64,7 @@
 			<label>Pay to</label>
 			<select name="salesman_2">
 					<option value="0"></option>
-				<% User.all(:salesman => 't').each do |user| %>
+				<% User.all(:salesman => 't', :order => :email).each do |user| %>
 				<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_2 == user.id  %>><%= user.email %></option>
 				<% end %>
 			</select>
@@ -90,7 +91,7 @@
 			<label>Pay to</label>
 			<select name="salesman_3">
 					<option value="0"></option>
-				<% User.all(:salesman => 't').each do |user| %>
+				<% User.all(:salesman => 't', :order => :email).each do |user| %>
 				<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_3 == user.id  %>><%= user.email %></option>
 				<% end %>
 			</select>
@@ -117,7 +118,7 @@
 			<label>Pay to</label>
 			<select name="salesman_4">
 					<option value="0"></option>
-				<% User.all(:salesman => 't').each do |user| %>
+				<% User.all(:salesman => 't', :order => :email).each do |user| %>
 				<option value="<%= user.id %>" <%= ' selected' if @deal.salesman_4 == user.id  %>><%= user.email %></option>
 				<% end %>
 			</select>
