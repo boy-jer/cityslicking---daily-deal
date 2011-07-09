@@ -6,7 +6,7 @@ end
 
 get '/admin/merchants/?' do
   auth_admin
-  @merchants = Merchant.all(:order => :name)
+  @merchants = City.get(session[:city_id]).deals.merchants(:order => :name)
   @merchants = @merchants.all(:created_by => session[:user], :order => :name) if session[:user] == 29
   deliver 'admin/merchants/index'
 end
@@ -118,5 +118,9 @@ class Merchant
   property    :mailing_zip,       String
   
   has n, :deals
+  
+  #def self.has_deals_in(city)
+	#	City.get(city).deals.
+	#end
   
 end
