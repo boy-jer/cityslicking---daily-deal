@@ -55,7 +55,11 @@ get '/deals/?' do
 end
 
 get '/deals/:id/?' do
-  @deal = Deal.get(params[:id])
+  @deal = Deal.first(:id => params[:id], :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
+  unless @deal
+		session[:flash] = 'That deal is not currently running.'
+		redirect '/deals'
+  end
   @deal.display_percent = @deal.first_percent
   if session[:user]
     confirmations = Confirmation.all(:user_id => session[:user], :deal_id => params[:id])
