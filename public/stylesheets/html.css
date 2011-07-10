@@ -160,9 +160,13 @@ div#features div#featured-deals div.deal {
 	top: 7px;
 }
 
-div.featured-position-1 div#deal-1 { left: 7px; }
-div.featured-position-1 div#deal-2 { left: 807px; }
+div.featured-position-1 div#deal-1 { left: 7px; 	 }
+div.featured-position-1 div#deal-2 { left: 807px;  }
 div.featured-position-1 div#deal-3 { left: 1607px; }
+div.featured-position-1 div#deal-4 { left: 2407px; }
+div.featured-position-1 div#deal-5 { left: 3207px; }
+div.featured-position-1 div#deal-6 { left: 4007px; }
+div.featured-position-1 div#deal-7 { left: 4807px; }
 
 div.doc div.deal {
 	border-top: 1px solid #dedede;

@@ -40,5 +40,6 @@ class City
   property :short_name, String, :required => true
   
   has n, :deals, :through => Resource
+  has n, :features
   
 end

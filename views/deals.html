@@ -1,33 +1,29 @@
-<% if @features.count > 2 %>
+<% if @features.count > 1 %>
 <div id="features">
+	<span style="display: none;" id="feature-count" class="<%= @features.count %>"></span>
+
 	<img id="today-featured-deal" src="/images/feature_deals.png" />
 	<img id="get-this-deal-free" src="/images/get_deal.png" />
 	
 	<div id="featured-deals" class="featured-position-1">
-		<div class="deal" id="deal-1">
-			<%= deliver 'feature', :layout => false, :locals => {:deal => @features[0]} %>
-		</div>
-		<div class="deal" id="deal-2">
-			<%= deliver 'feature', :layout => false, :locals => {:deal => @features[1]} %>
-		</div>
-		<div class="deal" id="deal-3">
-			<%= deliver 'feature', :layout => false, :locals => {:deal => @features[2]} %>
-		</div>
+		<% (0..6).each do |i| %>
+			<% if @features[i] %><div class="deal" id="deal-<%= i + 1 %>"><%= deliver 'feature', :layout => false, :locals => {:deal => @features[i]} %></div><% end %>		
+		<% end %>
 	</div>
 	
-	<a id="left-arrow" href="3"><img src="/images/arrow_left.png" /></a>
+	<a id="left-arrow" href="<%= @features.count %>"><img src="/images/arrow_left.png" /></a>
 	<a id="right-arrow" href="2"><img src="/images/arrow_right.png" /></a>
 	
 	<div id="other-deals">
-		<a href="#" id="button-1" class="active">1</a>
-		<a href="#" id="button-2" class="inactive">2</a>
-		<a href="#" id="button-3" class="inactive">3</a>
+		<% (0..6).each do |i| %>
+			<% if @features[i] %><a href="#" id="button-<%= i + 1 %>" class="<%= 'in' if i > 0 %>active"><%= i + 1 %></a><% end %>
+		<% end %>
 	</div>
 	
 </div>
 <% end %>
 
-<div class="doc" <%= 'style="margin-top: 420px;"' if @features.count > 2 %>>
+<div class="doc" <%= 'style="margin-top: 420px;"' if @features.count > 1 %>>
 				
 		<% if session[:user] %>
 		<p class="toggle" style="margin: -33px -51px 0 -51px;">

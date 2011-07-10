@@ -1,14 +1,29 @@
 <div class="doc">
-	<h1>Calendar for <%= session[:city_name] %></h1>
-
-	<% @deals.group_by(&:publish_date).each do |date, deals| %>
-		<h3><%= date %></h3>
-		<% deals.each do |d| %>
+	<h1>Features Calendar for <%= session[:city_name] %></h1>
+		
+	<form action="/admin/features" method="post">
+		<p>
+			<select name="deal" id="deal">
+				<% Deal.all(:order => :title).each do |d| %>
+					<option value="<%= d.id %>"><%= d.title %></option>
+				<% end %>
+			</select>
+			<%= date_to_field 'day', Chronic.parse('now') %>
+			<input type="submit" value="Add" />
+		</p>
+	</form>
+	
+	<% @features.group_by(&:day).each do |day, features| %>
+		<h3><%= day %></h3>
+		<% features.each do |f| %>
 			<p>
-				<%= d.title %>
+				<%= f.deal.title %>
+				&nbsp;
+				<a href="/admin/features/<%= f.id %>/delete">Remove</a>
 				<br />
-				<em><%= d.merchant.name %></em>
+				<em><%= f.deal.merchant.name %></em>
 			</p>
 		<% end %>
 	<% end %>
+
 </div>

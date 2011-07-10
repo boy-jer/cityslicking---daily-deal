@@ -5,12 +5,13 @@
 end
 
 get '/deals/?' do
-  @features = Deal.featured(session[:city_id])
-  @features.each {|d| d.display_percent = d.first_percent}
+  @features = Feature.current(session[:city_id])
+  
+  @features.each {|d| d.display_percent = d.first_percent} if @features.count > 1
   
   confirmations = Confirmation.all(:user_id => session[:user]) if session[:user]
 
-  @features.each {|d| d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0} if session[:user]
+  @features.each {|d| d.display_percent = d.return_percent if confirmations.count(:deal_id => d.id) > 0} if session[:user] && @features.count > 1
   
   if params[:find] && params[:find].length > 0
     session[:user] ? @deals = Deal.search(session[:city_id], params[:find], session[:user]) : @deals = Deal.search(session[:city_id], params[:find])
@@ -37,15 +38,17 @@ get '/deals/?' do
         d.in_use = true if in_use_count > 0
       end
     end
-    @features.each do |d|
-      confirmations.all(:deal_id => d.id).each do |c|
-        in_use_count = 0
-        if c.expires
-          in_use_count = in_use_count + 1 if c.expires > Time.now.to_datetime
-        end
-        d.in_use = true if in_use_count > 0
-      end
-    end
+    if @features.count > 2
+	    @features.each do |d|
+	      confirmations.all(:deal_id => d.id).each do |c|
+	        in_use_count = 0
+	        if c.expires
+	          in_use_count = in_use_count + 1 if c.expires > Time.now.to_datetime
+	        end
+	        d.in_use = true if in_use_count > 0
+	      end
+	    end
+	   end
   end
   
   deliver 'deals'
@@ -195,6 +198,21 @@ class Feature
 	property	:day,	Date
 	
 	belongs_to :deal
+	belongs_to :city
+	
+	def self.current(city)		
+		deals = []
+		days = 0
+		tries = 0
+		until (deals.count > 2) || (tries > 7) do
+			all(:city_id => city, :day => Chronic.parse("#{days} days ago")).each do |f|
+				deals << f.deal
+			end
+			days = days - 1
+			tries = tries + 1
+		end
+		deals
+	end
 	
 end
 

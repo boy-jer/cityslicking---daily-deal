@@ -1,26 +1,20 @@
 <% unless (params[:featured] == 'false') || (params[:find] && params[:find].length > 0) %>
-<% if @features.count > 2 %>
+<% if @features.count > 1 %>
+	<span style="display: none;" id="feature-count" class="<%= @features.count %>"></span>
+	
 	<p style="text-align: center; margin-top: 22px;">
 		<img id="today-featured-deal" src="/images/feature_deals.png" />
 	</p>
 
-	<div class="feature" id="feature-1">
-		<%= deliver 'feature', :layout => false, :locals => {:deal => @features[0]} %>
-	</div>
-
-	<div class="feature" id="feature-2" style="display: none;">
-		<%= deliver 'feature', :layout => false, :locals => {:deal => @features[1]} %>
-	</div>
-
-	<div class="feature" id="feature-3" style="display: none;">
-		<%= deliver 'feature', :layout => false, :locals => {:deal => @features[2]} %>
-	</div>
+	<% (0..6).each do |i| %>
+		<% if @features[i] %><div class="feature" id="feature-<%= i + 1 %>" <%= 'style="display: none;"' if i != 0 %>><%= deliver 'feature', :layout => false, :locals => {:deal => @features[i]} %></div><% end %>
+	<% end %>
 
 	<div id="other-deals">
 		<span id="deal-counter" class="2" style="display: none;"></span>
-		<a href="#" id="mobile-btn-1" class="active">1</a>
-		<a href="#" id="mobile-btn-2" class="inactive">2</a>
-		<a href="#" id="mobile-btn-3" class="inactive">3</a>
+		<% (0..6).each do |i| %>
+			<% if @features[i] %><a href="#" id="mobile-btn-<%= i + 1 %>" class="<%= 'in' if i > 0 %>active"><%= i + 1 %></a><% end %>
+		<% end %>
 	</div>
 <% end %>
 <% end %>

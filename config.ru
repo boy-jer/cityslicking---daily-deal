@@ -22,6 +22,8 @@
 
 # Include database config
 
+	DataMapper::Logger.new($stdout, :debug)
+
   require './config/databases'
 
 

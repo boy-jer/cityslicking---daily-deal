@@ -5,8 +5,25 @@ end
 
 get '/admin/calendar/?' do
   auth_admin
-  @deals = City.get(session[:city_id]).deals(:order => :publish_date.asc, :publish_date.gte => Chronic.parse('now'))
+  @features = Feature.all(:city_id	=> session[:city_id], :day.gte => Time.now)
   deliver 'admin/calendar'
+end
+
+post '/admin/features/?' do
+	auth_admin
+	Feature.first_or_create(
+		:city_id => session[:city_id],
+		:deal_id => params[:deal],
+		:day		 => Chronic.parse("#{params[:day_year]}-#{params[:day_month]}-#{params[:day_day]}")
+	)
+	redirect '/admin/calendar'
+end
+
+get '/admin/features/:id/delete/?' do
+	auth_admin
+	f = Feature.get(params[:id])
+	f.destroy
+	redirect '/admin/calendar'
 end
 
 get '/admin/deals/?' do
