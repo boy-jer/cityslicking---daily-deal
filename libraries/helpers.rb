@@ -86,6 +86,27 @@
     end
     
     
+  # Truncates a string
+  
+  	def truncate(string, size)
+			chars = string.split('')
+			new_string = ''
+			if chars.count > size
+				smaller = size - 3
+				while chars.count > smaller do
+					chars.pop
+				end
+				chars.each do |c|
+					new_string << c
+				end
+				new_string << '...'
+			else
+				new_string = string
+			end
+			new_string
+		end
+      
+    
   # Formats a full date
     
     def format_date(date)

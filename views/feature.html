@@ -1,8 +1,8 @@
 <span class="deal-frame"><img class="deal-pic" src="http://city-slicking.com/images/deals/<%= deal.id %>.jpg" /></span>
 <div class="specs">
 	<span class="titles">
-		<h1><%= deal.display_percent %>% Off at <%= deal.merchant.name %></h1>
-		<h3 style="margin-top: 7px; margin-bottom: 0;"><%= deal.title %></h3>
+		<h1><%= deal.display_percent %>% Off at <%= truncate deal.merchant.name, 33 %></h1>
+		<h3 style="margin-top: 7px; margin-bottom: 0;"><%= truncate deal.title, 66 %></h3>
 	</span>
 
 	<p class="buttons" style="margin-left: 40px;">
@@ -15,7 +15,7 @@
 		<a href="/deals/<%= deal.id %>" class="pill see-details">See Details</a>
 	</p>
 	<p class="meta">
-		<%= deal.legalese %>
+		<%= truncate deal.legalese, 50 %>
 		Expires <%= deal.expiration_date %>
 	</p>
 </div>
