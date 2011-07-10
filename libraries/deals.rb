@@ -185,6 +185,19 @@ class Deal
   
 end
 
+class Feature
+	include DataMapper::Resource
+	
+	property    :id,          Serial
+	property    :deleted_at,  ParanoidDateTime
+	timestamps  :at
+	
+	property	:day,	Date
+	
+	belongs_to :deal
+	
+end
+
 
 class Location
   include DataMapper::Resource
