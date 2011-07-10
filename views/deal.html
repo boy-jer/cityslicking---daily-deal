@@ -17,7 +17,7 @@
 	
 	
 	<div class="left">
-		<p><img src="/images/deals/<%= @deal.id %>.jpg" width="297" /></p>
+		<p><img src="<%= @deal.details_pic_url %>" width="297" /></p>
 		<% @deal.locations.each do |location| %>
 			<% addr = CGI.escape(location.street + ',' + location.city + ',' + location.state + ',' + location.zip) %>
 			<p class="map">

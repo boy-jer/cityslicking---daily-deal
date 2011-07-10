@@ -18,7 +18,7 @@
 		
 	<p style="text-align: center;"><a href="/deals">&larr; Back to Deals</a></p>
 	
-	<p style="text-align: center;"><img src="/images/deals/<%= @deal.id %>.jpg" style="width: 276px;" /></p>
+	<p style="text-align: center;"><img src="<%= @deal.details_pic_url %>" style="width: 276px;" /></p>
 	
 	<div class="share<%= ' share-this-deal-mobile' if params['share'] %>">
 		<h3>SHARE THIS DEAL</h3>

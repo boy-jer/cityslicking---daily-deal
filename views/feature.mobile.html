@@ -1,6 +1,6 @@
 <h1 style="margin: 0;"><%= deal.display_percent %>% Off at <%= deal.merchant.name %></h1>
 <h2 style="margin-top: 7px;"><%= deal.title %></h2>
-<p class="deal-frame"><img class="deal-pic" src="/images/deals/<%= deal.id %>.jpg" /></p>
+<p class="deal-frame"><img class="deal-pic" src="<%= deal.featured_pic_url %>" /></p>
 
 <p class="buttons">
 	<% unless deal.in_use %>

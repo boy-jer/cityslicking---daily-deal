@@ -147,6 +147,26 @@ class Deal
   has n, :confirmations
   has n, :users, :through => :confirmations
   
+  def feature_pic_url
+		if File::exists?("public/images/deals/#{self.id}_feature.jpg")
+			"/images/deals/#{self.id}_feature.jpg"
+		elsif File::exists?("public/images/deals/#{self.id}_details.jpg")
+			"/images/deals/#{self.id}_details.jpg"
+		else
+			return ''
+		end
+	end
+	
+	def details_pic_url
+		if File::exists?("public/images/deals/#{self.id}_details.jpg")
+			"/images/deals/#{self.id}_details.jpg"
+		elsif File::exists?("public/images/deals/#{self.id}_feature.jpg")
+			"/images/deals/#{self.id}_feature.jpg"
+		else
+			return ''
+		end
+	end
+  
   def self.live(city)
     City.get(city).deals(:order => :expiration_date.asc, :active => true, :publish_date.lt => Chronic.parse('now'), :expiration_date.gt => Chronic.parse('now'))
   end

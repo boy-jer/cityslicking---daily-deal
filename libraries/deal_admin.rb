@@ -86,7 +86,8 @@ post '/admin/deals/new/?' do
     deal.save
   end
   
-  File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
+	File.open("public/images/deals/#{deal.id}_feature.jpg", 'wb') { |file| file.write(params[:feature_pic][:tempfile].read) } if params[:feature_pic]
+	File.open("public/images/deals/#{deal.id}_details.jpg", 'wb') { |file| file.write(params[:details_pic][:tempfile].read) } if params[:details_pic]  
   
   if params[:street1].strip.length > 0
     street = params[:street1]
@@ -213,7 +214,8 @@ post '/admin/deals/edit/:id/?' do
     end
   end
   
-  File.open("public/images/deals/#{deal.id}.jpg", 'wb') { |file| file.write(params[:pic][:tempfile].read) } if params[:pic]
+  File.open("public/images/deals/#{deal.id}_feature.jpg", 'wb') { |file| file.write(params[:feature_pic][:tempfile].read) } if params[:feature_pic]
+  File.open("public/images/deals/#{deal.id}_details.jpg", 'wb') { |file| file.write(params[:details_pic][:tempfile].read) } if params[:details_pic]  
   
   deal.locations.all.destroy
     
