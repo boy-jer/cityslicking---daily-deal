@@ -175,6 +175,13 @@ div.doc div.deal {
 	overflow: auto;
 }
 
+span.deal-frame {
+	width: 350px;
+	height: 230px;
+	display: inline-block;
+	overflow: hidden;
+}
+
 img.deal-pic {
 	float: left;
 	width: 350px;

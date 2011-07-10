@@ -101,7 +101,13 @@ div.feature {
 	-webkit-border-radius: 3px;
 }
 
-div.feature p img.deal-pic {
+div.feature p.deal-frame {
+	overflow: hidden;
+	text-align: center;
+	height: 185px;
+}
+
+div.feature p.deal-frame img.deal-pic {
 	width: 276px;
 	border: 1px solid #999;
 }
