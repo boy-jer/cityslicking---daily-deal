@@ -208,7 +208,7 @@ class Feature
 		deals = []
 		days = 0
 		tries = 0
-		until (deals.count > 2) || (tries > 7) do
+		until (deals.count > 2) || (tries > 90) do
 			all(:city_id => city, :day => Chronic.parse("#{days} days ago")).each do |f|
 				deals << f.deal
 			end
