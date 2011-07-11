@@ -180,8 +180,6 @@ span.deal-frame {
 	height: 196px;
 	display: inline-block;
 	overflow: hidden;
-	float: left;
-	background-color: red;
 }
 
 div#features div#featured-deals div.deal span.deal-frame {
